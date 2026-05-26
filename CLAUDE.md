@@ -52,18 +52,77 @@ bd close <id>         # Complete work
 
 ## Build & Test
 
-_Add your build and test commands here_
+**pnpm only** (no npm/yarn). Next.js 16 App Router, TypeScript strict, Tailwind 4.
 
 ```bash
-# Example:
-# npm install
-# npm test
+pnpm install      # install deps + write pnpm-lock.yaml
+pnpm dev          # next dev (local)
+pnpm build        # next build (production)
+pnpm start        # next start (serve the production build)
+pnpm lint         # eslint — includes the no-hard-coded-values rule
+pnpm typecheck    # tsc --noEmit (TS strict)
 ```
+
+There is **no `test` script and no CI** — by design there is no test framework. The
+automated gate is **build + lint + typecheck**, run by the ralph driver:
+`pnpm install && pnpm lint && pnpm exec tsc --noEmit && pnpm build`. Final
+functional verification is **manual**. Agents do **not** run a test suite.
 
 ## Architecture Overview
 
-_Add a brief overview of your project architecture_
+Full **layered clean architecture** with **ports & adapters** — see
+[agent_docs/architecture.md](./agent_docs/architecture.md) for the deep-dive.
+
+```
+ app/api route ─▶ Controller (Zod validate, shape) ─▶ Service (business rules)
+                                                          └─▶ Repository (interface) ─▶ Adapter
+```
+
+- **Controllers** validate (Zod) + shape; **services** hold business rules;
+  **repositories** are interfaces (ports); **adapters** implement them per provider.
+- **No-pass-through guardrail (non-negotiable):** every layer must do a real job.
+  **If a layer would do nothing, omit it — do not stub an empty pass-through file.**
+- Services depend on repository **interfaces**, never on a concrete adapter, so the
+  backend is swappable (e.g. `LemonSqueezyAdapter` → Postgres later) without
+  changing services. **No DB and no adapters before L4** (ADR-0002).
+- Entities (`Subscriber`, `Purchase`, `Offer`) are **TS types**, not tables.
+- **No accounts / no auth** — email-based access (ADR-0004).
+
+### Where each thing lives (`src/`)
+
+| Path | Holds |
+|---|---|
+| `src/app/` | routes / pages (App Router) |
+| `src/components/{atoms,molecules,organisms,templates}/` | UI components |
+| `src/content/` | typed content (`offers.ts`, `faq.ts`, `testimonials.ts` — L3) |
+| `src/lib/{email,payments,analytics}/` | adapters (concrete repositories — L4) |
+| `src/server/{controllers,services}/` | controllers + services |
+| `src/types/` | entity types + repository interfaces (ports) |
+| `src/styles/` | `theme.css` (tokens) + `globals.css` |
+
+Use `@/*` aliases (→ `src/*`) and the per-layer `index.ts` **barrels** — never deep
+relative paths across layers.
 
 ## Conventions & Patterns
 
-_Add your project-specific conventions here_
+- **Tailwind 4 `@theme` is the single styling source** (`src/styles/theme.css`,
+  extracted verbatim from `index.html`). Components reference theme tokens only —
+  **never raw hex/px**. An ESLint rule enforces **no-hard-coded-values** in
+  `src/components/**` (hex, `rgb/rgba/hsl`, `px/rem/em`). Fix violations with a
+  token or utility, not an inline value (ADR-0005). See
+  [agent_docs/design-system.md](./agent_docs/design-system.md).
+- **Bespoke atoms from deck tokens + Radix** primitives — no MUI/shadcn (ADR-0005).
+- **TypeScript strict**; Zod for input validation at the controller boundary.
+- Ground domain language in [CONTEXT.md](./CONTEXT.md):
+  [agent_docs/](./agent_docs/) holds the architecture, design-system, content-model,
+  integrations, and deck-player deep-dives.
+
+### The don'ts
+
+- ❌ No pure pass-through files / empty stub layers (ADR-0002).
+- ❌ No hard-coded color/size values in `src/components/**` — use theme tokens.
+- ❌ No database or persistence in early layers; no adapters before **L4** (ADR-0002/0003).
+- ❌ Do **not** embed `index.html`, edit it, or delete it before **L2** — it is the
+  read-only deck migration source (ADR-0001).
+- ❌ No npm/yarn — **pnpm only**. No new deps beyond the fixed stack (+ Radix, Zod).
+- ❌ Do not read or write `.env*` files (secrets); no API keys in the repo.
