@@ -1,0 +1,7 @@
+{
+  "database": "dolt",
+  "backend": "dolt",
+  "dolt_mode": "embedded",
+  "dolt_database": "Deck",
+  "project_id": "190cc29c-20cc-42a4-a4c4-489afdabdd2e"
+}
