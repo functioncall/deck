@@ -1,0 +1,202 @@
+"use client";
+
+import { useEffect, useMemo, useReducer, useRef } from "react";
+import { JumpMenu } from "./JumpMenu";
+import { ProgressBar } from "./ProgressBar";
+import { SlideStateProvider } from "./Reveal";
+import { Stepper } from "./Stepper";
+import type { DeckSection, SlideEntry } from "./types";
+
+/**
+ * SlidePlayer — the client shell that drives the deck. It owns the
+ * `{ index, state }` machine (the direct port of index.html's `cur` +
+ * `setSlideState`/`data-states`), wires keyboard / click / touch-swipe nav, and
+ * overlays the chrome (stepper, progress + counter, jump menu). All slides are
+ * rendered into the DOM and toggled by opacity (matching index.html, and so the
+ * full deck text stays in the SSG HTML / crawlable). Only this shell + `Reveal`
+ * are client; slide content stays server-rendered. Token-only (ADR-0005).
+ */
+type SlidePlayerProps = {
+  /** Ordered slide registry — server-rendered content + reveal metadata. */
+  slides: SlideEntry[];
+  /** The 8 deck sections, for the jump menu + section counter. */
+  sections: DeckSection[];
+};
+
+type MachineState = { index: number; state: number };
+type MachineAction =
+  | { type: "next" }
+  | { type: "prev" }
+  | { type: "home" }
+  | { type: "end" }
+  | { type: "jump"; index: number };
+
+/** Minimum horizontal travel (CSS px) for a touch drag to count as a swipe. */
+const SWIPE_THRESHOLD = 48;
+
+/**
+ * Builds the reveal/nav reducer. `next`/`prev` advance the reveal state within a
+ * slide before moving slides (porting `setSlideState` then `cur++`); entering a
+ * slide backwards lands on its last state, exactly as index.html does.
+ */
+function makeReducer(slides: SlideEntry[]) {
+  const total = slides.length;
+  const maxStateOf = (i: number) => slides[i]?.maxState ?? 1;
+  return (current: MachineState, action: MachineAction): MachineState => {
+    switch (action.type) {
+      case "next":
+        if (current.state < maxStateOf(current.index) - 1) {
+          return { index: current.index, state: current.state + 1 };
+        }
+        if (current.index < total - 1) {
+          return { index: current.index + 1, state: 0 };
+        }
+        return current;
+      case "prev":
+        if (current.state > 0) {
+          return { index: current.index, state: current.state - 1 };
+        }
+        if (current.index > 0) {
+          const prevIndex = current.index - 1;
+          return { index: prevIndex, state: maxStateOf(prevIndex) - 1 };
+        }
+        return current;
+      case "home":
+        return { index: 0, state: 0 };
+      case "end":
+        return { index: Math.max(total - 1, 0), state: 0 };
+      case "jump":
+        return { index: action.index, state: 0 };
+    }
+  };
+}
+
+export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
+  const reducer = useMemo(() => makeReducer(slides), [slides]);
+  const [{ index, state }, dispatch] = useReducer(reducer, { index: 0, state: 0 });
+
+  const rootRef = useRef<HTMLDivElement>(null);
+  const swipeStartX = useRef<number | null>(null);
+  const swiped = useRef(false);
+
+  // Focus the player on mount so keyboard nav works immediately on /deck;
+  // preventScroll keeps it from yanking the page when embedded (e.g. styleguide).
+  useEffect(() => {
+    rootRef.current?.focus({ preventScroll: true });
+  }, []);
+
+  const total = slides.length;
+  const activeMaxState = slides[index]?.maxState ?? 1;
+
+  function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
+    switch (e.key) {
+      case "ArrowRight":
+      case " ":
+      case "PageDown":
+        e.preventDefault();
+        dispatch({ type: "next" });
+        break;
+      case "ArrowLeft":
+      case "PageUp":
+        e.preventDefault();
+        dispatch({ type: "prev" });
+        break;
+      case "Home":
+        e.preventDefault();
+        dispatch({ type: "home" });
+        break;
+      case "End":
+        e.preventDefault();
+        dispatch({ type: "end" });
+        break;
+    }
+  }
+
+  function handleClick(e: React.MouseEvent<HTMLDivElement>) {
+    // A swipe already navigated; swallow the synthetic click that follows.
+    if (swiped.current) {
+      swiped.current = false;
+      return;
+    }
+    // Don't advance when the click lands on interactive chrome (links, the jump
+    // menu, form fields) — only on the slide canvas itself.
+    if (
+      (e.target as HTMLElement).closest(
+        "a, button, input, textarea, select, label, [data-deck-control]",
+      )
+    ) {
+      return;
+    }
+    rootRef.current?.focus({ preventScroll: true });
+    dispatch({ type: "next" });
+  }
+
+  function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {
+    // Mouse uses click-to-advance; reserve swipe for touch/pen.
+    if (e.pointerType === "mouse") {
+      swipeStartX.current = null;
+      return;
+    }
+    swipeStartX.current = e.clientX;
+    swiped.current = false;
+  }
+
+  function handlePointerUp(e: React.PointerEvent<HTMLDivElement>) {
+    if (swipeStartX.current === null) return;
+    const dx = e.clientX - swipeStartX.current;
+    swipeStartX.current = null;
+    if (Math.abs(dx) > SWIPE_THRESHOLD) {
+      swiped.current = true;
+      dispatch({ type: dx < 0 ? "next" : "prev" });
+    }
+  }
+
+  return (
+    <div
+      ref={rootRef}
+      tabIndex={0}
+      role="application"
+      aria-roledescription="slide deck"
+      aria-label="BeyondTheLoop deck"
+      onKeyDown={handleKeyDown}
+      onClick={handleClick}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      className="relative h-full w-full overflow-hidden bg-bg outline-none"
+    >
+      {slides.map((entry, i) => {
+        const isActive = i === index;
+        return (
+          <div
+            key={entry.id}
+            aria-hidden={!isActive}
+            className={`absolute inset-0 transition-opacity duration-500 ease-out ${
+              isActive
+                ? "pointer-events-auto opacity-100"
+                : "pointer-events-none opacity-0"
+            }`}
+          >
+            <SlideStateProvider state={isActive ? state : 0}>
+              <entry.Component />
+            </SlideStateProvider>
+          </div>
+        );
+      })}
+
+      {activeMaxState > 1 ? (
+        <div className="pointer-events-none absolute left-1/2 top-[5vh] z-50 -translate-x-1/2">
+          <Stepper count={activeMaxState} active={state} />
+        </div>
+      ) : null}
+
+      {sections.length > 0 ? (
+        <JumpMenu
+          sections={sections}
+          onJump={(slideIndex) => dispatch({ type: "jump", index: slideIndex })}
+        />
+      ) : null}
+
+      <ProgressBar current={index + 1} total={total} />
+    </div>
+  );
+}

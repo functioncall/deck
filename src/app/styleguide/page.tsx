@@ -27,6 +27,7 @@ import {
   Navbar,
 } from "@/components/organisms";
 import { MarketingPageTemplate } from "@/components/templates";
+import { DeckEngineDemo } from "./DeckEngineDemo";
 
 export const metadata: Metadata = {
   title: "Styleguide — BeyondTheLoop",
@@ -585,6 +586,12 @@ export default function Styleguide() {
               />
             </MarketingPageTemplate>
           </div>
+        </Specimen>
+      </Section>
+
+      <Section title="Deck engine — SlidePlayer (L2 epic-0, throwaway demo)">
+        <Specimen label="Nav (keyboard / click / swipe) + progress + counter + jump menu + stepper reveal">
+          <DeckEngineDemo />
         </Specimen>
       </Section>
     </main>
