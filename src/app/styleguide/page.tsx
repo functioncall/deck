@@ -27,6 +27,13 @@ import {
   Navbar,
 } from "@/components/organisms";
 import { MarketingPageTemplate } from "@/components/templates";
+import {
+  ContextWindow,
+  Gantt,
+  HarnessFrame,
+  LLMDiagram,
+} from "@/components/diagrams";
+import { SlideStateProvider } from "@/components/deck-player";
 import { DeckEngineDemo } from "./DeckEngineDemo";
 
 export const metadata: Metadata = {
@@ -587,6 +594,94 @@ export default function Styleguide() {
             </MarketingPageTemplate>
           </div>
         </Specimen>
+      </Section>
+
+      <Section title="Deck diagrams (L2 epic-1)">
+        <div className="flex flex-col gap-10">
+          <Specimen label="LLMDiagram — basic / prominent (text in → LLM → text out)">
+            <div className="flex flex-col gap-8 rounded border border-rule bg-bg-soft p-8">
+              <LLMDiagram />
+              <LLMDiagram variant="prominent" />
+              <Callout>
+                An LLM is a function — text in, text out.{" "}
+                <strong>Stateless.</strong> No memory between calls.
+              </Callout>
+            </div>
+          </Specimen>
+
+          <Specimen label="ContextWindow — default / tall + custom label">
+            <div className="grid gap-6 sm:grid-cols-2">
+              <ContextWindow />
+              <ContextWindow tall label="Context window · 1M" />
+            </div>
+          </Specimen>
+
+          <Specimen label="HarnessFrame — static (the agent layer inside the harness layer)">
+            <div className="grid items-start gap-6 lg:grid-cols-2">
+              <HarnessFrame />
+              <CodeBlock title="agent.py">
+                <CodeBlock.Cmt># an agent is a while-true loop</CodeBlock.Cmt>
+                {"\n"}
+                <CodeBlock.Kw>while</CodeBlock.Kw> <CodeBlock.Kw>True</CodeBlock.Kw>:
+                {"\n  response = llm.complete(messages)"}
+                {"\n  "}
+                <CodeBlock.Kw>if</CodeBlock.Kw> response.wants_tool:
+                {"\n    result = run(response.tool_call)"}
+                {"\n    messages.append(result)"}
+              </CodeBlock>
+            </div>
+          </Specimen>
+
+          <Specimen label="HarnessFrame — progressive build (Reveal: agent @ state 1, harness shell @ state 2)">
+            <div className="grid items-start gap-6 lg:grid-cols-2">
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-xs uppercase tracking-widest text-ink-dim">
+                  State 1 — agent only
+                </span>
+                <SlideStateProvider state={1}>
+                  <HarnessFrame progressive />
+                </SlideStateProvider>
+              </div>
+              <div className="flex flex-col gap-3">
+                <span className="font-mono text-xs uppercase tracking-widest text-ink-dim">
+                  State 2 — harness drawn in
+                </span>
+                <SlideStateProvider state={2}>
+                  <HarnessFrame progressive />
+                </SlideStateProvider>
+              </div>
+            </div>
+          </Specimen>
+
+          <Specimen label="Gantt — plan → execute → review timeline (with Stat)">
+            <div className="flex flex-col gap-8 rounded border border-rule bg-bg-soft p-8">
+              <Gantt
+                rows={[
+                  { label: "Plan", time: "~2:00 hr", width: "60%", variant: "plan" },
+                  {
+                    label: "Execute",
+                    time: "59 min",
+                    width: "30%",
+                    offset: "60%",
+                    variant: "agent",
+                  },
+                  {
+                    label: "Review",
+                    time: "~30 min",
+                    width: "15%",
+                    offset: "90%",
+                    variant: "review",
+                  },
+                ]}
+              />
+              <div className="flex flex-wrap gap-12">
+                <Stat value="270" label="Files changed" />
+                <Stat value="59 min" label="Unattended run" />
+                <Stat value="exit 0" label="Clean build" />
+              </div>
+            </div>
+          </Specimen>
+        </div>
       </Section>
 
       <Section title="Deck engine — SlidePlayer (L2 epic-0, throwaway demo)">
