@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@import "./theme.css";
+
+/*
+ * Base layer — body uses deck theme tokens (bg + ink + sans) from theme.css.
+ * No hard-coded design values: every value below is a theme token.
+ */
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
