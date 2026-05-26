@@ -27,6 +27,15 @@ log() { echo "[$(date '+%H:%M:%S')] $*" | tee -a "$LOG"; }
 log "RUN-ALL START — ${#PHASES[@]} phases (L1..L4)"
 for cfg in "${PHASES[@]}"; do
   BR=$(grep -E '^BRANCH=' "$cfg" | head -1 | cut -d'"' -f2)
+
+  # Skip a phase whose branch is already merged into main (e.g. on resume).
+  # Without this, an already-merged phase's epics get re-run, because the
+  # driver's git-log skip finds nothing ahead of main.
+  if git rev-parse --verify "$BR" >/dev/null 2>&1 && git merge-base --is-ancestor "$BR" main 2>/dev/null; then
+    log "SKIP PHASE: $cfg ($BR already merged into main)"
+    continue
+  fi
+
   log "PHASE START: $cfg (branch $BR)"
 
   if ! git checkout main >>"$LOG" 2>&1; then
