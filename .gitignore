@@ -3,3 +3,25 @@
 .dolt/
 *.db
 .beads-credential-key
+
+# OS / scratch
+.DS_Store
+untitled folder/
+
+# Node / Next.js
+node_modules/
+.next/
+out/
+build/
+*.tsbuildinfo
+next-env.d.ts
+
+# Env
+.env*
+!.env.example
+
+# Vercel
+.vercel
+
+# Ralph run logs
+.ralph-logs/
