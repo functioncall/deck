@@ -31,7 +31,7 @@ const navCta = (
 );
 
 export const metadata: Metadata = {
-  title: "Refund Policy — BeyondTheLoop",
+  title: "Refund Policy — BEYOND the loop",
   description:
     "A 30-day, no-questions-asked refund on the Harness Starter Kit Pre-sell. Email us within 30 days and we refund you in full.",
 };

@@ -10,7 +10,7 @@ import { ImageResponse } from "next/og";
  */
 
 export const alt =
-  "BeyondTheLoop — stop babysitting your AI, start shipping with it";
+  "BEYOND the loop — stop babysitting your AI, start shipping with it";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -44,7 +44,7 @@ export default function OpengraphImage() {
             color: ACCENT,
           }}
         >
-          BeyondTheLoop
+          BEYOND the loop
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

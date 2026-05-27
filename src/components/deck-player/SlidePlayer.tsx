@@ -178,7 +178,7 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
       tabIndex={0}
       role="application"
       aria-roledescription="slide deck"
-      aria-label="BeyondTheLoop deck"
+      aria-label="BEYOND the loop deck"
       onKeyDown={handleKeyDown}
       onClick={handleClick}
       onPointerDown={handlePointerDown}

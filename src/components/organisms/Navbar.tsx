@@ -22,7 +22,7 @@ export function Navbar({ links = [], cta }: NavbarProps) {
           href="/"
           className="font-serif text-lg font-normal text-ink transition-colors hover:text-accent"
         >
-          BeyondTheLoop
+          BEYOND the loop
         </NextLink>
         <div className="flex items-center gap-6">
           {links.length > 0 ? (

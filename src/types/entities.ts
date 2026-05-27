@@ -1,4 +1,4 @@
-// Domain entities for BeyondTheLoop (see CONTEXT.md glossary).
+// Domain entities for BEYOND the loop (see CONTEXT.md glossary).
 // TS types only — no DB in L0 (ADR-0002). Adapters/persistence land in L4.
 
 // Anyone who gave an email: to follow along (free) or as part of a Pre-sell.
@@ -19,7 +19,7 @@ export type Purchase = {
   createdAt: string; // ISO 8601
 };
 
-// Umbrella for anything BeyondTheLoop sells or gives away.
+// Umbrella for anything BEYOND the loop sells or gives away.
 export type Offer = {
   id: string; // stable slug, e.g. "harness-starter-kit"
   name: string;

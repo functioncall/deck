@@ -31,9 +31,9 @@ const navCta = (
 );
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — BeyondTheLoop",
+  title: "Privacy Policy — BEYOND the loop",
   description:
-    "What BeyondTheLoop collects and why — email via Loops, purchases via Lemon Squeezy, and product analytics via Amplitude, with consent for EU/EEA visitors.",
+    "What BEYOND the loop collects and why — email via Loops, purchases via Lemon Squeezy, and product analytics via Amplitude, with consent for EU/EEA visitors.",
 };
 
 export default function Privacy() {
@@ -51,7 +51,7 @@ export default function Privacy() {
           Last updated: May 2026
         </Text>
         <Text variant="lead" className="mt-6">
-          BeyondTheLoop collects the least it can to run an email list and a
+          BEYOND the loop collects the least it can to run an email list and a
           Pre-sell. We don&rsquo;t sell your data. Here is exactly what is
           collected, who processes it, and the choices you have.
         </Text>
