@@ -23,7 +23,7 @@ function formatUsd(cents: number): string {
 
 // What buying at the Founding price locks in (CONTEXT.md: Founding price).
 const KIT_FEATURES = [
-  "The full Harness Starter Kit — download it the instant you pay",
+  "The full Harness Starter Kit — yours at the founding price the day it ships",
   "The Screencast, free, with lifetime access when it ships",
   "Founding-member status and the private build-log",
   "A vote on the real task the founder builds in the Screencast",
@@ -42,13 +42,13 @@ export function Pricing({ className }: SectionProps) {
     >
       <Label accent>The price</Label>
       <Heading as="h2" size="display-sm" className="mt-4">
-        Pay the Founding price while it lasts.
+        Lock in the Founding price before launch.
       </Heading>
       <Text variant="lead" className="mt-6">
-        Early buyers take the bet before there&rsquo;s a wall of testimonials, so
-        they pay the least the Kit will ever cost. The price rises from{" "}
-        {foundingPrice} to {launchPrice} at launch — that&rsquo;s the only clock.
-        No countdown, no fake deadline.
+        Get early access before launch and you&rsquo;ll get the Kit at{" "}
+        {foundingPrice} — the least it will ever cost. The price rises to{" "}
+        {launchPrice} at launch; that&rsquo;s the only clock. No countdown, no
+        fake deadline.
       </Text>
       <div className="mt-12">
         <PricingTier
@@ -59,13 +59,13 @@ export function Pricing({ className }: SectionProps) {
           features={KIT_FEATURES}
           cta={
             <CheckoutButton className="w-full px-8 py-4 text-lg">
-              Get the Kit
+              Get early access
             </CheckoutButton>
           }
         />
       </div>
       <Text variant="soft" className="mt-8">
-        Try the Harness Starter Kit on your own work. If it doesn&rsquo;t earn its
+        When the Kit ships, try it on your own work. If it doesn&rsquo;t earn its
         place in your setup, email us within 30 days and we&rsquo;ll refund you in
         full — no questions asked.
       </Text>

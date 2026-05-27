@@ -11,11 +11,11 @@ import {
  * close as the final slide of `/deck` (it is not part of the index.html port,
  * so it lives here in the assembly layer rather than in `slides/index.ts`).
  *
- * It composes the L1 `EmailCaptureForm` (the soft "follow along" capture —
- * client validation only, no POST; the `/api/subscribe` wiring is L4) and the
- * L1 `CTAButtonGroup` linking back to `/` and to buy the Harness Starter Kit
- * (the paid hero) via the shared `CheckoutButton` (opens the Lemon Squeezy
- * checkout). Token-only styling (ADR-0005).
+ * It composes the L1 `EmailCaptureForm` (the soft "follow along" capture that
+ * POSTs to /api/subscribe → Loops) and the L1 `CTAButtonGroup` linking back to
+ * `/` and, for the waitlist launch, to the early-access capture via the shared
+ * `CheckoutButton` (`/#join`, not a live checkout yet — Deck-n87). Token-only
+ * styling (ADR-0005).
  */
 
 export function EndCard() {
@@ -45,7 +45,7 @@ export function EndCard() {
         className="mt-10 justify-center"
         primary={
           <CheckoutButton className="px-8 py-4 text-lg">
-            Get the Harness Starter Kit
+            Get early access
           </CheckoutButton>
         }
         secondary={

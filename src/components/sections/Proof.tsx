@@ -1,13 +1,11 @@
 import { Heading, Label, Stat, Text } from "@/components/atoms";
-import { TestimonialCard } from "@/components/molecules";
-import { testimonials } from "@/content";
 
 /**
  * Proof — the authority + evidence section (SPEC §3): the practitioner who built
- * the harness (CTO @ Skyhost), the founder's headline run metrics via the L1
- * `Stat` atom (270 files / 59 min / exit 0; 95–99% task-fit), and named
- * testimonials via the L1 `TestimonialCard`, read from typed content
- * (`testimonials.ts`). Help-don't-sell: the proof is real practice, not hype.
+ * the harness (CTO @ Skyhost) and the founder's headline run metrics via the L1
+ * `Stat` atom (270 files / 59 min / exit 0; 95–99% task-fit). For the waitlist
+ * launch there are no testimonials yet, so an honest early-access block stands
+ * in for placeholder quotes (Deck-n87) — help-don't-sell: real practice, not hype.
  * Token-only styling (ADR-0005).
  */
 type SectionProps = { className?: string };
@@ -42,15 +40,18 @@ export function Proof({ className }: SectionProps) {
           <Stat key={metric.label} value={metric.value} label={metric.label} />
         ))}
       </div>
-      <div className="mt-16 grid gap-6 md:grid-cols-3">
-        {testimonials.map((testimonial) => (
-          <TestimonialCard
-            key={testimonial.quote}
-            quote={testimonial.quote}
-            name={testimonial.name}
-            title={testimonial.title}
-          />
-        ))}
+      <div className="mt-16 rounded-lg border border-rule bg-bg-card p-8 md:p-10">
+        <Label accent>Early access</Label>
+        <Heading as="h3" size="display-sm" className="mt-3">
+          No testimonials yet — and we won&rsquo;t invent any.
+        </Heading>
+        <Text variant="soft" className="mt-4 max-w-2xl">
+          You&rsquo;d be among the first to run this harness outside the
+          founder&rsquo;s own projects. So instead of a wall of quotes,
+          here&rsquo;s what&rsquo;s real: the run above, on production code at
+          Skyhost, every day. Get early access and you&rsquo;ll get the Kit at the
+          lowest price it will ever be — and help shape what ships.
+        </Text>
       </div>
     </section>
   );

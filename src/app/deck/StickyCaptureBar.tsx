@@ -12,8 +12,8 @@ import { CheckoutButton } from "@/components/molecules";
  * on the EndCard — keeping it single-instance avoids a duplicate field id — so
  * this bar carries the CTA only. Dismissible so it never blocks the deck.
  *
- * The buy CTA opens the Lemon Squeezy checkout (the shared `CheckoutButton`).
- * Token-only styling (ADR-0005).
+ * The CTA routes to the early-access capture (`CheckoutButton` → `/#join`),
+ * not a live checkout yet (Deck-n87). Token-only styling (ADR-0005).
  */
 
 export function StickyCaptureBar() {
@@ -29,7 +29,7 @@ export function StickyCaptureBar() {
           founders lock the Founding price.
         </Text>
         <div className="flex items-center gap-5">
-          <CheckoutButton className="px-5 py-2 text-sm">Get the Kit</CheckoutButton>
+          <CheckoutButton className="px-5 py-2 text-sm">Get early access</CheckoutButton>
           <button
             type="button"
             onClick={() => setDismissed(true)}

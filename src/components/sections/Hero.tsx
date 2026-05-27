@@ -39,7 +39,7 @@ export function Hero() {
         <CTAButtonGroup
           primary={
             <CheckoutButton className="px-8 py-4 text-lg">
-              Get the Kit
+              Get early access
             </CheckoutButton>
           }
           secondary={

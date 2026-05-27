@@ -47,8 +47,8 @@ export function WhatsInTheKit({ className }: SectionProps) {
       </Heading>
       <Text variant="lead" className="mt-6">
         The founder&rsquo;s actual agentic-coding harness — the same one behind the
-        Deck — as reusable templates you download the instant you buy. It works
-        today.
+        Deck — as reusable templates. It works today; early-access members get it
+        at the founding price the day it ships.
       </Text>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {KIT_CONTENTS.map((item) => (
@@ -71,7 +71,7 @@ export function WhatsInTheKit({ className }: SectionProps) {
         Screencast.
       </Text>
       <div className="mt-10">
-        <CheckoutButton className="px-8 py-4 text-lg">Get the Kit</CheckoutButton>
+        <CheckoutButton className="px-8 py-4 text-lg">Get early access</CheckoutButton>
       </div>
     </section>
   );

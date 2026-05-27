@@ -27,7 +27,7 @@ const FOOTER_LINKS = [
 ];
 
 const navCta = (
-  <CheckoutButton className="px-5 py-2.5 text-sm">Get the Kit</CheckoutButton>
+  <CheckoutButton className="px-5 py-2.5 text-sm">Get early access</CheckoutButton>
 );
 
 export const metadata: Metadata = {

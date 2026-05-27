@@ -10,15 +10,19 @@ import { z } from 'zod';
 
 // Defining the schema does NOT read process.env — validation happens in getEnv().
 const envSchema = z.object({
-  // Loops (email list) — LoopsAdapter / SubscriberRepository.
+  // Loops (email list) — LoopsAdapter / SubscriberRepository. The ONLY key the
+  // waitlist launch needs (see Deck-n87).
   LOOPS_API_KEY: z.string().min(1),
-  // Lemon Squeezy (Merchant of Record) — LemonSqueezyAdapter / PurchaseRepository.
-  LEMONSQUEEZY_API_KEY: z.string().min(1),
-  LEMONSQUEEZY_STORE_ID: z.string().min(1),
-  LEMONSQUEEZY_VARIANT_ID: z.string().min(1), // the founding-price variant
-  LEMONSQUEEZY_WEBHOOK_SECRET: z.string().min(1),
-  // Amplitude (funnel analytics) — AmplitudeAdapter / AnalyticsClient.
-  AMPLITUDE_API_KEY: z.string().min(1),
+  // Payments + analytics are OFF for the waitlist launch (no live checkout, no
+  // funnel events). Kept in the schema but OPTIONAL with an empty-string default
+  // so the app runs on the Loops key alone AND the inferred types stay `string`
+  // (the webhook HMAC needs a real string). Fill these in — and re-wire the CTAs
+  // to a real checkout — to turn Lemon/Amplitude back on.
+  LEMONSQUEEZY_API_KEY: z.string().default(''),
+  LEMONSQUEEZY_STORE_ID: z.string().default(''),
+  LEMONSQUEEZY_VARIANT_ID: z.string().default(''), // the founding-price variant
+  LEMONSQUEEZY_WEBHOOK_SECRET: z.string().default(''),
+  AMPLITUDE_API_KEY: z.string().default(''),
 });
 
 export type Env = z.infer<typeof envSchema>;

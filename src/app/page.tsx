@@ -38,9 +38,9 @@ const FOOTER_LINKS = [
   { href: "/refund-policy", label: "Refund Policy" },
 ];
 
-// The persistent "Get the Kit" header CTA (SPEC §3) — opens the Lemon checkout.
+// The persistent header CTA (SPEC §3) — routes to the early-access capture.
 const navCta = (
-  <CheckoutButton className="px-5 py-2.5 text-sm">Get the Kit</CheckoutButton>
+  <CheckoutButton className="px-5 py-2.5 text-sm">Get early access</CheckoutButton>
 );
 
 export default function Home() {

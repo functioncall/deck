@@ -16,6 +16,10 @@ const AMPLITUDE_HTTP_API = 'https://api2.amplitude.com/2/httpapi';
 export class AmplitudeAdapter implements AnalyticsClient {
   async track(event: AnalyticsEvent, props?: AnalyticsEventProps): Promise<void> {
     const { AMPLITUDE_API_KEY } = getEnv();
+    // Analytics is OFF until a key is configured (the waitlist launch fires no
+    // funnel events). No key → silent no-op, so the subscribe/track paths never
+    // fail just because no analytics provider is wired (Deck-n87).
+    if (!AMPLITUDE_API_KEY) return;
 
     const deviceId =
       typeof props?.device_id === 'string' ? props.device_id : randomUUID();
