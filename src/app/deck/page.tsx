@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DeckPreview } from "./DeckPreview";
+import { DeckExperience } from "./DeckExperience";
 
 export const metadata: Metadata = {
   title: "The Deck · BeyondTheLoop",
@@ -8,16 +8,17 @@ export const metadata: Metadata = {
 };
 
 /**
- * /deck — the slide-player route, statically generated (SSG). This is a
- * build-safe preview while the slide port is in progress (epic-2 ships §0–1):
- * it renders the ordered registry through `SlidePlayer` in a full-viewport
- * frame. Epic-6 wires the complete assembly here (every section + the
- * end-of-deck soft email capture + CTAs + OG image) and deletes index.html.
+ * /deck — the slide-player route, statically generated (SSG). It assembles the
+ * complete ordered slide registry (the React port of index.html, §0–7) plus the
+ * end-of-deck conversion card into `SlidePlayer`, and overlays the persistent
+ * email/CTA capture bar. All slide content is server-rendered into the static
+ * HTML for crawlability; only the player shell is client. The colocated
+ * `opengraph-image.tsx` supplies the share image.
  */
 export default function DeckPage() {
   return (
     <main className="h-[100svh] w-screen overflow-hidden bg-bg">
-      <DeckPreview />
+      <DeckExperience />
     </main>
   );
 }
