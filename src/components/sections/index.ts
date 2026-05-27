@@ -8,3 +8,7 @@ export { Problem } from "./Problem";
 export { TheShift } from "./TheShift";
 export { DeckPreview } from "./DeckPreview";
 export { WhatsInTheKit } from "./WhatsInTheKit";
+export { Proof } from "./Proof";
+export { Pricing } from "./Pricing";
+export { FAQ } from "./FAQ";
+export { FinalCTA } from "./FinalCTA";
