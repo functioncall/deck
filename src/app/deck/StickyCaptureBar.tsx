@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import NextLink from "next/link";
 import { Text } from "@/components/atoms";
+import { CheckoutButton } from "@/components/molecules";
 
 /**
  * StickyCaptureBar — the persistent end-of-deck conversion bar pinned to the
@@ -12,12 +12,9 @@ import { Text } from "@/components/atoms";
  * on the EndCard — keeping it single-instance avoids a duplicate field id — so
  * this bar carries the CTA only. Dismissible so it never blocks the deck.
  *
- * The buy target is a PLACEHOLDER href until L4 swaps in the real Lemon Squeezy
- * checkout. Token-only styling (ADR-0005).
+ * The buy CTA opens the Lemon Squeezy checkout (the shared `CheckoutButton`).
+ * Token-only styling (ADR-0005).
  */
-
-// PLACEHOLDER — see EndCard; L4 replaces this with the real checkout URL.
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 export function StickyCaptureBar() {
   const [dismissed, setDismissed] = useState(false);
@@ -32,12 +29,7 @@ export function StickyCaptureBar() {
           founders lock the Founding price.
         </Text>
         <div className="flex items-center gap-5">
-          <NextLink
-            href={KIT_CHECKOUT_HREF}
-            className="inline-flex items-center justify-center rounded bg-accent px-5 py-2 font-sans text-sm font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-          >
-            Get the Kit
-          </NextLink>
+          <CheckoutButton className="px-5 py-2 text-sm">Get the Kit</CheckoutButton>
           <button
             type="button"
             onClick={() => setDismissed(true)}

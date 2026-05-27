@@ -1,5 +1,5 @@
-import NextLink from "next/link";
 import { Heading, Label, Text } from "@/components/atoms";
+import { CheckoutButton } from "@/components/molecules";
 import { harnessStarterKit } from "@/content";
 
 /**
@@ -9,13 +9,9 @@ import { harnessStarterKit } from "@/content";
  * script, agent_docs templates) and carries the buy CTA. The Kit name comes from
  * typed content (`@/content`). Token-only styling (ADR-0005).
  *
- * The section `id` is the anchor target for the buy CTAs across the site
- * (including the `/deck` conversion surfaces' `/#harness-starter-kit`).
+ * The section `id` remains the named landing anchor for the Kit (deep links).
  */
 type SectionProps = { className?: string };
-
-// PLACEHOLDER — L4 replaces this with the real Lemon Squeezy checkout URL.
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 // The Kit's contents — glossary terms exact (CONTEXT.md: Harness Starter Kit).
 const KIT_CONTENTS = [
@@ -75,12 +71,7 @@ export function WhatsInTheKit({ className }: SectionProps) {
         Screencast.
       </Text>
       <div className="mt-10">
-        <NextLink
-          href={KIT_CHECKOUT_HREF}
-          className="inline-flex items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-        >
-          Get the Kit
-        </NextLink>
+        <CheckoutButton className="px-8 py-4 text-lg">Get the Kit</CheckoutButton>
       </div>
     </section>
   );

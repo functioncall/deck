@@ -1,6 +1,5 @@
-import NextLink from "next/link";
 import { Heading, Label, Text } from "@/components/atoms";
-import { PricingTier } from "@/components/molecules";
+import { PricingTier, CheckoutButton } from "@/components/molecules";
 import {
   FOUNDING_PRICE_CENTS,
   LAUNCH_PRICE_CENTS,
@@ -15,9 +14,6 @@ import {
  * 30-day no-questions guarantee is stated plainly. Token-only styling (ADR-0005).
  */
 type SectionProps = { className?: string };
-
-// PLACEHOLDER — L4 replaces this with the real Lemon Squeezy checkout URL.
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 // Format a cents amount as plain USD, dropping the decimals when whole-dollar.
 function formatUsd(cents: number): string {
@@ -62,12 +58,9 @@ export function Pricing({ className }: SectionProps) {
           note={`${harnessStarterKit.name} — rises to ${launchPrice} at launch`}
           features={KIT_FEATURES}
           cta={
-            <NextLink
-              href={KIT_CHECKOUT_HREF}
-              className="inline-flex w-full items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-            >
+            <CheckoutButton className="w-full px-8 py-4 text-lg">
               Get the Kit
-            </NextLink>
+            </CheckoutButton>
           }
         />
       </div>

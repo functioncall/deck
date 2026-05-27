@@ -1,6 +1,6 @@
 import NextLink from "next/link";
 import { Hero as MarketingHero } from "@/components/organisms";
-import { CTAButtonGroup } from "@/components/molecules";
+import { CTAButtonGroup, CheckoutButton } from "@/components/molecules";
 import { deck, harnessStarterKit } from "@/content";
 
 /**
@@ -10,11 +10,6 @@ import { deck, harnessStarterKit } from "@/content";
  * `Hero` organism for layout and the L1 `CTAButtonGroup` for the CTA row; offer
  * names come from typed content (`@/content`). Token-only styling (ADR-0005).
  */
-
-// PLACEHOLDER — L4 replaces this with the real Lemon Squeezy checkout URL for the
-// Harness Starter Kit. For now it anchors to the landing Kit section (matches the
-// `/deck` conversion surfaces' KIT_CHECKOUT_HREF).
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 // The founder's headline proof metric (SPEC §1) — one unattended ralph run.
 const PROOF_STATS = [
@@ -43,12 +38,9 @@ export function Hero() {
       cta={
         <CTAButtonGroup
           primary={
-            <NextLink
-              href={KIT_CHECKOUT_HREF}
-              className="inline-flex items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-            >
+            <CheckoutButton className="px-8 py-4 text-lg">
               Get the Kit
-            </NextLink>
+            </CheckoutButton>
           }
           secondary={
             <NextLink

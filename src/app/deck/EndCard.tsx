@@ -1,7 +1,10 @@
-import NextLink from "next/link";
 import { Heading, Link, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { CTAButtonGroup, EmailCaptureForm } from "@/components/molecules";
+import {
+  CTAButtonGroup,
+  CheckoutButton,
+  EmailCaptureForm,
+} from "@/components/molecules";
 
 /**
  * EndCard — the end-of-deck conversion surface, appended after the ported §7
@@ -11,13 +14,9 @@ import { CTAButtonGroup, EmailCaptureForm } from "@/components/molecules";
  * It composes the L1 `EmailCaptureForm` (the soft "follow along" capture —
  * client validation only, no POST; the `/api/subscribe` wiring is L4) and the
  * L1 `CTAButtonGroup` linking back to `/` and to buy the Harness Starter Kit
- * (the paid hero). The buy target is a PLACEHOLDER href until L4 swaps in the
- * real Lemon Squeezy checkout. Token-only styling (ADR-0005).
+ * (the paid hero) via the shared `CheckoutButton` (opens the Lemon Squeezy
+ * checkout). Token-only styling (ADR-0005).
  */
-
-// PLACEHOLDER — L4 replaces this with the real Lemon Squeezy checkout URL for
-// the Harness Starter Kit. For now it points at the (L3) landing Kit section.
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 export function EndCard() {
   return (
@@ -45,12 +44,9 @@ export function EndCard() {
       <CTAButtonGroup
         className="mt-10 justify-center"
         primary={
-          <NextLink
-            href={KIT_CHECKOUT_HREF}
-            className="inline-flex items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-          >
+          <CheckoutButton className="px-8 py-4 text-lg">
             Get the Harness Starter Kit
-          </NextLink>
+          </CheckoutButton>
         }
         secondary={
           <Link href="/" variant="muted" className="text-center">

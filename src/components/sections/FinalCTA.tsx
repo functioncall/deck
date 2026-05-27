@@ -1,6 +1,10 @@
 import NextLink from "next/link";
 import { Heading, Label, Text } from "@/components/atoms";
-import { CTAButtonGroup, EmailCaptureForm } from "@/components/molecules";
+import {
+  CTAButtonGroup,
+  CheckoutButton,
+  EmailCaptureForm,
+} from "@/components/molecules";
 import { deck, harnessStarterKit } from "@/content";
 
 /**
@@ -11,9 +15,6 @@ import { deck, harnessStarterKit } from "@/content";
  * (ADR-0002/0004). Offer names come from typed content. Token-only (ADR-0005).
  */
 type SectionProps = { className?: string };
-
-// PLACEHOLDER — L4 replaces this with the real Lemon Squeezy checkout URL.
-const KIT_CHECKOUT_HREF = "/#harness-starter-kit";
 
 export function FinalCTA({ className }: SectionProps) {
   return (
@@ -32,12 +33,9 @@ export function FinalCTA({ className }: SectionProps) {
         <div className="mt-10 flex justify-center">
           <CTAButtonGroup
             primary={
-              <NextLink
-                href={KIT_CHECKOUT_HREF}
-                className="inline-flex items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-              >
+              <CheckoutButton className="px-8 py-4 text-lg">
                 Get the Kit
-              </NextLink>
+              </CheckoutButton>
             }
             secondary={
               <NextLink
