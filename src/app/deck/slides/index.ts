@@ -8,6 +8,20 @@ import { LoopInAction } from "./LoopInAction";
 import { AgentHarness } from "./AgentHarness";
 import { Takeaway } from "./Takeaway";
 import { ArrayIsEverything } from "./ArrayIsEverything";
+import { InstructionCeiling } from "./InstructionCeiling";
+import { SmartDumbZone } from "./SmartDumbZone";
+import { AllocationProblem } from "./AllocationProblem";
+import { ContextRot } from "./ContextRot";
+import { GoodContext } from "./GoodContext";
+import { ContextTransition } from "./ContextTransition";
+import { HarnessWrapsTheirs } from "./HarnessWrapsTheirs";
+import { LayerYouOwn } from "./LayerYouOwn";
+import { TheSetup } from "./TheSetup";
+import { ClaudeMd } from "./ClaudeMd";
+import { AgentDocs } from "./AgentDocs";
+import { CustomSkills } from "./CustomSkills";
+import { IssueTracker } from "./IssueTracker";
+import { RalphLoop } from "./RalphLoop";
 
 /**
  * The ordered deck slide registry — the React port of index.html's `.slide`
@@ -27,4 +41,20 @@ export const slides: SlideEntry[] = [
   { id: "s-1-5", section: 1, maxState: 3, Component: AgentHarness },
   { id: "s-1-6", section: 1, maxState: 1, Component: Takeaway },
   { id: "s-1-7", section: 1, maxState: 1, Component: ArrayIsEverything },
+  // §2 — context (the shift): instruction ceiling, the zones, the antipatterns
+  { id: "s-2-0a", section: 2, maxState: 1, Component: InstructionCeiling },
+  { id: "s-2-0b", section: 2, maxState: 1, Component: SmartDumbZone },
+  { id: "s-2-1", section: 2, maxState: 4, Component: AllocationProblem },
+  { id: "s-2-2", section: 2, maxState: 5, Component: ContextRot },
+  { id: "s-2-3", section: 2, maxState: 1, Component: GoodContext },
+  { id: "s-2-8", section: 2, maxState: 1, Component: ContextTransition },
+  // §3 — the harness: the layered build + the pieces you own
+  { id: "s-3-0", section: 3, maxState: 4, Component: HarnessWrapsTheirs },
+  { id: "s-3-1", section: 3, maxState: 1, Component: LayerYouOwn },
+  { id: "s-3-2", section: 3, maxState: 1, Component: TheSetup },
+  { id: "s-3-3", section: 3, maxState: 1, Component: ClaudeMd },
+  { id: "s-3-4", section: 3, maxState: 1, Component: AgentDocs },
+  { id: "s-3-5", section: 3, maxState: 1, Component: CustomSkills },
+  { id: "s-3-6", section: 3, maxState: 1, Component: IssueTracker },
+  { id: "s-3-7", section: 3, maxState: 1, Component: RalphLoop },
 ];
