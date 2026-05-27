@@ -22,12 +22,20 @@ import {
  * wires the persistent header CTA + nav/footer links.
  */
 
-// Navbar + Footer share the same in-page anchors (Pricing/FAQ get id wrappers
-// below) plus the free Deck route.
+// The top nav carries the in-page anchors (Pricing/FAQ get id wrappers below)
+// plus the free Deck route.
 const NAV_LINKS = [
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
   { href: "/deck", label: "Read the Deck" },
+];
+
+// The footer adds the legal routes (L4) alongside the marketing anchors.
+const FOOTER_LINKS = [
+  ...NAV_LINKS,
+  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/refund-policy", label: "Refund Policy" },
 ];
 
 // The persistent "Get the Kit" header CTA (SPEC §3) — opens the Lemon checkout.
@@ -39,7 +47,7 @@ export default function Home() {
   return (
     <MarketingPageTemplate
       nav={<Navbar links={NAV_LINKS} cta={navCta} />}
-      footer={<Footer links={NAV_LINKS} />}
+      footer={<Footer links={FOOTER_LINKS} />}
     >
       <Hero />
       <Problem />

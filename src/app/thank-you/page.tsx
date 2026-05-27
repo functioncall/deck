@@ -20,6 +20,9 @@ const FOOTER_LINKS = [
   { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
   { href: "/deck", label: "Read the Deck" },
+  { href: "/terms", label: "Terms" },
+  { href: "/privacy", label: "Privacy" },
+  { href: "/refund-policy", label: "Refund Policy" },
 ];
 
 // Post-purchase, the persistent buy CTA is moot — point the header at the Deck.
