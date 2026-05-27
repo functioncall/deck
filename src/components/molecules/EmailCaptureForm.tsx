@@ -6,10 +6,11 @@ import { Button, Input, Text } from "@/components/atoms";
 import { FieldRow } from "./FieldRow";
 
 /**
- * EmailCaptureForm — a single-field email capture (FieldRow + Button) with
- * client-side validation only. On a valid submit it calls the optional
- * `onSubmit` callback and shows a confirmation; it does NOT POST anywhere — the
- * `/api/subscribe` wiring is L4 (ADR-0002/0004). Token-only styling (ADR-0005).
+ * EmailCaptureForm — a single-field email capture (FieldRow + Button) that POSTs
+ * to `/api/subscribe` (the L4 subscribe flow → Loops "lead" tag). Client-side
+ * validation is the first gate; the authoritative validation lives at the API
+ * boundary (ADR-0002/0004). On success it shows a confirmation and calls the
+ * optional `onSubmit` callback. Token-only styling (ADR-0005).
  */
 type EmailCaptureFormProps = {
   cta?: string;
@@ -28,17 +29,45 @@ export function EmailCaptureForm({
   const [email, setEmail] = useState("");
   const [error, setError] = useState<string | undefined>(undefined);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    if (!EMAIL_PATTERN.test(email.trim())) {
+    if (submitting) return;
+
+    const trimmed = email.trim();
+    if (!EMAIL_PATTERN.test(trimmed)) {
       setError("Enter a valid email address.");
       setSubmitted(false);
       return;
     }
+
     setError(undefined);
-    setSubmitted(true);
-    onSubmit?.(email.trim()); // client-only; no network call in L1
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: trimmed }),
+      });
+      const data = (await res.json().catch(() => null)) as
+        | { ok?: boolean; error?: string }
+        | null;
+
+      if (!res.ok || !data?.ok) {
+        setError(data?.error ?? "Something went wrong. Please try again.");
+        setSubmitted(false);
+        return;
+      }
+
+      setSubmitted(true);
+      onSubmit?.(trimmed);
+    } catch {
+      setError("Network error. Please try again.");
+      setSubmitted(false);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -55,13 +84,16 @@ export function EmailCaptureForm({
           placeholder={placeholder}
           value={email}
           invalid={Boolean(error)}
+          disabled={submitting}
           onChange={(event) => {
             setEmail(event.target.value);
             if (error) setError(undefined);
           }}
         />
       </FieldRow>
-      <Button type="submit">{cta}</Button>
+      <Button type="submit" disabled={submitting}>
+        {submitting ? "Sending…" : cta}
+      </Button>
       {submitted && !error ? (
         <Text variant="soft">Thanks — you&rsquo;re on the list.</Text>
       ) : null}

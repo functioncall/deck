@@ -1,3 +1,3 @@
 // Barrel: services (business rules; depend on repository interfaces from
-// @/types). Real services land in L4.
-export {};
+// @/types, never on concrete adapters — ADR-0002).
+export { SubscribeService } from './SubscribeService';
