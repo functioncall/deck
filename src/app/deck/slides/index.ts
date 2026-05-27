@@ -29,6 +29,11 @@ import { TheSpec } from "./TheSpec";
 import { Decompose } from "./Decompose";
 import { TheRun } from "./TheRun";
 import { Review } from "./Review";
+import { TaskSelection } from "./TaskSelection";
+import { WhatFits } from "./WhatFits";
+import { WhatDoesntFit } from "./WhatDoesntFit";
+import { HarnessCompounds } from "./HarnessCompounds";
+import { Closing } from "./Closing";
 
 /**
  * The ordered deck slide registry — the React port of index.html's `.slide`
@@ -73,4 +78,11 @@ export const slides: SlideEntry[] = [
   // §5 — the run: ralph runs and watches, then review
   { id: "s-5-2", section: 5, maxState: 1, Component: TheRun },
   { id: "s-5-9", section: 5, maxState: 1, Component: Review },
+  // §6 — task selection: when it fits, what fits, what doesn't
+  { id: "s-6-1", section: 6, maxState: 1, Component: TaskSelection },
+  { id: "s-6-2", section: 6, maxState: 1, Component: WhatFits },
+  { id: "s-6-3", section: 6, maxState: 1, Component: WhatDoesntFit },
+  // §7 — the close: the harness compounds, then the sign-off
+  { id: "s-7-2", section: 7, maxState: 1, Component: HarnessCompounds },
+  { id: "s-7-5", section: 7, maxState: 1, Component: Closing },
 ];
