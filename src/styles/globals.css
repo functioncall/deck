@@ -12,3 +12,25 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+/*
+ * Subtle entrance for confirmation states (e.g. the email-capture success
+ * card). Motion-gated for accessibility — no animation when the visitor
+ * prefers reduced motion, the element simply appears.
+ */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .animate-fade-up {
+    animation: fade-up 0.4s ease-out both;
+  }
+}

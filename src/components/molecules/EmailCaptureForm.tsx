@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import type { FormEvent } from "react";
-import { Button, Input, Text } from "@/components/atoms";
+import { Button, Heading, Input, Text } from "@/components/atoms";
 import { FieldRow } from "./FieldRow";
 
 /**
@@ -70,6 +70,41 @@ export function EmailCaptureForm({
     }
   }
 
+  // On success, swap the whole form for a confirmation card so the conversion
+  // reads as a clear, designed moment (not a stray line of text under the CTA).
+  if (submitted && !error) {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className="animate-fade-up flex w-full max-w-md flex-col items-center gap-5 rounded-lg border border-rule bg-bg-card px-6 py-10 text-center"
+      >
+        <span className="flex h-14 w-14 items-center justify-center rounded-full bg-accent-soft text-accent">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className="h-7 w-7"
+            aria-hidden="true"
+          >
+            <path d="M20 6 9 17l-5-5" />
+          </svg>
+        </span>
+        <div className="flex flex-col gap-2">
+          <Heading as="h3" size="display-sm">
+            You&rsquo;re on the list.
+          </Heading>
+          <Text variant="soft">
+            We&rsquo;ll email you the moment early access opens.
+          </Text>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <form
       noValidate
@@ -94,9 +129,6 @@ export function EmailCaptureForm({
       <Button type="submit" disabled={submitting}>
         {submitting ? "Sending…" : cta}
       </Button>
-      {submitted && !error ? (
-        <Text variant="soft">Thanks — you&rsquo;re on the list.</Text>
-      ) : null}
     </form>
   );
 }
