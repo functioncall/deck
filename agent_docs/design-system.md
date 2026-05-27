@@ -1,6 +1,6 @@
 # Design System
 
-> How styling works in BeyondTheLoop: one token source, bespoke atoms, and the
+> How styling works in Beontheloop: one token source, bespoke atoms, and the
 > rule that keeps it honest. Fixed by
 > [ADR-0005](../docs/adr/0005-bespoke-atoms-with-radix.md) (bespoke atoms + Radix)
 > and [ADR-0001](../docs/adr/0001-componentize-the-deck.md) (tokens extracted from

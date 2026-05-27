@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# run-all-phases.sh — orchestrate the BeyondTheLoop Ralph phases L1..L4 end-to-end.
+# run-all-phases.sh — orchestrate the Beontheloop Ralph phases L1..L4 end-to-end.
 #
 # Per phase: checkout main -> run the phase's ralph loop (the driver branches the
 #   phase branch off main) -> on success, merge the phase branch into main -> next.

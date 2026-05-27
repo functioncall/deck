@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { DeckExperience } from "./DeckExperience";
 
 export const metadata: Metadata = {
-  title: "The Deck · BEYOND the loop",
+  title: "The Deck · Beontheloop",
   description:
     "From inference loops to long-running agents — the interactive deck.",
 };

@@ -1,6 +1,6 @@
 # Architecture
 
-> How code is layered in BeyondTheLoop, where each layer lives, and the rules an
+> How code is layered in Beontheloop, where each layer lives, and the rules an
 > agent must keep. Decisions are fixed in the ADRs cited inline — this doc
 > explains them, it does not re-decide them. Source of truth for sequencing:
 > [docs/SPEC.md](../docs/SPEC.md) §2; this layer's frozen spec:

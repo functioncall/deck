@@ -12,7 +12,7 @@
 
 ## Context
 
-BeyondTheLoop is a Next.js brand + pre-sell site (see SPEC §1). The existing
+Beontheloop is a Next.js brand + pre-sell site (see SPEC §1). The existing
 asset is a single 1.28 MB `index.html` — an 88-slide vanilla HTML/CSS/JS deck
 whose design tokens and diagrams are the visual source of truth ([ADR-0001](../adr/0001-componentize-the-deck.md)).
 
@@ -163,7 +163,7 @@ export type Purchase = {
   createdAt: string;              // ISO 8601
 };
 
-// Umbrella for anything BeyondTheLoop sells or gives away.
+// Umbrella for anything Beontheloop sells or gives away.
 export type Offer = {
   id: string;                     // stable slug, e.g. "harness-starter-kit"
   name: string;

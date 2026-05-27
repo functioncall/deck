@@ -6,7 +6,7 @@ import { CheckoutButton } from "@/components/molecules";
 import { harnessStarterKit } from "@/content";
 
 /**
- * `/terms` — Terms of Service for BEYOND the loop and the Pre-sell. A static legal
+ * `/terms` — Terms of Service for Beontheloop and the Pre-sell. A static legal
  * surface reusing the L1 template/organisms/atoms; token-only (ADR-0005). The
  * key legal fact: Lemon Squeezy is the Merchant of Record — the legal seller of
  * record that processes payment and remits global VAT/GST (ADR-0003). No
@@ -35,9 +35,9 @@ const navCta = (
 );
 
 export const metadata: Metadata = {
-  title: "Terms of Service — BEYOND the loop",
+  title: "Terms of Service — Beontheloop",
   description:
-    "The terms that govern BEYOND the loop and the Pre-sell of the Harness Starter Kit. Lemon Squeezy is the Merchant of Record.",
+    "The terms that govern Beontheloop and the Pre-sell of the Harness Starter Kit. Lemon Squeezy is the Merchant of Record.",
 };
 
 export default function Terms() {
@@ -55,7 +55,7 @@ export default function Terms() {
           Last updated: May 2026
         </Text>
         <Text variant="lead" className="mt-6">
-          These terms cover your use of BEYOND the loop and the Pre-sell of the{" "}
+          These terms cover your use of Beontheloop and the Pre-sell of the{" "}
           {harnessStarterKit.name}. By buying or signing up, you agree to them.
           The goal here is to be plain, not to bury anything in fine print.
         </Text>
@@ -64,7 +64,7 @@ export default function Terms() {
           <section>
             <Label>Who we are</Label>
             <Text className="mt-3">
-              BEYOND the loop is a small, independent project that gives away an
+              Beontheloop is a small, independent project that gives away an
               interactive Deck — the map — and pre-sells the {harnessStarterKit.name}:
               the founder&rsquo;s real agentic-coding harness as reusable templates.
             </Text>
@@ -75,7 +75,7 @@ export default function Terms() {
             <Text className="mt-3">
               Payments run through Lemon Squeezy, which acts as our{" "}
               <span className="text-ink">Merchant of Record</span>. That means
-              Lemon Squeezy — not BEYOND the loop — is the legal seller for your
+              Lemon Squeezy — not Beontheloop — is the legal seller for your
               purchase: they handle the checkout, the receipt, and they collect
               and remit any sales tax, VAT, or GST owed in your country. Your card
               statement and tax documents reflect Lemon Squeezy as the merchant.

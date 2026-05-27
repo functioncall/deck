@@ -16,7 +16,7 @@ export function Footer({ links = [] }: FooterProps) {
     <footer className="border-t border-rule">
       <div className="mx-auto flex max-w-6xl flex-col gap-8 px-6 py-12 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex flex-col gap-2">
-          <span className="font-serif text-lg text-ink">BEYOND the loop</span>
+          <span className="font-serif text-lg text-ink">Beontheloop</span>
           <Label>Beyond the basic inference loop</Label>
         </div>
         {links.length > 0 ? (
@@ -31,7 +31,7 @@ export function Footer({ links = [] }: FooterProps) {
           </ul>
         ) : null}
         <Text variant="soft" className="text-sm">
-          © {year} BEYOND the loop
+          © {year} Beontheloop
         </Text>
       </div>
     </footer>

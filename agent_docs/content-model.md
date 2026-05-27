@@ -12,7 +12,7 @@ in `src/types/entities.ts`, re-exported via `@/types`.
 
 ### Offer
 
-The umbrella term for **anything BeyondTheLoop sells or gives away** — currently
+The umbrella term for **anything Beontheloop sells or gives away** — currently
 the free **Deck**, the paid **Harness Starter Kit** (the pre-sell hero), and the
 future **Consultation**. The information architecture is **offer-oriented** so new
 offers slot in without a rebuild.
@@ -63,7 +63,7 @@ export type Purchase = {
 
 ## How the entities relate
 
-- **BeyondTheLoop** hosts multiple **Offers**. The free **Deck** ("the map") is the
+- **Beontheloop** hosts multiple **Offers**. The free **Deck** ("the map") is the
   trust-engine and lead-in to the paid offers.
 - Giving an email creates/updates a **Subscriber** (tag `lead`).
 - Buying creates a **Purchase** and tags the Subscriber `founding`. A purchase locks

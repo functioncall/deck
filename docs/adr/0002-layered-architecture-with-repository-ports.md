@@ -2,7 +2,7 @@
 
 **Status:** accepted
 
-BeyondTheLoop is primarily a marketing + pre-sell site whose only dynamic surface today is: capture an email, start a checkout, receive a payment webhook. We nonetheless chose **full layered clean architecture** — `controller → service → repository` — over a lighter right-sized structure, and back the repository layer with **ports & adapters** rather than a database.
+Beontheloop is primarily a marketing + pre-sell site whose only dynamic surface today is: capture an email, start a checkout, receive a payment webhook. We nonetheless chose **full layered clean architecture** — `controller → service → repository` — over a lighter right-sized structure, and back the repository layer with **ports & adapters** rather than a database.
 
 **Why:** a single uniform pattern is more predictable for agentic coding (every future feature has an obvious home) and the brand will grow to host more offers (member area, consultation, accounts). Predictability for the Ralph loop was valued over minimal file count.
 

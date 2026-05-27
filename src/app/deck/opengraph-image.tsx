@@ -9,7 +9,7 @@ import { ImageResponse } from "next/og";
  * ESLint scope — that rule guards components, where tokens must be used.
  */
 
-export const alt = "BEYOND the loop — the interactive deck";
+export const alt = "Beontheloop — the interactive deck";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -43,7 +43,7 @@ export default function OpengraphImage() {
             color: ACCENT,
           }}
         >
-          BEYOND the loop
+          Beontheloop
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>

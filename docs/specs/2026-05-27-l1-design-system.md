@@ -14,7 +14,7 @@
 
 ## Context
 
-BeyondTheLoop is a Next.js brand + pre-sell site (see SPEC §1). L0 laid the
+Beontheloop is a Next.js brand + pre-sell site (see SPEC §1). L0 laid the
 foundation: Next.js 16 / TS strict / Tailwind 4 / pnpm, the layered directory
 skeleton with repository ports + entity types, the deck design tokens extracted
 verbatim into the Tailwind `@theme` (`src/styles/theme.css`), the

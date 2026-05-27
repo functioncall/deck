@@ -1,6 +1,6 @@
-# BeyondTheLoop — Build Spec
+# Beontheloop — Build Spec
 
-> The single source of truth for building beyondtheloop.com. Decisions are fixed in
+> The single source of truth for building beontheloop.com. Decisions are fixed in
 > [ADRs](./adr/); domain language in [CONTEXT.md](../CONTEXT.md). This spec sequences
 > the build into layers, each sized to **one Ralph loop / epic**, foundation-first.
 
@@ -8,7 +8,7 @@
 
 ## 1. What we're building & why
 
-**BeyondTheLoop** is a brand + Next.js site that gives away an interactive **Deck**
+**Beontheloop** is a brand + Next.js site that gives away an interactive **Deck**
 (free, "the map") about building long-running AI agents, and **pre-sells** a paid
 **Harness Starter Kit** (the founder's real agentic-coding harness — skills, `CLAUDE.md`,
 ralph-loop script, `agent_docs` templates) with a build-along **Screencast** ("the
@@ -245,7 +245,7 @@ end of **L4**.
 
 ## 6. Dependencies, assumptions & open items
 
-- **Domain:** confirm ownership of `beyondtheloop.com` (soft-blocks deploy/branding).
+- **Domain:** confirm ownership of `beontheloop.com` (soft-blocks deploy/branding).
 - **Asset:** the **Harness Starter Kit** contents must be packaged from the founder's real
   skills/templates — itemize before L4.
 - **Accounts:** Lemon Squeezy, Loops, Amplitude, Vercel accounts/keys provisioned by L4.

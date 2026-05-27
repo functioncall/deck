@@ -5,7 +5,7 @@
 > This file exists so the `/thank-you` download serves *something* during the
 > pre-sell while the gate stays green without secrets.
 
-Thank you for becoming a **founding buyer** of BeyondTheLoop.
+Thank you for becoming a **founding buyer** of Beontheloop.
 
 ## What you actually bought
 
@@ -23,4 +23,4 @@ The full Kit contents and the bundled Screencast ship to your purchase email the
 moment they're ready — lifetime access, no account needed. Your Founding price and
 founding-member status are locked in.
 
-— BeyondTheLoop
+— Beontheloop

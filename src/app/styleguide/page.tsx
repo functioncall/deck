@@ -37,7 +37,7 @@ import { SlideStateProvider } from "@/components/deck-player";
 import { DeckEngineDemo } from "./DeckEngineDemo";
 
 export const metadata: Metadata = {
-  title: "Styleguide — BEYOND the loop",
+  title: "Styleguide — Beontheloop",
   description: "Living catalog of the deck design tokens + component library (ADR-0005).",
 };
 
@@ -199,7 +199,7 @@ export default function Styleguide() {
     <main className="mx-auto flex max-w-4xl flex-col gap-14 px-6 py-20">
       <header className="flex flex-col gap-3">
         <p className="font-mono text-xs uppercase tracking-widest text-accent">
-          BEYOND the loop
+          Beontheloop
         </p>
         <h1 className="font-serif text-5xl font-light tracking-tight text-ink">
           Styleguide
@@ -270,7 +270,7 @@ export default function Styleguide() {
               Display — serif, light
             </span>
             <p className="font-serif text-6xl font-light tracking-tight text-ink">
-              BEYOND the loop
+              Beontheloop
             </p>
           </div>
           <div className="flex flex-col gap-1">

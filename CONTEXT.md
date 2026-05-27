@@ -1,11 +1,11 @@
-# BeyondTheLoop
+# Beontheloop
 
 The product and marketing site (Next.js) that gives away an interactive **Deck** for free and pre-sells a paid build-along **Screencast** about building long-running AI agents. This glossary fixes the language we use for the *business and product*, not the deck's teaching content.
 
 ## Language
 
-**BeyondTheLoop**:
-The brand and the website (beyondtheloop.com). Named after the Deck's thesis — going *beyond* the basic LLM inference loop into long-running agents.
+**Beontheloop**:
+The brand and the website (beontheloop.com). Named after the Deck's thesis — going *beyond* the basic LLM inference loop into long-running agents.
 _Avoid_: "the site", "the app" (too generic), "the course" (it is not a course)
 
 **Deck**:
@@ -29,7 +29,7 @@ A future paid offer — private 1:1 hours (2–3h) with the founder, booked via 
 _Avoid_: "coaching", "mentoring" (pick one term later), "support"
 
 **Offer**:
-The umbrella term for anything BeyondTheLoop sells or gives away — currently the (free) **Deck**, the (paid) **Screencast**, and the (future, paid) **Consultation**. The site's information architecture is offer-oriented so new offers slot in without a rebuild.
+The umbrella term for anything Beontheloop sells or gives away — currently the (free) **Deck**, the (paid) **Screencast**, and the (future, paid) **Consultation**. The site's information architecture is offer-oriented so new offers slot in without a rebuild.
 
 **Subscriber**:
 Someone who has given their email — either to follow along (free) or as part of a **Pre-sell** purchase. The entity behind the `SubscriberRepository`; stored in the email tool (Kit/Loops) today.
@@ -43,7 +43,7 @@ _Avoid_: "templates pack", "freebie" (it is the paid hero product, not a giveawa
 
 ## Relationships
 
-- **BeyondTheLoop** hosts multiple **Offers**: the **Deck** (free), the **Screencast** (paid, pre-sold), and later the **Consultation** (paid 1:1). The brand is built to house more.
+- **Beontheloop** hosts multiple **Offers**: the **Deck** (free), the **Screencast** (paid, pre-sold), and later the **Consultation** (paid 1:1). The brand is built to house more.
 - The **Deck** is the lead-in to the paid **Offers**: map → expedition. Free concept → paid execution → 1:1 help.
 - A **Pre-sell** purchase locks a **Founding price** and entitles the buyer to the **Screencast** when it ships.
 
@@ -55,4 +55,4 @@ _Avoid_: "templates pack", "freebie" (it is the paid hero product, not a giveawa
 ## Flagged ambiguities
 
 - "pre-book / waitlist" (user's original phrasing) was resolved to **Pre-sell** — we are taking money now, not just collecting emails.
-- "product" was ambiguous between the **Deck** and the **Screencast** — resolved: free **Deck**, paid **Screencast**, both under the **BeyondTheLoop** brand.
+- "product" was ambiguous between the **Deck** and the **Screencast** — resolved: free **Deck**, paid **Screencast**, both under the **Beontheloop** brand.

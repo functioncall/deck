@@ -26,29 +26,29 @@ const geistMono = Geist_Mono({
 // Site-wide SEO + social cards. The per-route `opengraph-image.tsx` files
 // (one for `/`, one for `/deck`) supply the OG/Twitter images automatically;
 // `metadataBase` resolves them (and any relative URLs) to absolute links.
-const SITE_URL = "https://beyondtheloop.com";
-const SITE_NAME = "BEYOND the loop";
+const SITE_URL = "https://beontheloop.com";
+const SITE_NAME = "Beontheloop";
 const SITE_DESCRIPTION =
   "Stop babysitting your AI. The Deck is the free map for building long-running agents; the Harness Starter Kit hands you the founder's real harness so you ship with AI instead of supervising it.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "BEYOND the loop — Stop babysitting your AI",
-    template: "%s · BEYOND the loop",
+    default: "Beontheloop — Stop babysitting your AI",
+    template: "%s · Beontheloop",
   },
   description: SITE_DESCRIPTION,
   openGraph: {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "BEYOND the loop — Stop babysitting your AI",
+    title: "Beontheloop — Stop babysitting your AI",
     description: SITE_DESCRIPTION,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "BEYOND the loop — Stop babysitting your AI",
+    title: "Beontheloop — Stop babysitting your AI",
     description: SITE_DESCRIPTION,
   },
 };
