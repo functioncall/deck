@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useReducer, useRef } from "react";
+import { trackClient } from "@/lib/analytics/client";
 import { JumpMenu } from "./JumpMenu";
 import { ProgressBar } from "./ProgressBar";
 import { SlideStateProvider } from "./Reveal";
@@ -87,6 +88,26 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
 
   const total = slides.length;
   const activeMaxState = slides[index]?.maxState ?? 1;
+
+  // Funnel: report deck progress through the AnalyticsClient port (via /api/track
+  // — see src/lib/analytics/client.ts). `deck_slide_viewed` fires on every slide
+  // change (including the initial slide 0 on mount).
+  useEffect(() => {
+    trackClient("deck_slide_viewed", {
+      slideIndex: index,
+      slideId: slides[index]?.id,
+    });
+  }, [index, slides]);
+
+  // `deck_completed` fires once, the first time the last slide is reached this
+  // session (revisiting the end after navigating away must not re-fire it).
+  const completedRef = useRef(false);
+  useEffect(() => {
+    if (!completedRef.current && total > 0 && index === total - 1) {
+      completedRef.current = true;
+      trackClient("deck_completed", { slides: total });
+    }
+  }, [index, total]);
 
   function handleKeyDown(e: React.KeyboardEvent<HTMLDivElement>) {
     switch (e.key) {
