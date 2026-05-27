@@ -1,0 +1,83 @@
+import type { ReactNode } from "react";
+import { Text } from "@/components/atoms";
+import { Slide } from "@/components/deck-player";
+import { BulletList } from "./BulletList";
+import { SectionLabel } from "./SectionLabel";
+import { Pipeline, StageHeading } from "./stage";
+
+/** A `.stack-block` node in the decompose fan-out (index.html slide 4.11). */
+function StackBlock({
+  accent = false,
+  children,
+}: {
+  accent?: boolean;
+  children: ReactNode;
+}) {
+  return (
+    <div
+      className={`rounded border bg-bg-card px-4 py-2.5 font-mono text-xs ${
+        accent ? "border-accent-soft text-accent" : "border-rule text-ink-soft"
+      }`}
+    >
+      {children}
+    </div>
+  );
+}
+
+function Arrow() {
+  return (
+    <span aria-hidden="true" className="text-ink-dim">
+      →
+    </span>
+  );
+}
+
+/** The three artefacts /session-planner fans out to. */
+const OUTPUTS = ["feature branch", "N Beads issues + deps", "ralph.sh"];
+
+const POINTS = [
+  {
+    term: "Sized for the smart zone.",
+    desc: "Each issue fits one fresh session.",
+  },
+  {
+    term: "Ralph script wired to this queue.",
+    desc: "Per-epic guard rails, ready to run.",
+  },
+];
+
+/**
+ * s-4-11 — "decompose" (index.html data-num 4.11): the `/session-planner` stepper
+ * slide (workflow stage `decompose`). The spec fans out into a feature branch, N
+ * dependency-linked Beads issues, and a wired ralph.sh — each issue sized for the
+ * smart zone. Single state.
+ */
+export function Decompose() {
+  return (
+    <Slide hasStepper>
+      <SectionLabel num="§ 04">The plan</SectionLabel>
+      <Pipeline active="decompose" />
+      <StageHeading skill="/session-planner">Decompose.</StageHeading>
+      <Text variant="lead" className="mb-8 text-base">
+        Spec to issues,{" "}
+        <em className="italic text-accent">sized for the smart zone.</em>
+      </Text>
+      <div className="flex flex-col items-center gap-5 md:flex-row md:justify-center">
+        <StackBlock>spec.md</StackBlock>
+        <Arrow />
+        <StackBlock accent>/session-planner</StackBlock>
+        <div className="flex flex-col gap-3">
+          {OUTPUTS.map((out) => (
+            <div key={out} className="flex items-center gap-3">
+              <Arrow />
+              <StackBlock>{out}</StackBlock>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="mt-10 w-full max-w-2xl">
+        <BulletList items={POINTS} marker />
+      </div>
+    </Slide>
+  );
+}

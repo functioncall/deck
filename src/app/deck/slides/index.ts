@@ -22,6 +22,13 @@ import { AgentDocs } from "./AgentDocs";
 import { CustomSkills } from "./CustomSkills";
 import { IssueTracker } from "./IssueTracker";
 import { RalphLoop } from "./RalphLoop";
+import { ThePlanGantt } from "./ThePlanGantt";
+import { TwoWaysToPlan } from "./TwoWaysToPlan";
+import { GrillBeforePlan } from "./GrillBeforePlan";
+import { TheSpec } from "./TheSpec";
+import { Decompose } from "./Decompose";
+import { TheRun } from "./TheRun";
+import { Review } from "./Review";
 
 /**
  * The ordered deck slide registry — the React port of index.html's `.slide`
@@ -57,4 +64,13 @@ export const slides: SlideEntry[] = [
   { id: "s-3-5", section: 3, maxState: 1, Component: CustomSkills },
   { id: "s-3-6", section: 3, maxState: 1, Component: IssueTracker },
   { id: "s-3-7", section: 3, maxState: 1, Component: RalphLoop },
+  // §4 — the plan: where the hours go, then grill → spec → decompose
+  { id: "s-4-1", section: 4, maxState: 1, Component: ThePlanGantt },
+  { id: "s-4-6", section: 4, maxState: 1, Component: TwoWaysToPlan },
+  { id: "s-4-5", section: 4, maxState: 1, Component: GrillBeforePlan },
+  { id: "s-4-7", section: 4, maxState: 1, Component: TheSpec },
+  { id: "s-4-11", section: 4, maxState: 1, Component: Decompose },
+  // §5 — the run: ralph runs and watches, then review
+  { id: "s-5-2", section: 5, maxState: 1, Component: TheRun },
+  { id: "s-5-9", section: 5, maxState: 1, Component: Review },
 ];
