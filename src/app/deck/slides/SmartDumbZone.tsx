@@ -1,6 +1,5 @@
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 import { ContextFrame, CtxEmpty, CtxMsg } from "./ctx";
 
 /**
@@ -12,7 +11,6 @@ import { ContextFrame, CtxEmpty, CtxMsg } from "./ctx";
 export function SmartDumbZone() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 02">Context</SectionLabel>
       <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
         <div className="flex flex-col gap-4 self-start">
           <Heading as="h2" size="display-sm" className="text-left font-light">

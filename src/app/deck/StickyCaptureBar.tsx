@@ -22,7 +22,7 @@ export function StickyCaptureBar() {
 
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-rule bg-bg-card/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-3 px-6 py-3 max-md:px-4 sm:flex-row sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-2 max-md:px-4 sm:flex-row sm:justify-between">
         <Text variant="soft" className="text-sm">
           The Deck is the map. The{" "}
           <span className="text-ink">Harness Starter Kit</span> is the toolkit —

@@ -1,6 +1,5 @@
 import { Label, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 
 /**
  * s-1-6 — the §1 takeaway (index.html data-num 1.6): the three-word distillation
@@ -9,7 +8,6 @@ import { SectionLabel } from "./SectionLabel";
 export function Takeaway() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 01">The model</SectionLabel>
       <Label accent className="mb-6">
         the whole stack
       </Label>

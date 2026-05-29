@@ -1,20 +1,30 @@
+"use client";
+
 import type { ReactNode } from "react";
-import { Reveal } from "@/components/deck-player";
+import { useSlideState } from "@/components/deck-player";
 
 /**
  * HarnessFrame — the deck's layered `.harness-full` visual (index.html ~1082):
  * the harness layer (blue, `--color-layer-harness`) wrapping the agent layer
- * (green, `--color-layer-agent`, the `↻ WHILE TRUE` loop around the LLM) and the
- * grid of harness components (system prompt, context mgmt, skills, …).
+ * (green, `--color-layer-agent`, the `↻ WHILE TRUE` loop around the LLM + the
+ * tool diamond) and the grid of harness components.
  *
- * When `progressive`, the build is staged through the `Reveal` primitive — the
- * direct port of index.html's `data-frame-min` layered reveal: the agent core
- * appears at state ≥ 1, then the harness shell (border, label, component grid)
- * draws in around it at state ≥ 2. Static (non-progressive) renders everything
- * at once — for the landing page and the styleguide. Token-only (ADR-0005).
+ * When `progressive`, the build is staged in three steps driven by the active
+ * slide's reveal state (read via `useSlideState`), so it reads as a buildup
+ * rather than appearing whole:
+ *   - **state 0** — only the bare `user input → LLM → output` primitive: no green
+ *     agent border, no tool diamond, no harness box/background.
+ *   - **state 1** — the green `↻ WHILE TRUE` agent loop draws in *with* the tool
+ *     diamond (the agent primitive — consistent with `AgentLoop` / slide 3.0).
+ *   - **state 2** — the harness shell (border, background, label) + the component
+ *     grid draw in around it.
+ * Borders/backgrounds transition by token (opacity/color only, never reflow), so
+ * the primitive stays put as the layers wrap around it. Static (non-progressive)
+ * renders everything at once — for the landing page and the styleguide.
+ * Token-only (ADR-0005).
  */
 type HarnessFrameProps = {
-  /** Stage the layered build through `Reveal` (agent @1, harness shell @2). */
+  /** Stage the layered build through the reveal state (agent @1, harness @2). */
   progressive?: boolean;
   className?: string;
   /** Optional extra content slotted below the agent core, inside the harness. */
@@ -33,25 +43,56 @@ const HARNESS_COMPONENTS = [
   "permissions & hooks",
 ];
 
-/** The agent layer — the `↻ WHILE TRUE` loop wrapping the LLM (the green frame). */
-function AgentCore() {
+/**
+ * The agent layer — the bare `user input → LLM → output` flow, wrapped by the
+ * green `↻ WHILE TRUE` border + tool diamond once `revealed`. The flow text is
+ * always present; the border, label, and tool diamond fade in together so the
+ * primitive becomes the agent loop in one step.
+ */
+function AgentCore({ revealed }: { revealed: boolean }) {
   return (
-    <div className="relative mx-auto w-full rounded-lg border border-layer-agent bg-bg-soft px-6 pb-6 pt-7">
-      <span className="absolute -top-2 left-5 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-layer-agent">
+    <div
+      className={`relative mx-auto w-full rounded-lg border px-6 pb-6 pt-8 transition-colors duration-500 ${
+        revealed ? "border-layer-agent bg-bg-soft" : "border-transparent"
+      }`}
+    >
+      <span
+        className={`absolute -top-2 left-5 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-layer-agent transition-opacity duration-500 ${
+          revealed ? "opacity-100" : "opacity-0"
+        }`}
+      >
         Agent · ↻ while true
       </span>
-      <div className="flex flex-wrap items-center justify-center gap-4 font-mono text-sm italic text-ink-soft">
-        <span>user input</span>
-        <span aria-hidden="true" className="text-lg not-italic text-ink-dim">
+      <div className="flex flex-wrap items-start justify-center gap-4 font-mono">
+        <span className="pt-5 text-sm italic text-ink-soft">user input</span>
+        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
           →
         </span>
-        <span className="rounded border-2 border-accent bg-bg-card px-6 py-4 text-lg font-medium not-italic tracking-wider text-ink">
-          LLM
-        </span>
-        <span aria-hidden="true" className="text-lg not-italic text-ink-dim">
+        <div className="flex flex-col items-center gap-3">
+          <span className="rounded border-2 border-accent bg-bg-card px-6 py-4 text-lg font-medium tracking-wider text-ink">
+            LLM
+          </span>
+          <div
+            aria-hidden="true"
+            className={`flex flex-col items-center gap-3 transition-opacity duration-500 ${
+              revealed ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <div className="flex gap-2 text-lg leading-none text-ink-soft">
+              <span>↑</span>
+              <span>↓</span>
+            </div>
+            <div className="flex size-14 rotate-45 items-center justify-center border border-accent-soft bg-bg-soft">
+              <span className="-rotate-45 font-mono text-sm tracking-wide text-ink">
+                tool
+              </span>
+            </div>
+          </div>
+        </div>
+        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
           →
         </span>
-        <span>output</span>
+        <span className="pt-5 text-sm italic text-ink-soft">output</span>
       </div>
     </div>
   );
@@ -78,49 +119,33 @@ export function HarnessFrame({
   className,
   children,
 }: HarnessFrameProps) {
-  // The harness border + eyebrow are an inset overlay (out of flex flow, so it
-  // never affects spacing) drawn around the agent core. The eyebrow label rides
-  // inside it. In progressive mode the overlay is the `Reveal` wrapper itself so
-  // the whole harness shell fades in at state ≥ 2 — the agent core is already
-  // visible "inside" by then.
-  const shellLabel = (
-    <span className="absolute -top-2 left-5 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-layer-harness">
-      Agent harness · Claude Code
-    </span>
-  );
-  const shellClasses =
-    "pointer-events-none absolute inset-0 rounded-lg border border-layer-harness";
+  const state = useSlideState();
+  // Static renders everything; progressive gates each layer on the reveal state.
+  const agentRevealed = !progressive || state >= 1;
+  const harnessRevealed = !progressive || state >= 2;
 
   return (
     <div
-      className={`relative mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-lg bg-bg-soft p-8${
-        className ? ` ${className}` : ""
-      }`}
+      className={`relative mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-lg border p-8 transition-colors duration-500 ${
+        harnessRevealed ? "border-layer-harness bg-bg-soft" : "border-transparent"
+      }${className ? ` ${className}` : ""}`}
     >
-      {progressive ? (
-        <Reveal frameMin={2} className={shellClasses}>
-          {shellLabel}
-        </Reveal>
-      ) : (
-        <div aria-hidden="true" className={shellClasses}>
-          {shellLabel}
-        </div>
-      )}
-      {progressive ? (
-        <Reveal frameMin={1}>
-          <AgentCore />
-        </Reveal>
-      ) : (
-        <AgentCore />
-      )}
+      <span
+        className={`absolute -top-2 left-5 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-layer-harness transition-opacity duration-500 ${
+          harnessRevealed ? "opacity-100" : "opacity-0"
+        }`}
+      >
+        Agent harness · Claude Code
+      </span>
+      <AgentCore revealed={agentRevealed} />
       {children}
-      {progressive ? (
-        <Reveal frameMin={2}>
-          <HarnessGrid />
-        </Reveal>
-      ) : (
+      <div
+        className={`transition-opacity duration-500 ${
+          harnessRevealed ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
         <HarnessGrid />
-      )}
+      </div>
     </div>
   );
 }

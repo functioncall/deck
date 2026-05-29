@@ -1,7 +1,6 @@
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 
 /** The tree with agent_docs/ expanded + highlighted (index.html 3.4). */
 const TREE: TreeRow[] = [
@@ -56,7 +55,6 @@ const POINTS = [
 export function AgentDocs() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>agent_docs/</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <BulletList items={POINTS} />

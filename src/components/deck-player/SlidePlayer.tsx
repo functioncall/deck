@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useReducer, useRef } from "react";
+import { Button } from "@/components/atoms";
 import { trackClient } from "@/lib/analytics/client";
 import { JumpMenu } from "./JumpMenu";
 import { ProgressBar } from "./ProgressBar";
@@ -88,6 +89,9 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
 
   const total = slides.length;
   const activeMaxState = slides[index]?.maxState ?? 1;
+  // The active slide's section — drives the top-left section label (the cold
+  // open, index 0, shows none). Replaces the per-slide `SectionLabel`.
+  const activeSection = sections.find((s) => s.index === slides[index]?.section);
 
   // Funnel: report deck progress through the AnalyticsClient port (via /api/track
   // — see src/lib/analytics/client.ts). `deck_slide_viewed` fires on every slide
@@ -211,10 +215,45 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
       ) : null}
 
       {sections.length > 0 ? (
-        <JumpMenu
-          sections={sections}
-          onJump={(slideIndex) => dispatch({ type: "jump", index: slideIndex })}
-        />
+        <div className="absolute left-[5vw] top-[5vh] z-50 flex flex-col gap-1.5">
+          <div className="flex items-center gap-1">
+            <Button
+              variant="ghost"
+              size="sm"
+              data-deck-control
+              aria-label="Go to start"
+              onClick={() => dispatch({ type: "home" })}
+              className="px-2 py-1 font-mono text-xs"
+            >
+              ⌂
+            </Button>
+            <Button
+              variant="ghost"
+              size="sm"
+              data-deck-control
+              aria-label="Back"
+              disabled={index === 0 && state === 0}
+              onClick={() => dispatch({ type: "prev" })}
+              className="px-2 py-1 font-mono text-xs"
+            >
+              ←
+            </Button>
+            <JumpMenu
+              sections={sections}
+              onJump={(slideIndex) =>
+                dispatch({ type: "jump", index: slideIndex })
+              }
+            />
+          </div>
+          {activeSection && activeSection.index > 0 ? (
+            <div className="pointer-events-none font-mono text-xs font-medium uppercase tracking-widest text-ink-dim">
+              <span className="mr-2 text-accent">
+                § {String(activeSection.index).padStart(2, "0")}
+              </span>
+              {activeSection.title}
+            </div>
+          ) : null}
+        </div>
       ) : null}
 
       <ProgressBar current={index + 1} total={total} />

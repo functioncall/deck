@@ -1,6 +1,5 @@
 import type { SlideEntry } from "@/components/deck-player";
 import { Title } from "./Title";
-import { Bio } from "./Bio";
 import { LlmFunction } from "./LlmFunction";
 import { AgentLoop } from "./AgentLoop";
 import { ContextArray } from "./ContextArray";
@@ -42,9 +41,8 @@ import { Closing } from "./Closing";
  * §2–7 in order; the §0–1 entries (epic-2) start it.
  */
 export const slides: SlideEntry[] = [
-  // §0 — cold open
+  // §0 — cold open (anonymous: title only, no bio)
   { id: "s-0-1", section: 0, maxState: 1, Component: Title },
-  { id: "s-0-2", section: 0, maxState: 1, Component: Bio },
   // §1 — the model
   { id: "s-1-1", section: 1, maxState: 1, Component: LlmFunction },
   { id: "s-1-2", section: 1, maxState: 1, Component: AgentLoop },

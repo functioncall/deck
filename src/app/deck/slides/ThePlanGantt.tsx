@@ -1,23 +1,27 @@
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { Gantt } from "@/components/diagrams";
-import { SectionLabel } from "./SectionLabel";
 
-/** The plan → execute → review split (index.html slide 4.1 gantt rows). */
+/**
+ * The plan → execute → review split (index.html slide 4.1 gantt rows). One
+ * shared timeline (~209 min total): Plan ~120 min (0–57%), Execute 59 min
+ * (57–85%), Review ~30 min (85–100%). offset + width stay ≤ 100% so nothing
+ * bleeds past the track.
+ */
 const ROWS = [
-  { label: "Plan", time: "~2:00 hr", width: "60%", variant: "plan" as const },
+  { label: "Plan", time: "~2:00 hr", width: "57%", variant: "plan" as const },
   {
     label: "Execute",
     time: "59 min",
-    width: "30%",
-    offset: "60%",
+    width: "28%",
+    offset: "57%",
     variant: "agent" as const,
   },
   {
     label: "Review",
     time: "~30 min",
     width: "15%",
-    offset: "90%",
+    offset: "85%",
     variant: "review" as const,
   },
 ];
@@ -31,7 +35,6 @@ const ROWS = [
 export function ThePlanGantt() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 04">The plan</SectionLabel>
       <Heading as="h2" size="display-sm" className="mb-7 font-light">
         Where my hours actually go.
       </Heading>

@@ -16,10 +16,12 @@ const treeToneClass: Record<TreeTone, string> = {
   root: "font-medium text-ink",
   default: "text-ink-soft",
   dim: "text-ink-dim",
-  // The deck highlights the active section in blue — mapped to the harness layer
-  // token; the active files use the bright ink (ADR-0005, no raw hex).
+  // One consistent rule across every tree: the slide's primary subject is the
+  // strong harness blue (`active`); the related files in that group take a muted
+  // blue tint (`active-file`) so they read as part of the highlight without
+  // competing; everything unrelated stays dim. Token-only (ADR-0005, no raw hex).
   active: "font-medium text-layer-harness",
-  "active-file": "text-ink",
+  "active-file": "text-layer-harness-soft",
 };
 
 /**

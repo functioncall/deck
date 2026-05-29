@@ -20,6 +20,10 @@
   --color-good: #8fa982;
   --color-layer-agent: #8fa982;
   --color-layer-harness: #7a96b0;
+  /* A muted tint of the harness blue — for secondary/related items in a tree
+     (the group's files) that read as faintly blue without competing with the
+     strong `--color-layer-harness` primary. */
+  --color-layer-harness-soft: #94a7bb;
 
   /* Fonts — next/font variables (wired in src/app/layout.tsx) with the deck's
      fallback chains preserved verbatim from index.html :root. */

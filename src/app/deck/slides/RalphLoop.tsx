@@ -2,7 +2,6 @@ import { CodeBlock } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 
 /** The tree with scripts/ralph.sh highlighted (index.html 3.7). */
@@ -44,7 +43,6 @@ const POINTS = [
 export function RalphLoop() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>The Ralph loop.</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <CodeBlock>

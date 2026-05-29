@@ -1,6 +1,5 @@
 import { CodeBlock, Heading, Label, Link } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 
 /**
  * The deck's `.agent-frame` diagram (index.html ~1147): the green agent layer
@@ -53,7 +52,6 @@ function AgentFrame() {
 export function AgentLoop() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 01">The model</SectionLabel>
       <Heading as="h2" size="display-sm" className="mb-6 font-light">
         An agent is a while-true loop
         <br />
@@ -72,7 +70,7 @@ export function AgentLoop() {
         </CodeBlock>
         <AgentFrame />
       </div>
-      <div className="absolute inset-x-[10vw] bottom-[6vh] text-left font-mono text-sm text-ink-soft">
+      <div className="absolute inset-x-[10vw] bottom-20 text-left font-mono text-sm text-ink-soft">
         <Label className="mb-1 block">Reference</Label>
         <span className="text-ink">Mihai Eric</span> ·{" "}
         <Link

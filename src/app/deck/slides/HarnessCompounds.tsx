@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 
 /** Each recurring friction folds back into the harness (index.html 7.2). */
 const MAPPINGS = [
@@ -19,7 +18,6 @@ const MAPPINGS = [
 export function HarnessCompounds() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 07">The shift</SectionLabel>
       <Heading as="h1" size="display-sm" className="mb-8 font-light">
         The harness compounds.
       </Heading>

@@ -1,7 +1,6 @@
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 
 /** The tree with the multi-level CLAUDE.md files highlighted (index.html 3.3). */
@@ -57,7 +56,6 @@ const POINTS = [
 export function ClaudeMd() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>CLAUDE.md.</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <BulletList items={POINTS} />

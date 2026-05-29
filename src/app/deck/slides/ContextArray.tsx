@@ -1,7 +1,6 @@
 import { Heading } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { ContextWindow } from "@/components/diagrams";
-import { SectionLabel } from "./SectionLabel";
 
 /** The deck's `.bullets` list (index.html ~1511): ◆-marked left-aligned points. */
 const POINTS = [
@@ -18,7 +17,6 @@ const POINTS = [
 export function ContextArray() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 01">The model</SectionLabel>
       <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Heading as="h2" size="display-sm" className="text-left font-light">

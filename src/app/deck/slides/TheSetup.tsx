@@ -1,7 +1,6 @@
 import { Fragment } from "react";
 import { Slide } from "@/components/deck-player";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 
 /** The full project tree (index.html slide 3.2 — no highlight). */
 const TREE: TreeRow[] = [
@@ -53,7 +52,6 @@ const POINTS = [
 export function TheSetup() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>The setup.</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-5">

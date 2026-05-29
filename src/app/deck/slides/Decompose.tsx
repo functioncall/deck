@@ -2,7 +2,6 @@ import type { ReactNode } from "react";
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
-import { SectionLabel } from "./SectionLabel";
 import { Pipeline, StageHeading } from "./stage";
 
 /** A `.stack-block` node in the decompose fan-out (index.html slide 4.11). */
@@ -55,7 +54,6 @@ const POINTS = [
 export function Decompose() {
   return (
     <Slide hasStepper>
-      <SectionLabel num="§ 04">The plan</SectionLabel>
       <Pipeline active="decompose" />
       <StageHeading skill="/session-planner">Decompose.</StageHeading>
       <Text variant="lead" className="mb-8 text-base">

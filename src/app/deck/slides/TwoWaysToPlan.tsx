@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 import { CtxLabel, Pipeline, StageHeading } from "./stage";
 
 /** One side of the plan-mode vs /grill-me contrast (index.html slide 4.6 split). */
@@ -39,7 +38,6 @@ function PlanWay({
 export function TwoWaysToPlan() {
   return (
     <Slide hasStepper>
-      <SectionLabel num="§ 04">The plan</SectionLabel>
       <Pipeline active="grill" />
       <StageHeading>Two ways to plan.</StageHeading>
       <Text variant="lead" className="mb-10 text-base">

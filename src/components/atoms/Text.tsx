@@ -14,11 +14,13 @@ type TextProps = {
   className?: string;
 };
 
+// Reader-facing prose, bumped one step for on-screen readability (was lg/base).
+// Per-slide overrides (e.g. a `text-sm` className) still win, appended after.
 const variantStyles: Record<NonNullable<TextProps["variant"]>, string> = {
-  // .lead — sans, ink-soft, clamp(1rem, 1.4vw, 1.15rem), max-width 720px.
-  lead: "max-w-prose text-lg leading-relaxed text-ink-soft",
-  body: "text-base leading-relaxed text-ink",
-  soft: "text-base leading-relaxed text-ink-soft",
+  // .lead — sans, ink-soft, the supporting line under a slide title.
+  lead: "max-w-prose text-xl leading-relaxed text-ink-soft",
+  body: "text-lg leading-relaxed text-ink",
+  soft: "text-lg leading-relaxed text-ink-soft",
 };
 
 export function Text({

@@ -20,7 +20,7 @@ export function BulletList({
       {items.map((item, i) => (
         <li
           key={i}
-          className={`text-sm leading-relaxed${marker ? " flex gap-3" : ""}`}
+          className={`text-base leading-relaxed${marker ? " flex gap-3" : ""}`}
         >
           {marker ? (
             <span aria-hidden="true" className="flex-shrink-0 text-accent">

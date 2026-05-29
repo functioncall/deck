@@ -1,6 +1,5 @@
 import { Slide } from "@/components/deck-player";
 import { FitList } from "./FitList";
-import { SectionLabel } from "./SectionLabel";
 
 /** The work that fits the loop (index.html 6.2 `.fit-list`). */
 const FITS = [
@@ -29,7 +28,6 @@ const FITS = [
 export function WhatFits() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 06">Task selection</SectionLabel>
       <FitList label="What fits" tone="good" items={FITS} />
     </Slide>
   );

@@ -15,8 +15,9 @@ ralph-loop script, `agent_docs` templates) with a build-along **Screencast** ("t
 expedition") included free when it ships.
 
 - **Audience:** developers using/curious about agent harnesses (Claude Code, Cursor, etc.).
-- **Founder proof:** practitioner authority (CTO @ Skyhost), concrete metrics
-  (270 files / 59 min / exit 0; 95–99% task-fit), early testers/testimonials.
+- **Proof (anonymous positioning, ADR-0006):** the artifact + the result — the
+  free Deck and the Kit's actual files, judgeable before purchase, plus concrete
+  metrics (270 files / 59 min / exit 0; 95–99% task-fit). No named author.
 - **Distribution:** the founder shares the Deck / gives the talk; the Deck is the
   distribution piece. (No separate blog/content engine in scope.)
 

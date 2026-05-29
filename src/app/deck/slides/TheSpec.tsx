@@ -1,6 +1,5 @@
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 import { Pipeline, StageHeading } from "./stage";
 
@@ -28,7 +27,6 @@ const SECTIONS = [
 export function TheSpec() {
   return (
     <Slide hasStepper>
-      <SectionLabel num="§ 04">The plan</SectionLabel>
       <Pipeline active="spec" />
       <StageHeading skill="/to-prd">The spec.</StageHeading>
       <Text variant="lead" className="mb-8 text-base">

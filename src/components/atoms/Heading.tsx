@@ -15,10 +15,11 @@ type HeadingProps = {
 };
 
 const sizeStyles: Record<NonNullable<HeadingProps["size"]>, string> = {
-  // .display — serif 300, clamp(2.5rem, 6.5vw, 5.4rem), line-height 1.02.
+  // .display — serif 300, the cold-open hero. Already large; left as-is.
   display: "font-light leading-none text-5xl sm:text-6xl lg:text-7xl",
-  // .display-sm — serif 400, clamp(1.8rem, 3.5vw, 2.8rem), line-height 1.15.
-  "display-sm": "font-normal leading-tight text-3xl sm:text-4xl",
+  // .display-sm — the per-slide title. Bumped one step (was 3xl/4xl) so the
+  // editorial prose reads on a screen, not like a slide bullet.
+  "display-sm": "font-normal leading-tight text-4xl sm:text-5xl",
 };
 
 export function Heading({

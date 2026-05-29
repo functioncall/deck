@@ -1,7 +1,6 @@
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 
 /** The tree with .beads/ highlighted (index.html 3.6). */
@@ -55,7 +54,6 @@ const POINTS = [
 export function IssueTracker() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>issue tracker (Beads)</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <BulletList items={POINTS} />

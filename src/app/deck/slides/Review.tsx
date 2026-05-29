@@ -1,7 +1,6 @@
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
-import { SectionLabel } from "./SectionLabel";
 import { PhoneSplit, Pipeline, StageHeading } from "./stage";
 import screenshot from "./ralph-review.jpg";
 
@@ -29,7 +28,6 @@ const POINTS = [
 export function Review() {
   return (
     <Slide hasStepper>
-      <SectionLabel num="§ 05">The run</SectionLabel>
       <Pipeline active="review" />
       <StageHeading>Review.</StageHeading>
       <Text variant="lead" className="mb-10 text-base">

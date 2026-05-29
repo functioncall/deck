@@ -1,7 +1,6 @@
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { LLMDiagram } from "@/components/diagrams";
-import { SectionLabel } from "./SectionLabel";
 
 /**
  * s-1-1 — "the model" (index.html data-num 1.1): the LLM inference-loop diagram
@@ -10,7 +9,6 @@ import { SectionLabel } from "./SectionLabel";
 export function LlmFunction() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 01">The model</SectionLabel>
       <LLMDiagram />
       <Text variant="lead" className="mt-6">
         An LLM is a function. Text in, text out.{" "}

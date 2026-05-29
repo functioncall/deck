@@ -1,7 +1,6 @@
 import Image from "next/image";
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 import chart from "./instruction-ceiling.jpg";
 
 /**
@@ -13,7 +12,6 @@ import chart from "./instruction-ceiling.jpg";
 export function InstructionCeiling() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 02">Context</SectionLabel>
       <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-[3vw] text-left md:grid-cols-[1.5fr_1fr]">
         <div className="flex items-center justify-center">
           <Image

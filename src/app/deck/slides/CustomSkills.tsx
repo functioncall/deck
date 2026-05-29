@@ -1,7 +1,6 @@
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 
 /** The tree with .claude/skills/ expanded + highlighted (index.html 3.5). */
@@ -38,7 +37,6 @@ const SKILLS = [
 export function CustomSkills() {
   return (
     <Slide anchor="top">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
       <PanelHeading>custom skills</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <div className="mb-6 flex flex-col gap-2.5">

@@ -1,7 +1,6 @@
 import { Heading } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { BulletList } from "./BulletList";
-import { SectionLabel } from "./SectionLabel";
 import { ContextFrame, CtxEmpty, CtxMsg } from "./ctx";
 
 /** The §2 payoff practices (index.html 2.3 bullets). */
@@ -40,7 +39,6 @@ const PRACTICES = [
 export function GoodContext() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 02">Context</SectionLabel>
       <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
         <div className="self-start">
           <Heading as="h2" size="display-sm" className="mb-6 text-left font-light">

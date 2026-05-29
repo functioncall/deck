@@ -1,6 +1,5 @@
 import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 import { SlideFooter } from "./SlideFooter";
 import { Pipeline, StageHeading } from "./stage";
 
@@ -20,7 +19,6 @@ const QUESTIONS = [
 export function GrillBeforePlan() {
   return (
     <Slide hasStepper>
-      <SectionLabel num="§ 04">The plan</SectionLabel>
       <Pipeline active="grill" />
       <StageHeading skill="/grill-me">Grill before you plan.</StageHeading>
       <Text variant="lead" className="mb-7 text-base">

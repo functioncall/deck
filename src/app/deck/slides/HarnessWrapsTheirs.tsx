@@ -3,7 +3,6 @@
 import type { ReactNode } from "react";
 import { Heading, Text } from "@/components/atoms";
 import { Reveal, Slide, useSlideState } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 
 /** The agent-harness components (same set as slide 1.5). */
 const AGENT_COMPONENTS = [
@@ -107,14 +106,17 @@ function Tile({
 export function HarnessWrapsTheirs() {
   return (
     <Slide anchor="center">
-      <SectionLabel num="§ 03">The harness</SectionLabel>
-      <Heading as="h2" size="display-sm" className="mb-3 font-light">
-        Your harness <em className="text-accent">wraps theirs</em>.
-      </Heading>
-      <Text variant="lead" className="mb-8">
-        Anthropic ships the agent harness.{" "}
-        <em className="text-accent">You ship the layer around it.</em>
-      </Text>
+      {/* The thesis lands only once the outer user-harness layer is added (state
+          3) — the build resolves into the claim, it doesn't pre-announce it. */}
+      <Reveal frameMin={3} mode="label">
+        <Heading as="h2" size="display-sm" className="mb-3 font-light">
+          Your harness <em className="text-accent">wraps theirs</em>.
+        </Heading>
+        <Text variant="lead" className="mb-8">
+          Anthropic ships the agent harness.{" "}
+          <em className="text-accent">You ship the layer around it.</em>
+        </Text>
+      </Reveal>
 
       <FrameLayer
         frameMin={3}

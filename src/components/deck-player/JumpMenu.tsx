@@ -25,7 +25,7 @@ export function JumpMenu({ sections, onJump }: JumpMenuProps) {
           variant="ghost"
           size="sm"
           data-deck-control
-          className="absolute left-6 top-5 z-50 font-mono text-xs uppercase tracking-widest"
+          className="px-2 py-1 font-mono text-xs uppercase tracking-widest"
         >
           Sections
         </Button>

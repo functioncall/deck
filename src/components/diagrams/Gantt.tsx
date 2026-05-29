@@ -1,10 +1,11 @@
 /**
  * Gantt — the deck's `.gantt` timeline visual (index.html ~507): one row per
  * phase (a mono label, a proportional bar, a mono duration), used for the
- * plan → execute → review breakdown. Bar `width`/`offset` are data-driven CSS
- * lengths (percentages) supplied per row, so the same component renders any
- * cascade; `variant` selects the fill token (plan → ink-soft, agent → accent,
- * review → ink-dim). Token-only styling (ADR-0005).
+ * plan → execute → review cascade. Each bar shares one timeline: the fill is
+ * absolutely positioned by `offset` (left) + `width`, so sequential phases line
+ * up edge-to-edge across rows without bleeding past the track (offset + width
+ * must stay ≤ 100%). `variant` selects the fill token (plan → ink-soft,
+ * agent → accent, review → ink-dim). Token-only styling (ADR-0005).
  */
 type GanttVariant = "plan" | "agent" | "review";
 
@@ -42,8 +43,8 @@ export function Gantt({ rows, className }: GanttProps) {
           <span className="text-ink-soft">{row.label}</span>
           <span className="relative block h-5 overflow-hidden rounded-sm bg-bg-card">
             <span
-              className={`block h-full rounded-sm ${fillClass[row.variant ?? "plan"]}`}
-              style={{ width: row.width ?? "100%", marginLeft: row.offset }}
+              className={`absolute inset-y-0 rounded-sm ${fillClass[row.variant ?? "plan"]}`}
+              style={{ left: row.offset ?? "0%", width: row.width ?? "100%" }}
             />
           </span>
           <span className="text-right text-ink-dim">{row.time}</span>

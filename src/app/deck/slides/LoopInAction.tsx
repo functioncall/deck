@@ -1,7 +1,6 @@
 import type { ReactNode } from "react";
 import { CodeBlock, Heading } from "@/components/atoms";
 import { Reveal, Slide } from "@/components/deck-player";
-import { SectionLabel } from "./SectionLabel";
 
 /**
  * The console log line (index.html `.console-line`): an accent `→`, the event,
@@ -72,7 +71,6 @@ function CtxMsg({
 export function LoopInAction() {
   return (
     <Slide anchor="top" hasStepper>
-      <SectionLabel num="§ 01">The model</SectionLabel>
       <div className="grid w-full max-w-6xl grid-cols-1 items-start gap-[4vw] text-left md:grid-cols-2">
         {/* LEFT: title + code + console */}
         <div className="flex flex-col gap-8">
