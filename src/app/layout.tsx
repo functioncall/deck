@@ -30,7 +30,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://beontheloop.com";
 const SITE_NAME = "Beontheloop";
 const SITE_DESCRIPTION =
-  "Stop babysitting your AI. The Deck is the free map for building long-running agents; the Harness Starter Kit hands you the founder's real harness so you ship with AI instead of supervising it.";
+  "Stop babysitting your AI. Copy-paste the founder's real agent harness into your project — the files that make Claude remember your codebase and finish what it starts. Read the free Deck; join the waitlist to lock the founding price on the Harness Starter Kit.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),

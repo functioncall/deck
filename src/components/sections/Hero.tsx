@@ -1,7 +1,7 @@
 import NextLink from "next/link";
 import { Hero as MarketingHero } from "@/components/organisms";
 import { CTAButtonGroup, CheckoutButton } from "@/components/molecules";
-import { deck, harnessStarterKit } from "@/content";
+import { harnessStarterKit, FOUNDING_PRICE_CENTS } from "@/content";
 
 /**
  * Hero — the top of the landing page (SPEC §3): the promise and the dual CTA —
@@ -15,9 +15,10 @@ import { deck, harnessStarterKit } from "@/content";
  */
 
 export function Hero() {
+  const foundingPrice = `$${FOUNDING_PRICE_CENTS / 100}`;
   return (
     <MarketingHero
-      eyebrow="For developers running agent harnesses"
+      eyebrow="For developers running long, unsupervised agent jobs"
       title={
         <>
           Stop babysitting your AI.{" "}
@@ -26,9 +27,11 @@ export function Hero() {
       }
       lead={
         <>
-          {deck.name} is the map — how long-running agents actually work, free
-          and open. Join the waitlist to lock the founding price on the{" "}
-          {harnessStarterKit.name} and get it the day it ships.
+          Copy-paste my agent setup into your project — the files that make
+          Claude remember your codebase and finish what it starts, instead of
+          drifting off and waiting for you. Join the waitlist to lock the
+          founding {foundingPrice} on the {harnessStarterKit.name} and get it
+          the day it ships.
         </>
       }
       cta={

@@ -19,19 +19,19 @@ type SectionProps = { className?: string };
 const KIT_CONTENTS = [
   {
     name: "custom skills",
-    desc: "The slash-command workflows — /grill-me, /to-prd, and the rest — that wrap a recurring task into one verb.",
+    desc: "Stop re-typing the same five-step request. The slash-command workflows — /grill-me, /to-prd, and the rest — wrap a recurring task into one verb.",
   },
   {
     name: "CLAUDE.md",
-    desc: "The project instruction sheet that grounds every agent run in your conventions and architecture.",
+    desc: "Stop re-explaining your project every session. The instruction sheet that grounds every agent run in your conventions and architecture.",
   },
   {
     name: "ralph-loop script",
-    desc: "The while-loop runner that feeds the agent its prompt and resets the context window each pass.",
+    desc: "Stop watching it run. The while-loop runner that feeds the agent its prompt and resets the context each pass, so it grinds through long jobs without you.",
   },
   {
     name: "agent_docs templates",
-    desc: "The durable specs, ADRs, and context docs the agent reads — so state lives on disk, not in a fragile chat.",
+    desc: "Stop losing the plan when the chat dies. The durable specs, ADRs, and context docs the agent reads — so state lives on disk, not in a fragile thread.",
   },
 ];
 
@@ -68,9 +68,10 @@ export function WhatsInTheKit({ className }: SectionProps) {
         ))}
       </div>
       <Text variant="soft" className="mt-8">
-        Waitlist members also lock in founding-member status, the private
-        build-log, and a vote on the real task the founder builds in the
-        Screencast.
+        And it&rsquo;s growing: waitlist members lock in founding-member status,
+        the private build-log, and a vote on the real task built in the
+        Screencast &mdash; plus the Screencast itself and the Viewer (a local way
+        to see what your agent actually did) free when they ship.
       </Text>
       <div className="mt-10">
         <CheckoutButton className="px-8 py-4 text-lg">Join the waitlist</CheckoutButton>

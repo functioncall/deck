@@ -25,8 +25,9 @@ function formatUsd(cents: number): string {
 // What the waitlist promise locks in (CONTEXT.md: Founding price). Future-tense
 // — the Kit hasn't shipped yet; these arrive the day it does.
 const KIT_FEATURES = [
-  "The full Harness Starter Kit at the founding price the day it ships",
+  "The full Harness Starter Kit at the founding price — a one-time fee — the day it ships",
   "The Screencast, free, with lifetime access when it ships",
+  "The Viewer — a local way to see what your agent did — free when it ships",
   "Founding-member status and the private build-log",
   "A vote on the real task the founder builds in the Screencast",
   "30-day, no-questions-asked refund once the Kit ships",
@@ -47,10 +48,10 @@ export function Pricing({ className }: SectionProps) {
         Join the waitlist. Lock the Founding price.
       </Heading>
       <Text variant="lead" className="mt-6">
-        Join the waitlist now and you&rsquo;ll get the Kit at {foundingPrice}{" "}
-        — the least it will ever cost — the day it ships. The price rises to{" "}
-        {launchPrice} at launch; that&rsquo;s the only clock. No countdown, no
-        fake deadline.
+        Join the waitlist now and lock {foundingPrice} for the Kit — a one-time
+        fee you pay the day it ships, and the least it will ever cost. The price
+        rises to {launchPrice} after launch; that&rsquo;s the only clock. No
+        countdown, no fake deadline.
       </Text>
       <div className="mt-12">
         <PricingTier

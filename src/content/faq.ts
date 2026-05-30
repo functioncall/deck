@@ -1,6 +1,7 @@
 // FAQ entries for the landing page. Help-don't-sell voice (CONTEXT.md): answer
 // the question honestly, use the glossary terms exactly (Deck, Harness Starter
-// Kit, Screencast, Pre-sell, Founding price). Copy lives here, not in components.
+// Kit, Screencast, Waitlist, Founding price, Viewer). Copy lives here, not in
+// components.
 //
 // Launch #1 is a waitlist (Locked decision 3): the Kit hasn't shipped yet, so
 // answers are framed as honest waitlist promises. Founding price stays as the
@@ -17,7 +18,7 @@ export const faq: FaqEntry[] = [
   {
     question: 'What exactly is the Harness Starter Kit?',
     answer:
-      "It's the paid hero of the Pre-sell: the founder's real agentic-coding harness as reusable templates — the custom skills, the CLAUDE.md, the ralph-loop script, and the agent_docs templates you see described in the Deck. It's not shipping yet — join the waitlist and you'll get the whole Kit the day it does.",
+      "It's the paid hero: the founder's real agentic-coding harness as reusable templates — the custom skills, the CLAUDE.md, the ralph-loop script, and the agent_docs templates you see described in the Deck. You copy-paste it into your project and the agent stops forgetting your codebase and starts finishing what it starts. It's not shipping yet — join the waitlist and you'll get the whole Kit the day it does, for a one-time founding price.",
   },
   {
     question: 'Is the Screencast included? When does it ship?',
@@ -37,6 +38,6 @@ export const faq: FaqEntry[] = [
   {
     question: 'What does the Founding price lock in?',
     answer:
-      "Joining the waitlist at the Founding price locks in $29 for the full bundle — the Harness Starter Kit the day it ships, plus the Screencast free when it lands. Waitlist members also get founding-member status, the private build-log, and a vote on the real task the founder builds in the Screencast.",
+      "Joining the waitlist at the Founding price locks in $29 — a one-time fee — for the full bundle: the Harness Starter Kit the day it ships, plus the Screencast and the Viewer (a local way to see what your agent did) free when they land. Waitlist members also get founding-member status, the private build-log, and a vote on the real task the founder builds in the Screencast.",
   },
 ];
