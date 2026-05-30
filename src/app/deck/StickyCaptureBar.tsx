@@ -6,14 +6,16 @@ import { CheckoutButton } from "@/components/molecules";
 
 /**
  * StickyCaptureBar — the persistent end-of-deck conversion bar pinned to the
- * bottom of `/deck`. It is the always-present nudge toward the paid hero (the
- * Harness Starter Kit) that accompanies the soft email capture on the final
- * slide (`EndCard`). The actual email capture (the L1 `EmailCaptureForm`) lives
- * on the EndCard — keeping it single-instance avoids a duplicate field id — so
- * this bar carries the CTA only. Dismissible so it never blocks the deck.
+ * bottom of `/deck`. It is the always-present nudge toward the waitlist for
+ * the paid hero (the Harness Starter Kit) that accompanies the email capture
+ * on the final slide (`EndCard`). The actual email capture (the L1
+ * `EmailCaptureForm`) lives on the EndCard — keeping it single-instance avoids
+ * a duplicate field id — so this bar carries the CTA only. Dismissible so it
+ * never blocks the deck.
  *
- * The CTA routes to the early-access capture (`CheckoutButton` → `/#join`),
- * not a live checkout yet (Deck-n87). Token-only styling (ADR-0005).
+ * The CTA routes to the waitlist capture (`CheckoutButton` → `/#join`), not a
+ * live checkout yet (Deck-n87). The single waitlist verb is used everywhere
+ * (Locked decision 3). Token-only styling (ADR-0005).
  */
 
 export function StickyCaptureBar() {
@@ -26,10 +28,10 @@ export function StickyCaptureBar() {
         <Text variant="soft" className="text-sm">
           The Deck is the map. The{" "}
           <span className="text-ink">Harness Starter Kit</span> is the toolkit —
-          founders lock the Founding price.
+          waitlist members lock the Founding price.
         </Text>
         <div className="flex items-center gap-5">
-          <CheckoutButton className="px-5 py-2 text-sm">Get early access</CheckoutButton>
+          <CheckoutButton className="px-5 py-2 text-sm">Join the waitlist</CheckoutButton>
           <button
             type="button"
             onClick={() => setDismissed(true)}

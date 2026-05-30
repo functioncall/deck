@@ -7,11 +7,12 @@ import {
 } from "@/content";
 
 /**
- * Pricing — the offer + price (SPEC §3, §1): the paid hero at the Founding price,
- * via the L1 `PricingTier`. Prices come from typed content (`offers.ts`, in
- * cents) and are formatted here — never hard-coded. The urgency lever is the
- * rising price (Founding $29 → launch $49), NOT a deadline (CONTEXT.md), and the
- * 30-day no-questions guarantee is stated plainly. Token-only styling (ADR-0005).
+ * Pricing — the offer + price (SPEC §3, §1). Honest-waitlist reframe (Locked
+ * decision 3): the Founding price stays as a promise — join the waitlist now,
+ * lock the founding price, get the Kit the day it ships. The urgency lever is
+ * the rising price (Founding $29 → launch $49), NOT a deadline (CONTEXT.md).
+ * Prices come from typed content (`offers.ts`, in cents) and are formatted
+ * here — never hard-coded. Token-only styling (ADR-0005).
  */
 type SectionProps = { className?: string };
 
@@ -21,13 +22,14 @@ function formatUsd(cents: number): string {
   return `$${Number.isInteger(dollars) ? dollars : dollars.toFixed(2)}`;
 }
 
-// What buying at the Founding price locks in (CONTEXT.md: Founding price).
+// What the waitlist promise locks in (CONTEXT.md: Founding price). Future-tense
+// — the Kit hasn't shipped yet; these arrive the day it does.
 const KIT_FEATURES = [
-  "The full Harness Starter Kit — yours at the founding price the day it ships",
+  "The full Harness Starter Kit at the founding price the day it ships",
   "The Screencast, free, with lifetime access when it ships",
   "Founding-member status and the private build-log",
   "A vote on the real task the founder builds in the Screencast",
-  "30-day, no-questions-asked refund",
+  "30-day, no-questions-asked refund once the Kit ships",
 ];
 
 export function Pricing({ className }: SectionProps) {
@@ -42,11 +44,11 @@ export function Pricing({ className }: SectionProps) {
     >
       <Label accent>The price</Label>
       <Heading as="h2" size="display-sm" className="mt-4">
-        Lock in the Founding price before launch.
+        Join the waitlist. Lock the Founding price.
       </Heading>
       <Text variant="lead" className="mt-6">
-        Get early access before launch and you&rsquo;ll get the Kit at{" "}
-        {foundingPrice} — the least it will ever cost. The price rises to{" "}
+        Join the waitlist now and you&rsquo;ll get the Kit at {foundingPrice}{" "}
+        — the least it will ever cost — the day it ships. The price rises to{" "}
         {launchPrice} at launch; that&rsquo;s the only clock. No countdown, no
         fake deadline.
       </Text>
@@ -59,15 +61,15 @@ export function Pricing({ className }: SectionProps) {
           features={KIT_FEATURES}
           cta={
             <CheckoutButton className="w-full px-8 py-4 text-lg">
-              Get early access
+              Join the waitlist
             </CheckoutButton>
           }
         />
       </div>
       <Text variant="soft" className="mt-8">
-        When the Kit ships, try it on your own work. If it doesn&rsquo;t earn its
-        place in your setup, email us within 30 days and we&rsquo;ll refund you in
-        full — no questions asked.
+        When the Kit ships, try it on your own work. If it doesn&rsquo;t earn
+        its place in your setup, email us within 30 days of shipping and
+        we&rsquo;ll refund you in full — no questions asked.
       </Text>
     </section>
   );

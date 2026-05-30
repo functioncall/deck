@@ -22,7 +22,7 @@ type EmailCaptureFormProps = {
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export function EmailCaptureForm({
-  cta = "Notify me",
+  cta = "Join the waitlist",
   placeholder = "you@company.com",
   onSubmit,
 }: EmailCaptureFormProps) {

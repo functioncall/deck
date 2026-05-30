@@ -38,9 +38,9 @@ const FOOTER_LINKS = [
   { href: "/refund-policy", label: "Refund Policy" },
 ];
 
-// The persistent header CTA (SPEC §3) — routes to the early-access capture.
+// The persistent header CTA (SPEC §3) — routes to the waitlist capture.
 const navCta = (
-  <CheckoutButton className="px-5 py-2.5 text-sm">Get early access</CheckoutButton>
+  <CheckoutButton className="px-5 py-2.5 text-sm">Join the waitlist</CheckoutButton>
 );
 
 export default function Home() {

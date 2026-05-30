@@ -3,13 +3,15 @@ import { CheckoutButton } from "@/components/molecules";
 import { harnessStarterKit } from "@/content";
 
 /**
- * WhatsInTheKit — the Harness Starter Kit contents (SPEC §3): the paid hero, the
- * founder's real agentic-coding harness as reusable templates. Lists the Kit's
- * pieces using the glossary terms exactly (custom skills, CLAUDE.md, ralph-loop
- * script, agent_docs templates) and carries the buy CTA. The Kit name comes from
- * typed content (`@/content`). Token-only styling (ADR-0005).
+ * WhatsInTheKit — the Harness Starter Kit contents (SPEC §3): the paid hero,
+ * the founder's real agentic-coding harness as reusable templates. Lists the
+ * Kit's pieces using the glossary terms exactly (custom skills, CLAUDE.md,
+ * ralph-loop script, agent_docs templates) and carries the waitlist CTA. The
+ * Kit name comes from typed content (`@/content`). Token-only styling (ADR-0005).
  *
- * The section `id` remains the named landing anchor for the Kit (deep links).
+ * Honest-waitlist reframe (Locked decision 3): waitlist members lock in the
+ * founding price and receive the Kit the day it ships. The section `id` remains
+ * the named landing anchor for the Kit (deep links).
  */
 type SectionProps = { className?: string };
 
@@ -46,9 +48,9 @@ export function WhatsInTheKit({ className }: SectionProps) {
         Inside the {harnessStarterKit.name}.
       </Heading>
       <Text variant="lead" className="mt-6">
-        The founder&rsquo;s actual agentic-coding harness — the same one behind the
-        Deck — as reusable templates. It works today; early-access members get it
-        at the founding price the day it ships.
+        The founder&rsquo;s actual agentic-coding harness — the same one behind
+        the Deck — as reusable templates. Join the waitlist and you&rsquo;ll get
+        it at the founding price the day it ships.
       </Text>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {KIT_CONTENTS.map((item) => (
@@ -66,12 +68,12 @@ export function WhatsInTheKit({ className }: SectionProps) {
         ))}
       </div>
       <Text variant="soft" className="mt-8">
-        Founding buyers also lock in founding-member status, the private
+        Waitlist members also lock in founding-member status, the private
         build-log, and a vote on the real task the founder builds in the
         Screencast.
       </Text>
       <div className="mt-10">
-        <CheckoutButton className="px-8 py-4 text-lg">Get early access</CheckoutButton>
+        <CheckoutButton className="px-8 py-4 text-lg">Join the waitlist</CheckoutButton>
       </div>
     </section>
   );

@@ -63,19 +63,19 @@ export default function OpengraphImage() {
         <div
           style={{
             display: "flex",
-            alignItems: "center",
-            gap: 24,
             borderTop: `2px solid ${RULE}`,
             paddingTop: 28,
-            fontSize: 28,
-            color: INK_SOFT,
+            fontSize: 30,
+            lineHeight: 1.25,
+            color: INK,
           }}
         >
-          <span style={{ color: ACCENT }}>270 files</span>
-          <span>·</span>
-          <span style={{ color: ACCENT }}>59 min</span>
-          <span>·</span>
-          <span style={{ color: ACCENT }}>exit 0</span>
+          <span>
+            I built this harness on my own production code.{" "}
+            <span style={{ color: ACCENT }}>
+              The Kit is what I actually use.
+            </span>
+          </span>
         </div>
       </div>
     ),

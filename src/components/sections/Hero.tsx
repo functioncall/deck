@@ -4,19 +4,15 @@ import { CTAButtonGroup, CheckoutButton } from "@/components/molecules";
 import { deck, harnessStarterKit } from "@/content";
 
 /**
- * Hero — the top of the landing page (SPEC §3): the promise, the founder's
- * proof metric (the "270 files / 59 min" `Stat` row), and the dual CTA — buy the
- * Harness Starter Kit (the paid hero) or read the free Deck. It reuses the L1
- * `Hero` organism for layout and the L1 `CTAButtonGroup` for the CTA row; offer
- * names come from typed content (`@/content`). Token-only styling (ADR-0005).
+ * Hero — the top of the landing page (SPEC §3): the promise and the dual CTA —
+ * join the waitlist for the Harness Starter Kit or read the free Deck. It reuses
+ * the L1 `Hero` organism for layout and the L1 `CTAButtonGroup` for the CTA row;
+ * offer names come from typed content (`@/content`). Token-only styling (ADR-0005).
+ *
+ * Honest-waitlist reframe (Locked decision 3 + 4): the proof-stat row is gone;
+ * the single bold first-person founder claim lives in `Proof`. The paid CTA is
+ * a waitlist promise — lock the founding price, get the Kit the day it ships.
  */
-
-// The founder's headline proof metric (SPEC §1) — one unattended ralph run.
-const PROOF_STATS = [
-  { value: "270", label: "files in one run" },
-  { value: "59 min", label: "unattended" },
-  { value: "exit 0", label: "clean finish" },
-];
 
 export function Hero() {
   return (
@@ -30,16 +26,16 @@ export function Hero() {
       }
       lead={
         <>
-          {deck.name} is the map — how long-running agents actually work, free and
-          open. The {harnessStarterKit.name} hands you the founder&rsquo;s real
-          harness so you can build that way today.
+          {deck.name} is the map — how long-running agents actually work, free
+          and open. Join the waitlist to lock the founding price on the{" "}
+          {harnessStarterKit.name} and get it the day it ships.
         </>
       }
       cta={
         <CTAButtonGroup
           primary={
             <CheckoutButton className="px-8 py-4 text-lg">
-              Get early access
+              Join the waitlist
             </CheckoutButton>
           }
           secondary={
@@ -52,7 +48,6 @@ export function Hero() {
           }
         />
       }
-      stats={PROOF_STATS}
     />
   );
 }

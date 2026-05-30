@@ -11,11 +11,11 @@ import {
  * close as the final slide of `/deck` (it is not part of the index.html port,
  * so it lives here in the assembly layer rather than in `slides/index.ts`).
  *
- * It composes the L1 `EmailCaptureForm` (the soft "follow along" capture that
- * POSTs to /api/subscribe → Loops) and the L1 `CTAButtonGroup` linking back to
- * `/` and, for the waitlist launch, to the early-access capture via the shared
- * `CheckoutButton` (`/#join`, not a live checkout yet — Deck-n87). Token-only
- * styling (ADR-0005).
+ * It composes the L1 `EmailCaptureForm` — the waitlist capture that POSTs to
+ * /api/subscribe → Loops — and the L1 `CTAButtonGroup` linking back to `/` and
+ * to the waitlist anchor via the shared `CheckoutButton` (`/#join`, not a live
+ * checkout yet — Deck-n87). The single waitlist verb "Join the waitlist" is
+ * used everywhere (Locked decision 3). Token-only styling (ADR-0005).
  */
 
 export function EndCard() {
@@ -25,27 +25,27 @@ export function EndCard() {
         You&rsquo;ve got the map.
       </Heading>
       <Text variant="lead" className="mt-6 max-w-2xl">
-        The Deck is free, and it stays free. When you&rsquo;re ready to build
-        the way it describes, the{" "}
-        <span className="text-ink">Harness Starter Kit</span> hands you the
-        founder&rsquo;s actual harness — the custom skills,{" "}
+        The Deck is free, and it stays free. When the{" "}
+        <span className="text-ink">Harness Starter Kit</span> ships, it hands
+        you the founder&rsquo;s actual harness — the custom skills,{" "}
         <span className="font-mono text-ink">CLAUDE.md</span>, the ralph-loop
         script and the <span className="font-mono text-ink">agent_docs</span>{" "}
-        templates — the moment you grab it.
+        templates. Join the waitlist to lock the founding price.
       </Text>
 
       <div className="mt-10 w-full max-w-md text-left">
         <Text variant="soft" className="mb-3">
-          Follow along — new drops, plus the Screencast free when it ships.
+          Join the waitlist — lock the founding price, get the Kit the day it
+          ships, plus the Screencast free when it lands.
         </Text>
-        <EmailCaptureForm cta="Follow along" />
+        <EmailCaptureForm cta="Join the waitlist" />
       </div>
 
       <CTAButtonGroup
         className="mt-10 justify-center"
         primary={
           <CheckoutButton className="px-8 py-4 text-lg">
-            Get early access
+            Join the waitlist
           </CheckoutButton>
         }
         secondary={
