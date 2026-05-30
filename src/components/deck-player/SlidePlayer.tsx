@@ -1,7 +1,7 @@
 "use client";
 
+import NextLink from "next/link";
 import { useEffect, useMemo, useReducer, useRef } from "react";
-import { Button } from "@/components/atoms";
 import { trackClient } from "@/lib/analytics/client";
 import { JumpMenu } from "./JumpMenu";
 import { ProgressBar } from "./ProgressBar";
@@ -214,47 +214,34 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
         </div>
       ) : null}
 
-      {sections.length > 0 ? (
-        <div className="absolute left-[5vw] top-[5vh] z-50 flex flex-col gap-1.5">
-          <div className="flex items-center gap-1">
-            <Button
-              variant="ghost"
-              size="sm"
-              data-deck-control
-              aria-label="Go to start"
-              onClick={() => dispatch({ type: "home" })}
-              className="px-2 py-1 font-mono text-xs"
-            >
-              ⌂
-            </Button>
-            <Button
-              variant="ghost"
-              size="sm"
-              data-deck-control
-              aria-label="Back"
-              disabled={index === 0 && state === 0}
-              onClick={() => dispatch({ type: "prev" })}
-              className="px-2 py-1 font-mono text-xs"
-            >
-              ←
-            </Button>
+      <div className="absolute left-[5vw] top-[5vh] z-50 flex flex-col gap-2">
+        <NextLink
+          href="/"
+          data-deck-control
+          aria-label="Beontheloop — back to home"
+          className="font-serif text-base font-normal text-ink transition-colors hover:text-accent"
+        >
+          Beontheloop
+        </NextLink>
+        {sections.length > 0 ? (
+          <div className="flex items-center gap-3 font-mono text-xs uppercase tracking-widest">
             <JumpMenu
               sections={sections}
               onJump={(slideIndex) =>
                 dispatch({ type: "jump", index: slideIndex })
               }
             />
-          </div>
-          {activeSection && activeSection.index > 0 ? (
-            <div className="pointer-events-none font-mono text-xs font-medium uppercase tracking-widest text-ink-dim">
-              <span className="mr-2 text-accent">
-                § {String(activeSection.index).padStart(2, "0")}
+            {activeSection && activeSection.index > 0 ? (
+              <span className="pointer-events-none font-medium text-ink-dim">
+                <span className="mr-2 text-accent">
+                  § {String(activeSection.index).padStart(2, "0")}
+                </span>
+                {activeSection.title}
               </span>
-              {activeSection.title}
-            </div>
-          ) : null}
-        </div>
-      ) : null}
+            ) : null}
+          </div>
+        ) : null}
+      </div>
 
       <ProgressBar current={index + 1} total={total} />
     </div>
