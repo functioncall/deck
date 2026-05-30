@@ -14,8 +14,8 @@ export function Closing() {
       </Heading>
       <Label className="mt-24">With ideas from</Label>
       <Text variant="soft" className="mt-4 max-w-4xl leading-loose">
-        Geoffrey Huntley &middot; Dex Horthy &middot; Matt Pocock &middot; Steve
-        Yegge
+        Geoffrey Huntley &middot; Dexter Horthy &middot; Matt Pocock &middot;
+        Steve Yegge
         <br />
         Ryan Lopopolo &middot; Lance Martin &middot; Mario Zechner &middot; Armin
         Ronacher

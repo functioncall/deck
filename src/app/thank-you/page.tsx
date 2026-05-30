@@ -1,20 +1,17 @@
 import type { Metadata } from "next";
 import { MarketingPageTemplate } from "@/components/templates";
-import { Navbar, Footer } from "@/components/organisms";
+import { Navbar, Footer, CONTACT_EMAIL } from "@/components/organisms";
 import { Heading, Label, Link, Text } from "@/components/atoms";
 import { harnessStarterKit } from "@/content";
 
 /**
- * `/thank-you` — the post-purchase access surface (SPEC §4.2). No accounts, no
- * login (ADR-0004): access is email-based and the Harness Starter Kit downloads
- * INSTANTLY here. In L4 the download is a CLEARLY-LABELED PLACEHOLDER artifact
- * served from `public/harness-starter-kit/` — the real Kit contents are packaged
- * later (SPEC §6). Reuses the L1 template/organisms/atoms; token-only (ADR-0005).
+ * `/thank-you` — the post-waitlist-signup confirmation page. The site is in its
+ * waitlist phase: no payments today, so this page no longer offers a download
+ * (the L4 placeholder Kit artifact would have misrepresented the product). It
+ * confirms the waitlist signup and points back to the Deck. `noindex` (it&rsquo;s
+ * only reached after a form submit, and `robots.ts` Disallows it as well).
+ * Reuses the L1 template/organisms/atoms; token-only (ADR-0005).
  */
-
-// The instant download — the PLACEHOLDER Kit artifact under public/ (served as a
-// static file). Real Kit contents replace it later (SPEC §6).
-const KIT_DOWNLOAD_HREF = "/harness-starter-kit/README.md";
 
 const FOOTER_LINKS = [
   { href: "/#pricing", label: "Pricing" },
@@ -25,7 +22,6 @@ const FOOTER_LINKS = [
   { href: "/refund-policy", label: "Refund Policy" },
 ];
 
-// Post-purchase, the persistent buy CTA is moot — point the header at the Deck.
 const navCta = (
   <Link href="/deck" variant="muted" className="text-sm">
     Read the Deck
@@ -33,9 +29,9 @@ const navCta = (
 );
 
 export const metadata: Metadata = {
-  title: "Thank you — your Harness Starter Kit",
+  title: "You're on the waitlist — Beontheloop",
   description:
-    "Your purchase is complete. Download the Harness Starter Kit instantly — no account needed.",
+    "Thanks for joining the waitlist. We'll email you when the Harness Starter Kit ships.",
   robots: { index: false, follow: false },
 };
 
@@ -46,38 +42,28 @@ export default function ThankYou() {
       footer={<Footer links={FOOTER_LINKS} />}
     >
       <section className="mx-auto max-w-2xl px-6 py-20 text-center md:py-28">
-        <Label accent>Payment complete</Label>
+        <Label accent>You&rsquo;re on the list</Label>
         <Heading as="h1" size="display-sm" className="mt-4">
-          You&rsquo;re in. Grab the {harnessStarterKit.name}.
+          Welcome to the waitlist.
         </Heading>
         <Text variant="lead" className="mx-auto mt-6">
-          Thanks for becoming a founding buyer. Your download is ready right
-          now — no account, no login. A receipt is on its way to your email.
+          Thanks for joining. We&rsquo;ll email you when the{" "}
+          {harnessStarterKit.name} ships — waitlist members get first crack at
+          the founding price before it rises to the launch price.
         </Text>
 
         <div className="mt-10 flex justify-center">
-          <a
-            href={KIT_DOWNLOAD_HREF}
-            download
-            className="inline-flex items-center justify-center rounded bg-accent px-8 py-4 font-sans text-lg font-medium tracking-wide text-bg transition-colors hover:opacity-90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-          >
-            Download the {harnessStarterKit.name}
-          </a>
+          <Link href="/deck" variant="accent">
+            In the meantime, read the Deck
+          </Link>
         </div>
 
-        <div className="mt-12 rounded-lg border border-rule bg-bg-card p-6 text-left">
-          <Text variant="soft" className="text-sm">
-            <span className="text-ink">Heads up — placeholder download.</span>{" "}
-            This is a temporary placeholder artifact while the real{" "}
-            {harnessStarterKit.name} contents are packaged. Founding buyers keep
-            lifetime access — the full Kit and the Screencast arrive in your inbox
-            the moment they ship.
-          </Text>
-        </div>
-
-        <Text variant="soft" className="mt-10">
-          Trouble downloading? Email us and we&rsquo;ll sort it out — your
-          founding access is tied to your purchase email.
+        <Text variant="soft" className="mt-12">
+          Didn&rsquo;t mean to sign up, or want to unsubscribe? Email{" "}
+          <Link href={`mailto:${CONTACT_EMAIL}`} variant="accent">
+            {CONTACT_EMAIL}
+          </Link>{" "}
+          and a human will sort it out.
         </Text>
       </section>
     </MarketingPageTemplate>

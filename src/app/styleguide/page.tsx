@@ -39,6 +39,7 @@ import { DeckEngineDemo } from "./DeckEngineDemo";
 export const metadata: Metadata = {
   title: "Styleguide — Beontheloop",
   description: "Living catalog of the deck design tokens + component library (ADR-0005).",
+  robots: { index: false, follow: false },
 };
 
 /*
