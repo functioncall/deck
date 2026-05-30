@@ -10,6 +10,7 @@
 // Type-only import of `AnalyticsEvent` (erased at build) so this stays free of any
 // server module / Amplitude key.
 import type { AnalyticsEvent } from './events';
+import { analyticsAllowed } from './consent';
 
 const DEVICE_ID_KEY = 'btl_device_id';
 
@@ -40,6 +41,12 @@ export function trackClient(
   props?: Record<string, unknown>,
 ): void {
   if (typeof window === 'undefined') return;
+  // Default-deny consent gate (SPEC Locked decision §5 + epic-4). The two
+  // browser-originating funnel events (`deck_slide_viewed`, `deck_completed`)
+  // are the only ones that flow through here — by short-circuiting before the
+  // POST we guarantee no behavioural event reaches `/api/track` (and therefore
+  // Amplitude) until the visitor has accepted in `ConsentBanner`.
+  if (!analyticsAllowed()) return;
   void fetch('/api/track', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },

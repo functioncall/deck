@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
+import { ConsentBanner } from "@/components/molecules";
 
 // Deck fonts (index.html): Fraunces (serif), Geist (sans), Geist Mono (mono).
 // Each exposes a CSS variable consumed by the --font-* theme tokens in
@@ -63,7 +64,10 @@ export default function RootLayout({
       lang="en"
       className={`${fraunces.variable} ${geist.variable} ${geistMono.variable}`}
     >
-      <body className="min-h-screen antialiased">{children}</body>
+      <body className="min-h-screen antialiased">
+        {children}
+        <ConsentBanner />
+      </body>
     </html>
   );
 }

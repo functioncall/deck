@@ -7,3 +7,4 @@ export { PricingTier } from "./PricingTier";
 export { FAQItem } from "./FAQItem";
 export { EmailCaptureForm } from "./EmailCaptureForm";
 export { CheckoutButton } from "./CheckoutButton";
+export { ConsentBanner } from "./ConsentBanner";

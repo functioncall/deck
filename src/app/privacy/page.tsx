@@ -81,12 +81,14 @@ export default function Privacy() {
               don&rsquo;t use them to build advertising profiles or sell them on.
             </Text>
             <Text className="mt-4">
-              <span className="text-ink">For visitors in the EU / EEA:</span>{" "}
-              product analytics are loaded only with your consent. If you do not
-              consent, we don&rsquo;t send your behaviour to Amplitude — the site
-              still works, we just stop measuring. You can withdraw consent at
-              any time, and we honour Do-Not-Track and standard privacy signals
-              where your browser sends them.
+              <span className="text-ink">Consent is required before anything
+              loads.</span>{" "}
+              When you first arrive, a banner asks whether to allow analytics.
+              The default is off: until you accept, we send nothing to
+              Amplitude — the site still works, we just stop measuring. If you
+              decline, nothing is sent. You can withdraw consent at any time,
+              and we honour Do-Not-Track and standard privacy signals where
+              your browser sends them.
             </Text>
           </section>
 
