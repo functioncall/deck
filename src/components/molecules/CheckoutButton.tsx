@@ -4,7 +4,7 @@ import NextLink from "next/link";
 import type { MouseEvent, ReactNode } from "react";
 
 /**
- * CheckoutButton — the primary "Get early access" CTA for the Harness Starter Kit.
+ * CheckoutButton — the primary "Join the waitlist" CTA for the Harness Starter Kit.
  *
  * Launch #1 is a free preview + waitlist (Deck-n87): there is NO live checkout
  * yet, so this CTA routes to the early-access email capture (`/#join`, the

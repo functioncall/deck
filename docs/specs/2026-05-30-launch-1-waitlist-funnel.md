@@ -231,3 +231,94 @@ the executable contract.
 - The `events.ts` analytics taxonomy.
 - `offers.ts` prices (founding $29 → launch $49 stay; only framing changes).
 - Any `.env*` file (never read/written).
+
+---
+
+## Verification report (epic-5, 2026-05-30)
+
+Static review of the funnel against the Verification checklist (the DRIVER ran the
+lint + `tsc --noEmit` + build gate). Findings, decisions, and residual risks for the
+manual browser pass below.
+
+### Checklist results
+
+| # | Check | Result | Evidence |
+|---|---|---|---|
+| 1 | `/deck` stays a click-through presentation (NOT scrollable) | ✓ Pass | `src/app/deck/page.tsx:20` — wrapper is `h-[100svh] w-screen overflow-hidden`. `SlidePlayer.handleClick` still dispatches `next`; keyboard / touch-swipe nav intact. |
+| 1 | `/deck` has a visible home/brand link back to `/` | ✓ Pass | `SlidePlayer.tsx:217-225` — persistent `NextLink href="/"` rendered "Beontheloop" inside the top-left chrome. |
+| 1 | Top-left chrome reads as one clean line | ✓ Pass | `SlidePlayer.tsx:217-244` — `Beontheloop` line then a single row `[JumpMenu] § NN TITLE`. No bare `⌂`/`←` glyphs. |
+| 2 | No present-tense paid copy ("buy now / download instantly / refund now") | ✓ Pass | Grep `buy now|download instantly|refund now` across `src/` returned 0 matches. Pricing/Refund framed "when the Kit ships". |
+| 2 | Founding price framed as a waitlist promise | ✓ Pass | `Pricing.tsx:46-54` "Join the waitlist. Lock the Founding price." + 30-day refund framed "once the Kit ships". |
+| 2 | Single "Join the waitlist" verb sitewide | ✓ Pass | Every `CheckoutButton` and `EmailCaptureForm` call site uses `Join the waitlist` (Hero, Pricing, WhatsInTheKit, FinalCTA, EndCard, StickyCaptureBar, privacy/terms/refund navCta, page nav). |
+| 2 | FinalCTA keeps `id="join"` | ✓ Pass | `FinalCTA.tsx:18` — `id="join"`. |
+| 3 | No 270 / 59 min / exit 0 metrics on Hero / Proof / both OG cards | ✓ Pass | Grep on `src/components/sections/Hero.tsx`, `Proof.tsx`, `src/app/opengraph-image.tsx`, `src/app/deck/opengraph-image.tsx` returned 0 matches for those strings. |
+| 3 | Bold first-person founder claim present | ✓ Pass | `Proof.tsx:25-29` "I built this harness on my own production code, and I run it every day." Mirrored on both OG cards ("I built this harness on my own production code. The Kit is what I actually use."). |
+| 4 | Legal pages reflect waitlist reality | ✓ Pass | `privacy/page.tsx` describes Loops + Amplitude (consent-gated) + Lemon Squeezy "when the Kit ships". `refund-policy/page.tsx` opens with "the waitlist itself is free". `terms/page.tsx` carries the same framing (navCta + footer). |
+| 4 | Real `mailto:` from Footer + legal + thank-you | ✓ Pass | `Footer.tsx:13,17-20` exports `CONTACT_EMAIL = "hello@beontheloop.com"` and renders a "Contact" mailto. Reused in `privacy`, `terms`, `refund-policy`, `thank-you`. |
+| 4 | Favicon / app icon exists | ✓ Pass | `src/app/icon.svg` is present (321 B SVG icon route — Next.js file-based icon convention). |
+| 4 | Custom 404 | ✓ Pass | `src/app/not-found.tsx` — branded 404 with `noindex`, home + Deck links. |
+| 4 | `robots.ts` + `sitemap.ts` exist | ✓ Pass | `robots.ts` allows `/`, disallows `/styleguide` + `/thank-you`; `sitemap.ts` lists `/`, `/deck`, `/privacy`, `/terms`, `/refund-policy`. |
+| 4 | `/styleguide` noindex | ✓ Pass | `styleguide/page.tsx:42` — `robots: { index: false, follow: false }`. |
+| 4 | `/thank-you` has no fake download | ✓ Pass | `thank-you/page.tsx` confirms waitlist signup, links to Deck, no Kit download or fake artifact. `noindex` set; also disallowed in `robots.ts`. |
+| 4 | `Closing` credits look correct | ✓ Pass (static) | `Closing.tsx:16-20` — names rendered cleanly with `&middot;` separators. (Final spelling verification belongs in the manual pass.) |
+| 5 | Consent banner gates Amplitude | ✓ Pass | `ConsentBanner.tsx` mounted in `app/layout.tsx:69`. `analyticsAllowed()` is default-deny; `trackClient` (`src/lib/analytics/client.ts:49`) short-circuits before POSTing to `/api/track` when consent is not `granted`. Banner renders nothing once a choice persists. |
+| 5 | Privacy copy matches consent reality | ✓ Pass | `privacy/page.tsx:73-93` — describes Amplitude as anonymous funnel analytics, names the default-deny banner ("Consent is required before anything loads"), explains withdrawal + DNT. |
+
+### Regression greps (residual matches reviewed)
+
+- `270` / `59 min` / `exit 0` — **0 matches** in Hero / Proof / both OG cards (the
+  marketing surfaces called out by the spec). Surviving matches:
+  - `src/app/styleguide/page.tsx:664,679-681` — the `Stat` / `Gantt` atom showcase.
+    Acceptable: the styleguide is `noindex` and disallowed in `robots.ts`; this
+    is a component catalog, not a public claim.
+  - `src/app/deck/slides/ThePlanGantt.tsx:7,15` and `src/app/deck/slides/Review.tsx:25,38`
+    — slide narrative + a phone-screenshot alt text describing the founder's own
+    Ralph run ("59 min, 13 epics, all closed"). Acceptable: spec scope for the
+    metric-strip removal is explicitly "Hero, Proof, and BOTH OG cards" (Risk
+    register row 4); the deck's first-person story of the run can keep its
+    timing details. The removed receipt was the *headline* metric triple
+    ("270 / 59 / exit 0") on marketing surfaces, not every duration token in
+    the deck narrative.
+- `Get early access` / `Follow along` — **0 matches** in any rendered copy. One
+  stale JSDoc reference in `src/components/molecules/CheckoutButton.tsx` was
+  fixed in this session (small, safe defect).
+- `TODO` / `FIXME` / `XXX` — only matches are inside intentional fake-prompt /
+  fake-tool-output content in `src/app/deck/slides/LoopInAction.tsx:102,108,117`
+  (a slide depicting the agent finding "all TODO comments in src/"). Not a real
+  TODO marker — narrative content.
+- `buy now` / `download instantly` / `refund now` — **0 matches** anywhere in
+  `src/`. No paid-present-tense copy slipped through.
+
+### Defects fixed in this session
+
+1. **`CheckoutButton.tsx:7` JSDoc** — header said `"Get early access"`; updated to
+   `"Join the waitlist"` to match the standardized verb (Locked decision 3).
+   Comment-only; behaviour unchanged.
+
+### Defects filed for follow-up
+
+None. No large or scope-bearing defect was found during the static review.
+
+### Residual risks for the manual browser pass
+
+- **Visual chrome layering on small viewports.** The home link + JumpMenu + section
+  label sit in one cluster at `top-[5vh] left-[5vw]`; a manual mobile pass should
+  confirm the line wraps cleanly and never overlaps the `Stepper` at the top
+  centre on the narrowest reveal-bearing slides.
+- **OG cards.** Satori OG renders cannot be diffed in static review; the manual
+  pass should drag both PNG outputs (root + `/deck`) into a share debugger and
+  confirm the bold founder claim is fully visible and the metric strip is
+  truly gone.
+- **Consent banner first-visit copy.** The Decline / Accept buttons are reachable
+  by keyboard (Radix-free `Button` atom), but the manual pass should confirm
+  focus-visible rings render against `bg-bg-card` and the banner sits above the
+  `StickyCaptureBar` on `/deck` without trapping focus.
+- **Closing credits spelling.** Names verified to be rendered as intended in
+  source; the human pass should sanity-check against the contributors' public
+  handles (Geoffrey Huntley, Dexter Horthy, Matt Pocock, Steve Yegge, Ryan
+  Lopopolo, Lance Martin, Mario Zechner, Armin Ronacher).
+- **Per-deck-slide leftover metric narration.** `ThePlanGantt` and `Review` still
+  reference 59 min as the run duration — confirmed in-scope (deck narrative).
+  Flag here only so a future copy pass can decide if the deck story itself
+  should soften that timing claim too.
+
