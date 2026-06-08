@@ -61,11 +61,19 @@ export function ClaudeMd() {
         <BulletList items={POINTS} />
       </TwoColPanel>
       <SlideFooter
-        person="Dex Horthy"
-        href="https://www.humanlayer.dev/blog/writing-a-good-claude-md"
-      >
-        Writing a Good CLAUDE.md
-      </SlideFooter>
+        refs={[
+          {
+            person: "Dex Horthy",
+            href: "https://www.humanlayer.dev/blog/writing-a-good-claude-md",
+            label: "Writing a Good CLAUDE.md",
+          },
+          {
+            person: "multica-ai",
+            href: "https://github.com/multica-ai/andrej-karpathy-skills/blob/main/CLAUDE.md",
+            label: "andrej-karpathy-skills · CLAUDE.md",
+          },
+        ]}
+      />
     </Slide>
   );
 }

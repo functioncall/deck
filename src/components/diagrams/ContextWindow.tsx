@@ -14,6 +14,8 @@ type ContextWindowProps = {
   tall?: boolean;
   /** Overrides the frame eyebrow (default "CONTEXT WINDOW · 200K"). */
   label?: string;
+  /** Appends " · not to scale" to the eyebrow — the diagram is illustrative. */
+  notToScale?: boolean;
   className?: string;
 };
 
@@ -47,7 +49,13 @@ function Msg({
   );
 }
 
-export function ContextWindow({ tall, label, className }: ContextWindowProps) {
+export function ContextWindow({
+  tall,
+  label,
+  notToScale,
+  className,
+}: ContextWindowProps) {
+  const eyebrow = label ?? "CONTEXT WINDOW · 200K";
   return (
     <div
       className={`relative flex w-full max-w-md flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2 ${
@@ -55,7 +63,7 @@ export function ContextWindow({ tall, label, className }: ContextWindowProps) {
       }${className ? ` ${className}` : ""}`}
     >
       <span className="absolute -top-2 left-3 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-ink-dim">
-        {label ?? "CONTEXT WINDOW · 200K"}
+        {notToScale ? `${eyebrow} · not to scale` : eyebrow}
       </span>
       <Msg tone="system" size="6.3k">
         system prompt

@@ -8,16 +8,17 @@ import type { DeckSection } from "@/components/deck-player";
  * Title`); §0 has no label — it is the cold-open title (anonymous, no bio).
  * `firstSlide` is the 0-based index of the section's first slide in the ordered
  * registry (`src/app/deck/slides/index.ts`). Slide counts per section:
- * §0:1 §1:7 §2:6 §3:8 §4:5 §5:2 §6:3 §7:2 (34 total — the bio slide was removed
- * for anonymity, so every section after the cold open shifts down by one).
+ * §0:2 §1:7 §2:6 §3:8 §4:5 §5:2 §6:3 §7:3 (36 total — §0 adds the cold-open
+ * attribution note and §7 adds the sources slide before the close, so every
+ * section after the cold open shifts down by one from the note).
  */
 export const deckSections: DeckSection[] = [
   { id: "cold-open", index: 0, title: "Cold open", firstSlide: 0 },
-  { id: "the-model", index: 1, title: "The model", firstSlide: 1 },
-  { id: "context", index: 2, title: "Context", firstSlide: 8 },
-  { id: "the-harness", index: 3, title: "The harness", firstSlide: 14 },
-  { id: "the-plan", index: 4, title: "The plan", firstSlide: 22 },
-  { id: "the-run", index: 5, title: "The run", firstSlide: 27 },
-  { id: "task-selection", index: 6, title: "Task selection", firstSlide: 29 },
-  { id: "the-shift", index: 7, title: "The shift", firstSlide: 32 },
+  { id: "the-model", index: 1, title: "The model", firstSlide: 2 },
+  { id: "context", index: 2, title: "Context", firstSlide: 9 },
+  { id: "the-harness", index: 3, title: "The harness", firstSlide: 15 },
+  { id: "the-plan", index: 4, title: "The plan", firstSlide: 23 },
+  { id: "the-run", index: 5, title: "The run", firstSlide: 28 },
+  { id: "task-selection", index: 6, title: "Task selection", firstSlide: 30 },
+  { id: "the-shift", index: 7, title: "The shift", firstSlide: 33 },
 ];

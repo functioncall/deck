@@ -20,9 +20,9 @@ export function ContextArray() {
       <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
         <div className="flex flex-col gap-2">
           <Heading as="h2" size="display-sm" className="text-left font-light">
-            The context window
+            And that array
             <br />
-            is just <em className="text-accent">an array</em>.
+            is the <em className="text-accent">context window</em>.
           </Heading>
           <ul className="mt-6 flex flex-col gap-3">
             {POINTS.map((point) => (
@@ -42,7 +42,7 @@ export function ContextArray() {
           </ul>
         </div>
         <div className="flex justify-center">
-          <ContextWindow tall />
+          <ContextWindow tall notToScale />
         </div>
       </div>
     </Slide>

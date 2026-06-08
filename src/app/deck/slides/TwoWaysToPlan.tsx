@@ -49,13 +49,13 @@ export function TwoWaysToPlan() {
           tone="bad"
           label="Plan mode"
           verb="write"
-          desc="Wants to produce an asset first. Writes the plan before alignment."
+          desc="Rushes to write the plan before it understands the problem. The asset comes first; understanding never catches up."
         />
         <PlanWay
           tone="good"
           label="/grill-me"
           verb="understand"
-          desc="Wants shared understanding and alignment first. The asset comes after."
+          desc="Builds shared understanding of the problem first. The asset comes after — and it's right."
         />
       </div>
     </Slide>

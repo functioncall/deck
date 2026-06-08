@@ -1,5 +1,6 @@
 import type { SlideEntry } from "@/components/deck-player";
 import { Title } from "./Title";
+import { AttributionNote } from "./AttributionNote";
 import { LlmFunction } from "./LlmFunction";
 import { AgentLoop } from "./AgentLoop";
 import { ContextArray } from "./ContextArray";
@@ -32,6 +33,7 @@ import { TaskSelection } from "./TaskSelection";
 import { WhatFits } from "./WhatFits";
 import { WhatDoesntFit } from "./WhatDoesntFit";
 import { HarnessCompounds } from "./HarnessCompounds";
+import { Sources } from "./Sources";
 import { Closing } from "./Closing";
 
 /**
@@ -43,6 +45,7 @@ import { Closing } from "./Closing";
 export const slides: SlideEntry[] = [
   // §0 — cold open (anonymous: title only, no bio)
   { id: "s-0-1", section: 0, maxState: 1, Component: Title },
+  { id: "s-0-2", section: 0, maxState: 1, Component: AttributionNote },
   // §1 — the model
   { id: "s-1-1", section: 1, maxState: 1, Component: LlmFunction },
   { id: "s-1-2", section: 1, maxState: 1, Component: AgentLoop },
@@ -80,7 +83,8 @@ export const slides: SlideEntry[] = [
   { id: "s-6-1", section: 6, maxState: 1, Component: TaskSelection },
   { id: "s-6-2", section: 6, maxState: 1, Component: WhatFits },
   { id: "s-6-3", section: 6, maxState: 1, Component: WhatDoesntFit },
-  // §7 — the close: the harness compounds, then the sign-off
+  // §7 — the close: the harness compounds, the sources, then the sign-off
   { id: "s-7-2", section: 7, maxState: 1, Component: HarnessCompounds },
+  { id: "s-7-3", section: 7, maxState: 1, Component: Sources },
   { id: "s-7-5", section: 7, maxState: 1, Component: Closing },
 ];

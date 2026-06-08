@@ -10,7 +10,7 @@ export function LayerYouOwn() {
   return (
     <Slide anchor="center">
       <Heading as="h2" size="display-sm" className="mb-7 max-w-5xl font-light">
-        Your harness is <em className="text-accent">the layer you own</em>.
+        The <em className="text-accent">layer you own</em>.
       </Heading>
       <Text variant="lead" className="max-w-3xl">
         Files, skills, loops, and rules the agent reads every session.{" "}

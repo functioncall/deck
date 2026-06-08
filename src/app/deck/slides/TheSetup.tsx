@@ -1,4 +1,5 @@
 import { Fragment } from "react";
+import { Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { PanelHeading, Tree, TwoColPanel, type TreeRow } from "./panel";
 
@@ -45,14 +46,18 @@ const POINTS = [
 ];
 
 /**
- * s-3-2 — "the setup" (index.html data-num 3.2): the harness overview. The
- * persistent project tree beside the numbered index of the pieces that make it up.
- * Single state.
+ * s-3-2 — "start with a dumb harness" (index.html data-num 3.2): the harness
+ * overview — a deliberately minimal starter. The persistent project tree beside
+ * the numbered index of the pieces that make it up. Single state.
  */
 export function TheSetup() {
   return (
     <Slide anchor="top">
-      <PanelHeading>The setup.</PanelHeading>
+      <PanelHeading>Start with a dumb harness.</PanelHeading>
+      <Text variant="soft" className="mb-8 text-left text-sm">
+        <em className="not-italic text-accent">Dumb = minimal.</em> A few files
+        the agent reads every run — no cleverness.
+      </Text>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <div className="grid grid-cols-[auto_minmax(0,1fr)] gap-x-3 gap-y-5">
           {POINTS.map(([num, title, desc]) => (

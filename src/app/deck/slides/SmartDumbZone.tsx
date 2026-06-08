@@ -1,6 +1,7 @@
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
 import { ContextFrame, CtxEmpty, CtxMsg } from "./ctx";
+import { SlideFooter } from "./SlideFooter";
 
 /**
  * s-2-0b — "smart zone, dumb zone" (index.html data-num 2.0b): the bridge slide
@@ -42,6 +43,12 @@ export function SmartDumbZone() {
           </ContextFrame>
         </div>
       </div>
+      <SlideFooter
+        person="Dex Horthy"
+        href="https://www.youtube.com/watch?v=sSeqKe5ZPYY"
+      >
+        escaping the Dumb Zone (#262)
+      </SlideFooter>
     </Slide>
   );
 }

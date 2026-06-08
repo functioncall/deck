@@ -1,5 +1,6 @@
-import { CodeBlock, Heading, Label, Link } from "@/components/atoms";
+import { CodeBlock, Heading } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
+import { SlideFooter } from "./SlideFooter";
 
 /**
  * The deck's `.agent-frame` diagram (index.html ~1147): the green agent layer
@@ -70,18 +71,21 @@ export function AgentLoop() {
         </CodeBlock>
         <AgentFrame />
       </div>
-      <div className="absolute inset-x-[10vw] bottom-20 text-left font-mono text-sm text-ink-soft">
-        <Label className="mb-1 block">Reference</Label>
-        <span className="text-ink">Mihai Eric</span> ·{" "}
-        <Link
-          href="https://www.mihaileric.com/The-Emperor-Has-No-Clothes/"
-          target="_blank"
-          rel="noopener"
-          variant="accent"
-        >
-          The Emperor Has No Clothes: Claude Code in 200 Lines
-        </Link>
-      </div>
+      <SlideFooter
+        refs={[
+          {
+            person: "Mihai Eric",
+            href: "https://www.mihaileric.com/The-Emperor-Has-No-Clothes/",
+            label: "The Emperor Has No Clothes: Claude Code in 200 Lines",
+          },
+          {
+            person: "Geoffrey Huntley",
+            href: "https://www.youtube.com/watch?v=Jr2auYrBDA4",
+            label:
+              "fundamental skills and knowledge you must have in 2026 for SWE",
+          },
+        ]}
+      />
     </Slide>
   );
 }

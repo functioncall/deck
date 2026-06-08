@@ -15,7 +15,7 @@ export function Title() {
         to Long-Running Agents
       </Heading>
       <p className="font-serif text-xl font-light italic text-ink-soft sm:text-2xl">
-        Fundamentals, Workflow, and a Real Example
+        Fundamentals, Workflow, and What Actually Fits
       </p>
     </Slide>
   );

@@ -214,7 +214,7 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
         </div>
       ) : null}
 
-      <div className="absolute left-[5vw] top-[5vh] z-50 flex flex-col gap-2">
+      <div className="absolute left-7 top-6 z-50 flex flex-col gap-2">
         <NextLink
           href="/"
           data-deck-control
@@ -244,6 +244,12 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
       </div>
 
       <ProgressBar current={index + 1} total={total} />
+
+      {index === 0 && state === 0 ? (
+        <div className="pointer-events-none absolute right-7 bottom-6 z-50 font-mono text-xs tracking-widest text-ink-dim">
+          next →
+        </div>
+      ) : null}
     </div>
   );
 }
