@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { CodeBlock, Heading } from "@/components/atoms";
 import { Reveal, Slide } from "@/components/deck-player";
+import { CodeStep } from "./CodeStep";
 
 /**
  * The console log line (index.html `.console-line`): an accent `→`, the event,
@@ -77,15 +78,33 @@ export function LoopInAction() {
           <Heading as="h2" size="display-sm" className="text-left font-light">
             The loop, <em className="text-accent">in action</em>.
           </Heading>
+          {/* Per-state line highlighting (index.html data-state-lines
+              "0:|1:3|2:4|3:5,6|4:7|5:8,2") — the active code line tracks the
+              console log as the stepper advances. */}
           <CodeBlock title="agent.py">
-            <CodeBlock.Cmt># this iteration takes the tool branch</CodeBlock.Cmt>
-            {"\n"}
-            <CodeBlock.Kw>while</CodeBlock.Kw>
-            {" "}
-            <CodeBlock.Kw>True</CodeBlock.Kw>
-            {":\n    user_input = get_input()\n    response = llm.complete(user_input)\n    "}
-            <CodeBlock.Kw>if</CodeBlock.Kw>
-            {" response.wants_tool:\n        result = execute_tool(response.tool_call)\n        response = llm.complete(result)\n    print(response)"}
+            <CodeStep>
+              <CodeBlock.Cmt># this iteration takes the tool branch</CodeBlock.Cmt>
+            </CodeStep>
+            <CodeStep on={[5]}>
+              <CodeBlock.Kw>while</CodeBlock.Kw>{" "}
+              <CodeBlock.Kw>True</CodeBlock.Kw>:
+            </CodeStep>
+            <CodeStep on={[1]}>{"    user_input = get_input()"}</CodeStep>
+            <CodeStep on={[2]}>
+              {"    response = llm.complete(user_input)"}
+            </CodeStep>
+            <CodeStep on={[3]}>
+              {"    "}
+              <CodeBlock.Kw>if</CodeBlock.Kw>
+              {" response.wants_tool:"}
+            </CodeStep>
+            <CodeStep on={[3]}>
+              {"        result = execute_tool(response.tool_call)"}
+            </CodeStep>
+            <CodeStep on={[4]}>
+              {"        response = llm.complete(result)"}
+            </CodeStep>
+            <CodeStep on={[5]}>{"    print(response)"}</CodeStep>
           </CodeBlock>
           <div className="relative min-h-56 rounded-md border border-rule bg-bg-card px-6 pb-4 pt-6">
             <span className="absolute -top-2 left-5 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-ink-dim">
