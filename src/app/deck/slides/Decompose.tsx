@@ -23,10 +23,12 @@ function StackBlock({
   );
 }
 
-function Arrow() {
+/** Flow arrow — points down on mobile (a top-down tree) and right on desktop. */
+function FlowArrow() {
   return (
     <span aria-hidden="true" className="text-ink-dim">
-      →
+      <span className="md:hidden">↓</span>
+      <span className="max-md:hidden">→</span>
     </span>
   );
 }
@@ -60,16 +62,14 @@ export function Decompose() {
         Spec to issues,{" "}
         <em className="italic text-accent">sized for the smart zone.</em>
       </Text>
-      <div className="flex flex-col items-center gap-5 md:flex-row md:justify-center">
+      <div className="flex flex-col items-center gap-4 md:flex-row md:justify-center md:gap-5">
         <StackBlock>spec.md</StackBlock>
-        <Arrow />
+        <FlowArrow />
         <StackBlock accent>/session-planner</StackBlock>
+        <FlowArrow />
         <div className="flex flex-col gap-3">
           {OUTPUTS.map((out) => (
-            <div key={out} className="flex items-center gap-3">
-              <Arrow />
-              <StackBlock>{out}</StackBlock>
-            </div>
+            <StackBlock key={out}>{out}</StackBlock>
           ))}
         </div>
       </div>

@@ -35,7 +35,7 @@ export function Slide({
       <div
         className={`flex w-full max-w-6xl flex-col items-center gap-6 text-center ${
           top ? "mx-auto" : "m-auto"
-        }${hasStepper ? " pt-8" : ""}`}
+        }`}
       >
         {children}
       </div>

@@ -130,7 +130,7 @@ export function PhoneSplit({
         <Image
           src={src}
           alt={alt}
-          className="h-auto max-h-[55vh] w-auto max-w-full rounded-lg"
+          className="h-auto max-h-[55vh] w-auto max-w-full rounded-lg max-md:max-h-none max-md:w-full"
         />
       </div>
       <div className="max-w-lg">{children}</div>

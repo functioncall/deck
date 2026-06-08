@@ -14,7 +14,7 @@ import { ContextFrame, CtxEmpty, CtxMsg, StateRange } from "./ctx";
 export function ContextRot() {
   return (
     <Slide anchor="center">
-      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
+      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-10 text-left md:grid-cols-2 md:gap-[4vw]">
         <div className="self-start">
           <Heading as="h2" size="display-sm" className="text-left font-light">
             The <em className="text-accent">context rot</em> problem.
@@ -25,7 +25,7 @@ export function ContextRot() {
               It just fills up. Attention frays. Compaction is lossy.
             </em>
           </Text>
-          <StateRange min={4}>
+          <StateRange min={4} reserve>
             <div className="mt-8 text-left font-mono text-sm text-ink-soft">
               Same window. Same model.
               <div className="mt-1 italic text-accent">

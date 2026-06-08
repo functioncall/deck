@@ -12,7 +12,7 @@ import chart from "./instruction-ceiling.jpg";
 export function InstructionCeiling() {
   return (
     <Slide anchor="center">
-      <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-[3vw] text-left md:grid-cols-[1.5fr_1fr]">
+      <div className="grid w-full max-w-6xl grid-cols-1 items-center gap-10 text-left md:grid-cols-[1.5fr_1fr] md:gap-[3vw]">
         <div className="flex items-center justify-center">
           <Image
             src={chart}

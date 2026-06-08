@@ -130,7 +130,7 @@ export function HarnessWrapsTheirs() {
       >
         <FrameLayer
           frameMin={2}
-          label="Agent harness · Claude Code / Cursor / Codex"
+          label="Agent harness · Claude Code"
           color="harness"
           className="flex w-full flex-col gap-5 px-6 pb-6 pt-8 max-md:gap-3 max-md:px-2 max-md:pt-7"
         >

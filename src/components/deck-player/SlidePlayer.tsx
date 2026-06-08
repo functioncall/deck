@@ -156,7 +156,7 @@ export function SlidePlayer({
       swiped.current = false;
       return;
     }
-    // Don't advance when the click lands on interactive chrome (links, the jump
+    // Don't navigate when the click lands on interactive chrome (links, the jump
     // menu, form fields) — only on the slide canvas itself.
     if (
       (e.target as HTMLElement).closest(
@@ -166,7 +166,11 @@ export function SlidePlayer({
       return;
     }
     rootRef.current?.focus({ preventScroll: true });
-    dispatch({ type: "next" });
+    // Split the canvas: a tap on the left half goes back, the right half goes
+    // forward (the slide-1 onboarding hint teaches this). Mirrors the swipe nav.
+    const rect = rootRef.current?.getBoundingClientRect();
+    const goPrev = rect ? e.clientX - rect.left < rect.width / 2 : false;
+    dispatch({ type: goPrev ? "prev" : "next" });
   }
 
   function handlePointerDown(e: React.PointerEvent<HTMLDivElement>) {

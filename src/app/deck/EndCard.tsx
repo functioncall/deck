@@ -25,13 +25,13 @@ export function EndCard() {
         you the actual harness setup — the custom skills,{" "}
         <span className="font-mono text-ink">CLAUDE.md</span>, the ralph-loop
         script and the <span className="font-mono text-ink">agent_docs</span>{" "}
-        templates. Join the waitlist to lock the founding price.
+        templates.
       </Text>
 
       <div className="mt-10 w-full max-w-md text-left">
         <Text variant="soft" className="mb-3">
-          Join the waitlist — lock the founding price, get the Kit the day it
-          ships, plus the Screencast free when it lands.
+          Lock the discounted price, get the Kit the day it ships, plus the
+          Screencast free when it lands.
         </Text>
         <EmailCaptureForm cta="Join the waitlist" />
         <div className="mt-4 text-center">

@@ -17,7 +17,7 @@ const POINTS = [
 export function ContextArray() {
   return (
     <Slide anchor="center">
-      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
+      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-10 text-left md:grid-cols-2 md:gap-[4vw]">
         <div className="flex flex-col gap-2">
           <Heading as="h2" size="display-sm" className="text-left font-light">
             And that array

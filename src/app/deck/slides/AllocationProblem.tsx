@@ -12,7 +12,7 @@ import { ContextFrame, CtxEmpty, CtxMsg, StateRange } from "./ctx";
 export function AllocationProblem() {
   return (
     <Slide anchor="center">
-      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
+      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-10 text-left md:grid-cols-2 md:gap-[4vw]">
         <div className="self-start">
           <Heading as="h2" size="display-sm" className="text-left font-light">
             The <em className="text-accent">allocation</em> problem.
@@ -21,7 +21,7 @@ export function AllocationProblem() {
             Static fills eat your usable space{" "}
             <em className="text-accent">before the conversation starts.</em>
           </Text>
-          <StateRange min={3}>
+          <StateRange min={3} reserve>
             <div className="mt-8 text-left font-mono text-sm text-ink-soft">
               Static fills &rarr;{" "}
               <em className="text-accent">smart zone shrinks.</em>
@@ -37,7 +37,9 @@ export function AllocationProblem() {
               system prompt
             </CtxMsg>
             <StateRange max={0}>
-              <CtxMsg size="9.5k">tool definitions</CtxMsg>
+              <CtxMsg size="9.5k" className="min-h-24">
+                tool definitions
+              </CtxMsg>
             </StateRange>
             <StateRange min={1}>
               <CtxMsg tone="bad" size="32k" className="min-h-24">
@@ -45,7 +47,9 @@ export function AllocationProblem() {
               </CtxMsg>
             </StateRange>
             <StateRange max={1}>
-              <CtxMsg size="2.5k">CLAUDE.md</CtxMsg>
+              <CtxMsg size="2.5k" className="min-h-12">
+                CLAUDE.md
+              </CtxMsg>
             </StateRange>
             <StateRange min={2}>
               <CtxMsg tone="bad" size="6k" className="min-h-12">

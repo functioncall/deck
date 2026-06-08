@@ -16,6 +16,18 @@
 }
 
 /*
+ * Hide the horizontal scrollbar on code blocks (and any opt-in element) while
+ * keeping the content scrollable — the deck's code surfaces overflow-x on narrow
+ * screens but should not show a scrollbar track.
+ */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/*
  * Base layer — body uses deck theme tokens (bg + ink + sans) from theme.css.
  * No hard-coded design values: every value below is a theme token.
  */

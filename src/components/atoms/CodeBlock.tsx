@@ -34,7 +34,7 @@ export function CodeBlock({ title, children, className }: CodeBlockProps) {
           {title}
         </div>
       ) : null}
-      <pre className="overflow-x-auto font-mono text-sm leading-relaxed text-ink-soft">
+      <pre className="no-scrollbar overflow-x-auto font-mono text-sm leading-relaxed text-ink-soft">
         <code>{children}</code>
       </pre>
     </div>

@@ -18,10 +18,6 @@ export function AttributionNote() {
         together with my own experiments on what actually works and what
         doesn&rsquo;t.
       </Text>
-      <Text variant="soft" className="mt-6 max-w-2xl">
-        The people I&rsquo;m drawing on are{" "}
-        <em className="text-accent">credited at the end.</em>
-      </Text>
     </Slide>
   );
 }

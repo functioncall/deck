@@ -39,7 +39,7 @@ const PRACTICES = [
 export function GoodContext() {
   return (
     <Slide anchor="center">
-      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-[4vw] text-left md:grid-cols-2">
+      <div className="grid w-full max-w-5xl grid-cols-1 items-center gap-10 text-left md:grid-cols-2 md:gap-[4vw]">
         <div className="self-start">
           <Heading as="h2" size="display-sm" className="mb-6 text-left font-light">
             Good context{" "}
