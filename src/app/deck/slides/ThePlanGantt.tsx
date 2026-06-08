@@ -4,10 +4,10 @@ import { Gantt } from "@/components/diagrams";
 
 /**
  * The plan → execute → review split (index.html slide 4.1 gantt rows). A
- * left-aligned bar chart (~209 min total): every bar starts at the same left
- * edge, with width proportional to its share of the time — Plan ~120 min (57%),
- * Execute 59 min (28%), Review ~30 min (15%). No offset, so the bars compare
- * head-to-head instead of cascading.
+ * cascading timeline (~209 min total): each phase starts where the previous one
+ * ended — Plan ~120 min (0–57%), Execute 59 min (57–85%), Review ~30 min
+ * (85–100%) — so the bars read as a sequence over time, each phase's label
+ * riding above its own segment.
  */
 const ROWS = [
   { label: "Plan", time: "~2:00 hr", width: "57%", variant: "plan" as const },
@@ -15,12 +15,14 @@ const ROWS = [
     label: "Execute",
     time: "59 min",
     width: "28%",
+    offset: "57%",
     variant: "agent" as const,
   },
   {
     label: "Review",
     time: "~30 min",
     width: "15%",
+    offset: "85%",
     variant: "review" as const,
   },
 ];

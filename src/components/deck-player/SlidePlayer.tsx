@@ -23,6 +23,9 @@ type SlidePlayerProps = {
   slides: SlideEntry[];
   /** The 8 deck sections, for the jump menu + section counter. */
   sections: DeckSection[];
+  /** Notified whenever the active slide index changes — drives chrome rendered
+   *  outside the player (e.g. hiding the sticky capture bar on the last slide). */
+  onActiveSlideChange?: (index: number) => void;
 };
 
 type MachineState = { index: number; state: number };
@@ -73,7 +76,11 @@ function makeReducer(slides: SlideEntry[]) {
   };
 }
 
-export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
+export function SlidePlayer({
+  slides,
+  sections,
+  onActiveSlideChange,
+}: SlidePlayerProps) {
   const reducer = useMemo(() => makeReducer(slides), [slides]);
   const [{ index, state }, dispatch] = useReducer(reducer, { index: 0, state: 0 });
 
@@ -102,6 +109,12 @@ export function SlidePlayer({ slides, sections }: SlidePlayerProps) {
       slideId: slides[index]?.id,
     });
   }, [index, slides]);
+
+  // Surface the active slide index to the assembly layer (e.g. to hide the
+  // sticky capture bar on the final slide). An effect keeps render pure.
+  useEffect(() => {
+    onActiveSlideChange?.(index);
+  }, [index, onActiveSlideChange]);
 
   // `deck_completed` fires once, the first time the last slide is reached this
   // session (revisiting the end after navigating away must not re-fire it).

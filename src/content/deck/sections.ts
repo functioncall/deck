@@ -8,9 +8,8 @@ import type { DeckSection } from "@/components/deck-player";
  * Title`); §0 has no label — it is the cold-open title (anonymous, no bio).
  * `firstSlide` is the 0-based index of the section's first slide in the ordered
  * registry (`src/app/deck/slides/index.ts`). Slide counts per section:
- * §0:2 §1:7 §2:6 §3:8 §4:5 §5:2 §6:3 §7:3 (36 total — §0 adds the cold-open
- * attribution note and §7 adds the sources slide before the close, so every
- * section after the cold open shifts down by one from the note).
+ * §0:2 §1:7 §2:6 §3:8 §4:5 §5:2 §6:3 §7:2 (35 total — §0 adds the cold-open
+ * attribution note, so every section after the cold open shifts down by one).
  */
 export const deckSections: DeckSection[] = [
   { id: "cold-open", index: 0, title: "Cold open", firstSlide: 0 },

@@ -54,7 +54,7 @@ export function TheSetup() {
   return (
     <Slide anchor="top">
       <PanelHeading>Start with a dumb harness.</PanelHeading>
-      <Text variant="soft" className="mb-8 text-left text-sm">
+      <Text variant="lead" className="mb-8 max-w-3xl self-start text-left">
         <em className="not-italic text-accent">Dumb = minimal.</em> A few files
         the agent reads every run — no cleverness.
       </Text>

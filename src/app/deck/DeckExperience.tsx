@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import type { SlideEntry } from "@/components/deck-player";
 import { SlidePlayer } from "@/components/deck-player";
 import { deckSections } from "@/content/deck";
@@ -23,10 +24,19 @@ const deckSlides: SlideEntry[] = [
 ];
 
 export function DeckExperience() {
+  const [active, setActive] = useState(0);
+  const lastIndex = deckSlides.length - 1;
+
   return (
     <>
-      <SlidePlayer slides={deckSlides} sections={deckSections} />
-      <StickyCaptureBar />
+      <SlidePlayer
+        slides={deckSlides}
+        sections={deckSections}
+        onActiveSlideChange={setActive}
+      />
+      {/* The final slide (EndCard) is the full conversion surface, so the
+          persistent bar would be a third, redundant CTA there — hide it. */}
+      {active < lastIndex ? <StickyCaptureBar /> : null}
     </>
   );
 }

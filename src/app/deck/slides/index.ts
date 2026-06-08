@@ -33,7 +33,6 @@ import { TaskSelection } from "./TaskSelection";
 import { WhatFits } from "./WhatFits";
 import { WhatDoesntFit } from "./WhatDoesntFit";
 import { HarnessCompounds } from "./HarnessCompounds";
-import { Sources } from "./Sources";
 import { Closing } from "./Closing";
 
 /**
@@ -83,8 +82,7 @@ export const slides: SlideEntry[] = [
   { id: "s-6-1", section: 6, maxState: 1, Component: TaskSelection },
   { id: "s-6-2", section: 6, maxState: 1, Component: WhatFits },
   { id: "s-6-3", section: 6, maxState: 1, Component: WhatDoesntFit },
-  // §7 — the close: the harness compounds, the sources, then the sign-off
+  // §7 — the close: the harness compounds, then the sign-off
   { id: "s-7-2", section: 7, maxState: 1, Component: HarnessCompounds },
-  { id: "s-7-3", section: 7, maxState: 1, Component: Sources },
   { id: "s-7-5", section: 7, maxState: 1, Component: Closing },
 ];

@@ -43,7 +43,12 @@ const POINTS = [
 export function RalphLoop() {
   return (
     <Slide anchor="top">
-      <PanelHeading>The Ralph loop.</PanelHeading>
+      <PanelHeading>
+        The Ralph loop{" "}
+        <span className="font-mono text-base font-normal text-ink-dim">
+          (aka run the prompt on a loop)
+        </span>
+      </PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <CodeBlock>
           <CodeBlock.Kw>while</CodeBlock.Kw>

@@ -1,10 +1,6 @@
 import { Heading, Link, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
-import {
-  CTAButtonGroup,
-  CheckoutButton,
-  EmailCaptureForm,
-} from "@/components/molecules";
+import { EmailCaptureForm } from "@/components/molecules";
 
 /**
  * EndCard — the end-of-deck conversion surface, appended after the ported §7
@@ -12,10 +8,9 @@ import {
  * so it lives here in the assembly layer rather than in `slides/index.ts`).
  *
  * It composes the L1 `EmailCaptureForm` — the waitlist capture that POSTs to
- * /api/subscribe → Loops — and the L1 `CTAButtonGroup` linking back to `/` and
- * to the waitlist anchor via the shared `CheckoutButton` (`/#join`, not a live
- * checkout yet — Deck-n87). The single waitlist verb "Join the waitlist" is
- * used everywhere (Locked decision 3). Token-only styling (ADR-0005).
+ * /api/subscribe → Loops — as the single call to action, with a quiet "Back to
+ * home" link beneath it. The single waitlist verb "Join the waitlist" is used
+ * everywhere (Locked decision 3). Token-only styling (ADR-0005).
  */
 
 export function EndCard() {
@@ -27,7 +22,7 @@ export function EndCard() {
       <Text variant="lead" className="mt-6 max-w-2xl">
         The Deck is free, and it stays free. When the{" "}
         <span className="text-ink">Harness Starter Kit</span> ships, it hands
-        you the founder&rsquo;s actual harness — the custom skills,{" "}
+        you the actual harness setup — the custom skills,{" "}
         <span className="font-mono text-ink">CLAUDE.md</span>, the ralph-loop
         script and the <span className="font-mono text-ink">agent_docs</span>{" "}
         templates. Join the waitlist to lock the founding price.
@@ -39,21 +34,12 @@ export function EndCard() {
           ships, plus the Screencast free when it lands.
         </Text>
         <EmailCaptureForm cta="Join the waitlist" />
-      </div>
-
-      <CTAButtonGroup
-        className="mt-10 justify-center"
-        primary={
-          <CheckoutButton className="px-8 py-4 text-lg">
-            Join the waitlist
-          </CheckoutButton>
-        }
-        secondary={
-          <Link href="/" variant="muted" className="text-center">
+        <div className="mt-4 text-center">
+          <Link href="/" variant="muted">
             Back to home
           </Link>
-        }
-      />
+        </div>
+      </div>
     </Slide>
   );
 }
