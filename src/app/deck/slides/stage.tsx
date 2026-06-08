@@ -14,16 +14,19 @@ const STAGES = ["grill", "spec", "decompose", "run", "review"] as const;
 export type Stage = (typeof STAGES)[number];
 
 /**
- * Pipeline — the static workflow rail pinned top-centre of the §4–5 stepper
- * slides (the deck's `.stepper` with a `║` divider before `run`). Unlike the
- * reveal `Stepper`, the active stage is fixed per slide (these slides are
- * single-state), so it is slide content, not a `SlidePlayer` control.
+ * Pipeline — the static workflow rail at the top of the §4–5 stepper slides
+ * (the deck's `.stepper` with a `║` divider before `run`). Unlike the reveal
+ * `Stepper`, the active stage is fixed per slide (these slides are single-state),
+ * so it is slide content, not a `SlidePlayer` control. It flows in-line as the
+ * first element (below the deck header) rather than floating absolutely, so it
+ * never collides with the header's section label on a narrow screen; it wraps to
+ * two centred lines on phones instead of overflowing the width.
  */
 export function Pipeline({ active }: { active: Stage }) {
   return (
     <nav
       aria-label="Workflow stage"
-      className="absolute left-1/2 top-[5vh] z-10 flex -translate-x-1/2 items-center gap-5 whitespace-nowrap font-mono text-xs uppercase tracking-widest"
+      className="mb-6 flex flex-wrap items-center justify-center gap-x-5 gap-y-1 font-mono text-xs uppercase tracking-widest max-md:gap-x-4"
     >
       {STAGES.map((stage) => (
         <Fragment key={stage}>

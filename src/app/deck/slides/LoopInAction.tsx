@@ -125,7 +125,7 @@ export function LoopInAction() {
 
         {/* RIGHT: the filling context window */}
         <div className="flex justify-center">
-          <div className="relative flex min-h-[70vh] w-full max-w-sm flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2">
+          <div className="relative flex min-h-[70vh] w-full max-w-sm flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2 max-md:min-h-[55vh]">
             <span className="absolute -top-2 left-3 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-ink-dim">
               Context window · 200K
             </span>

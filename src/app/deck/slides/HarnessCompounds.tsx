@@ -21,7 +21,7 @@ export function HarnessCompounds() {
       <Heading as="h1" size="display-sm" className="mb-8 font-light">
         The harness compounds.
       </Heading>
-      <div className="grid max-w-3xl grid-cols-[auto_auto_auto] items-baseline gap-x-6 gap-y-4 text-left font-mono text-base">
+      <div className="grid max-w-3xl grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] items-baseline gap-x-3 gap-y-4 text-left font-mono text-sm md:grid-cols-[auto_auto_auto] md:gap-x-6 md:text-base">
         {MAPPINGS.map((m) => (
           <Fragment key={m.from}>
             <span className="text-ink-soft">{m.from}</span>

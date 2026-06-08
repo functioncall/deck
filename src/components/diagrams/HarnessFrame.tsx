@@ -2,6 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useSlideState } from "@/components/deck-player";
+import { AgentFlow } from "./AgentFlow";
 
 /**
  * HarnessFrame — the deck's layered `.harness-full` visual (index.html ~1082):
@@ -52,7 +53,7 @@ const HARNESS_COMPONENTS = [
 function AgentCore({ revealed }: { revealed: boolean }) {
   return (
     <div
-      className={`relative mx-auto w-full rounded-lg border px-6 pb-6 pt-8 transition-colors duration-500 ${
+      className={`relative mx-auto w-full rounded-lg border px-6 pb-6 pt-8 transition-colors duration-500 max-md:px-3 ${
         revealed ? "border-layer-agent bg-bg-soft" : "border-transparent"
       }`}
     >
@@ -63,37 +64,7 @@ function AgentCore({ revealed }: { revealed: boolean }) {
       >
         Agent · ↻ while true
       </span>
-      <div className="flex flex-wrap items-start justify-center gap-4 font-mono">
-        <span className="pt-5 text-sm italic text-ink-soft">user input</span>
-        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-          →
-        </span>
-        <div className="flex flex-col items-center gap-3">
-          <span className="rounded border-2 border-accent bg-bg-card px-6 py-4 text-lg font-medium tracking-wider text-ink">
-            LLM
-          </span>
-          <div
-            aria-hidden="true"
-            className={`flex flex-col items-center gap-3 transition-opacity duration-500 ${
-              revealed ? "opacity-100" : "opacity-0"
-            }`}
-          >
-            <div className="flex gap-2 text-lg leading-none text-ink-soft">
-              <span>↑</span>
-              <span>↓</span>
-            </div>
-            <div className="flex size-14 rotate-45 items-center justify-center border border-accent-soft bg-bg-soft">
-              <span className="-rotate-45 font-mono text-sm tracking-wide text-ink">
-                tool
-              </span>
-            </div>
-          </div>
-        </div>
-        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-          →
-        </span>
-        <span className="pt-5 text-sm italic text-ink-soft">output</span>
-      </div>
+      <AgentFlow showTool={revealed} />
     </div>
   );
 }

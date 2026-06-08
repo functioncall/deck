@@ -31,7 +31,9 @@ const treeToneClass: Record<TreeTone, string> = {
  */
 export function Tree({ rows }: { rows: TreeRow[] }) {
   return (
-    <div className="whitespace-pre text-left font-mono text-xs leading-relaxed">
+    // `overflow-x-auto` keeps the longest box-drawing rows from widening the
+    // whole slide on the narrowest phones — they scroll within the tree column.
+    <div className="max-w-full overflow-x-auto whitespace-pre text-left font-mono text-xs leading-relaxed">
       {rows.map((row, i) => (
         <div key={i} className={treeToneClass[row.tone ?? "default"]}>
           {row.text}

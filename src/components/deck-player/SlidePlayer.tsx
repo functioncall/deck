@@ -221,6 +221,15 @@ export function SlidePlayer({
         );
       })}
 
+      {/* Top scrim — the header chrome is transparent floating text, so on a
+          tall slide that scrolls the content would slide up behind it. This
+          fades the content into the background just under the header (the bottom
+          CTA bar's opaque/blurred background masks the other end). */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 z-40 h-24 bg-gradient-to-b from-bg from-40% to-transparent"
+      />
+
       {activeMaxState > 1 ? (
         <div className="pointer-events-none absolute left-1/2 top-[5vh] z-50 -translate-x-1/2">
           <Stepper count={activeMaxState} active={state} />
@@ -259,7 +268,7 @@ export function SlidePlayer({
       <ProgressBar current={index + 1} total={total} />
 
       {index === 0 && state === 0 ? (
-        <div className="pointer-events-none absolute right-7 bottom-6 z-50 font-mono text-xs tracking-widest text-ink-dim">
+        <div className="pointer-events-none absolute right-7 bottom-6 z-50 font-mono text-xs tracking-widest text-ink-dim max-md:hidden">
           next →
         </div>
       ) : null}

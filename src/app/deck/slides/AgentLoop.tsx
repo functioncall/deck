@@ -1,46 +1,21 @@
 import { CodeBlock, Heading } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
+import { AgentFlow } from "@/components/diagrams";
 import { SlideFooter } from "./SlideFooter";
 
 /**
  * The deck's `.agent-frame` diagram (index.html ~1147): the green agent layer
- * (`--color-layer-agent`, the `↻ WHILE TRUE` loop) wrapping the prominent LLM
- * box with the tool diamond hung below it. Slide-local layout (the standalone
- * agent frame is not one of the four extracted diagrams). Token-only.
+ * (`--color-layer-agent`, the `↻ WHILE TRUE` loop) wrapping the shared
+ * `AgentFlow` primitive (the prominent LLM box with the tool loop hung below).
+ * Token-only.
  */
 function AgentFrame() {
   return (
-    <div className="relative mx-auto w-full max-w-xl rounded-lg border border-layer-agent bg-bg-soft px-8 pb-10 pt-10">
+    <div className="relative mx-auto w-full max-w-xl rounded-lg border border-layer-agent bg-bg-soft px-8 pb-10 pt-10 max-md:px-4 max-md:pb-8 max-md:pt-8">
       <span className="absolute -top-2 left-6 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-layer-agent">
         Agent · ↻ while true
       </span>
-      <div className="flex items-start justify-center gap-4 font-mono">
-        <span className="pt-5 text-sm italic text-ink-soft">user input</span>
-        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-          →
-        </span>
-        <div className="flex flex-col items-center gap-3">
-          <span className="rounded border-2 border-accent bg-bg-card px-6 py-4 text-lg font-medium tracking-wider text-ink">
-            LLM
-          </span>
-          <div
-            aria-hidden="true"
-            className="flex gap-2 text-lg leading-none text-ink-soft"
-          >
-            <span>↑</span>
-            <span>↓</span>
-          </div>
-          <div className="flex size-14 rotate-45 items-center justify-center border border-accent-soft bg-bg-soft">
-            <span className="-rotate-45 font-mono text-sm tracking-wide text-ink">
-              tool
-            </span>
-          </div>
-        </div>
-        <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-          →
-        </span>
-        <span className="pt-5 text-sm italic text-ink-soft">output</span>
-      </div>
+      <AgentFlow />
     </div>
   );
 }

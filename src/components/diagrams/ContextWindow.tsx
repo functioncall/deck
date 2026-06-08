@@ -59,7 +59,7 @@ export function ContextWindow({
   return (
     <div
       className={`relative flex w-full max-w-md flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2 ${
-        tall ? "min-h-[80vh]" : "min-h-96"
+        tall ? "min-h-[80vh] max-md:min-h-[60vh]" : "min-h-96"
       }${className ? ` ${className}` : ""}`}
     >
       <span className="absolute -top-2 left-3 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-ink-dim">

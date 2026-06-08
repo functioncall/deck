@@ -3,6 +3,7 @@
 import type { ReactNode } from "react";
 import { Heading, Text } from "@/components/atoms";
 import { Reveal, Slide, useSlideState } from "@/components/deck-player";
+import { AgentFlow } from "@/components/diagrams";
 
 /** The agent-harness components (same set as slide 1.5). */
 const AGENT_COMPONENTS = [
@@ -104,6 +105,9 @@ function Tile({
  * state 3. maxState 4.
  */
 export function HarnessWrapsTheirs() {
+  // The tool loop fades in with the agent layer (state ≥ 1), matching the
+  // shared AgentFlow's progressive contract.
+  const state = useSlideState();
   return (
     <Slide anchor="center">
       {/* The thesis lands only once the outer user-harness layer is added (state
@@ -122,56 +126,22 @@ export function HarnessWrapsTheirs() {
         frameMin={3}
         label="User harness · what you build"
         color="user"
-        className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-7 pb-6 pt-9"
+        className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-7 pb-6 pt-9 max-md:gap-3 max-md:px-3 max-md:pt-7"
       >
         <FrameLayer
           frameMin={2}
           label="Agent harness · Claude Code / Cursor / Codex"
           color="harness"
-          className="flex w-full flex-col gap-5 px-6 pb-6 pt-8"
+          className="flex w-full flex-col gap-5 px-6 pb-6 pt-8 max-md:gap-3 max-md:px-2 max-md:pt-7"
         >
           <div className="flex w-full justify-center">
             <FrameLayer
               frameMin={1}
               label="Agent · ↻ while true"
               color="agent"
-              className="w-full px-6 pb-6 pt-8"
+              className="w-full px-6 pb-6 pt-8 max-md:px-2 max-md:pt-7"
             >
-              <div className="flex flex-wrap items-start justify-center gap-4 font-mono">
-                <span className="pt-5 text-sm italic text-ink-soft">
-                  user input
-                </span>
-                <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-                  →
-                </span>
-                <div className="flex flex-col items-center gap-3">
-                  <span className="rounded border-2 border-accent bg-bg-card px-6 py-4 text-lg font-medium tracking-wider text-ink">
-                    LLM
-                  </span>
-                  <Reveal
-                    frameMin={1}
-                    mode="label"
-                    className="flex flex-col items-center gap-3"
-                  >
-                    <div
-                      aria-hidden="true"
-                      className="flex gap-2 text-lg leading-none text-ink-soft"
-                    >
-                      <span>↑</span>
-                      <span>↓</span>
-                    </div>
-                    <div className="flex size-14 rotate-45 items-center justify-center border border-accent-soft bg-bg-soft">
-                      <span className="-rotate-45 font-mono text-sm tracking-wide text-ink">
-                        tool
-                      </span>
-                    </div>
-                  </Reveal>
-                </div>
-                <span aria-hidden="true" className="pt-5 text-xl text-ink-soft">
-                  →
-                </span>
-                <span className="pt-5 text-sm italic text-ink-soft">output</span>
-              </div>
+              <AgentFlow showTool={state >= 1} />
             </FrameLayer>
           </div>
           <Reveal frameMin={2}>

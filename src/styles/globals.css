@@ -2,6 +2,20 @@
 @import "./theme.css";
 
 /*
+ * Deck chrome reserve (mobile-view layout pass). The /deck slide frame must
+ * clear the absolute header (top: wordmark + section label) and the fixed
+ * StickyCaptureBar plus the phone's home-indicator / address-bar safe area
+ * (bottom). Defined once so the slide padding (deck-player/Slide.tsx) and the
+ * bar's safe-area padding stay in sync — the slide reserves ~1rem more than the
+ * bar's height so content always clears it on every phone. Raw lengths live
+ * here (the token source), never in components (ADR-0005).
+ */
+:root {
+  --deck-chrome-top: 6rem;
+  --deck-chrome-bottom: calc(4.5rem + env(safe-area-inset-bottom));
+}
+
+/*
  * Base layer — body uses deck theme tokens (bg + ink + sans) from theme.css.
  * No hard-coded design values: every value below is a theme token.
  */

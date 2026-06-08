@@ -3,10 +3,12 @@ import { Link } from "@/components/atoms";
 
 /**
  * SlideFooter — the deck's `.slide-footer` reference line (index.html ~107):
- * a mono "Reference" label over the cited person + an accent link, pinned to the
- * bottom-left of the slide frame. Sits at `bottom-20` so it clears the fixed
- * `StickyCaptureBar` at the bottom of `/deck` (they used to overlap). Shared
- * chrome for the cited slides — not a registry slide. Token-only (ADR-0005).
+ * a mono "Reference" label over the cited person + an accent link. On desktop it
+ * is pinned to the bottom-left of the slide frame (`bottom-20`, clearing the
+ * `StickyCaptureBar`). On mobile the bar is taller and the slide scrolls, so the
+ * refs flow inline at the end of the content instead (scrolling with it, cleared
+ * by the slide's bottom padding) — never floating over or hidden behind the bar.
+ * Shared chrome for the cited slides — not a registry slide. Token-only.
  *
  * Two forms:
  *  - single: `<SlideFooter person href>label</SlideFooter>`
@@ -40,7 +42,7 @@ export function SlideFooter(props: SlideFooterProps) {
     : [{ person: props.person, href: props.href, label: props.children }];
 
   return (
-    <div className="absolute inset-x-[10vw] bottom-20 text-left font-mono text-sm text-ink-soft">
+    <div className="text-left font-mono text-sm text-ink-soft max-md:mt-6 max-md:w-full md:absolute md:inset-x-[10vw] md:bottom-20">
       <div className="mb-1 text-xs uppercase tracking-widest text-ink-dim">
         {refs.length > 1 ? "References" : "Reference"}
       </div>

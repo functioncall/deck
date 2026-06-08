@@ -23,14 +23,19 @@ export function StickyCaptureBar() {
   if (dismissed) return null;
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-rule bg-bg-card/95 backdrop-blur">
-      <div className="mx-auto flex max-w-6xl flex-col items-center gap-2 px-6 py-2 max-md:px-4 sm:flex-row sm:justify-between">
-        <Text variant="soft" className="text-sm">
+    <div className="fixed inset-x-0 bottom-0 z-40 border-t border-rule bg-bg-card/95 pb-[env(safe-area-inset-bottom)] backdrop-blur">
+      {/* One compact row on every width. The descriptive line is hidden under
+          the sm breakpoint so the bar stays a single line on phones (it used to
+          stack into a tall block that ate the slide) — the CTA + dismiss span
+          the width there instead. Its height is kept under --deck-chrome-bottom
+          so slide content always clears it. */}
+      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-6 py-2 max-md:px-4">
+        <Text variant="soft" className="text-sm max-sm:hidden">
           The Deck is the map. The{" "}
           <span className="text-ink">Harness Starter Kit</span> is the toolkit —
           waitlist members lock the Founding price.
         </Text>
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-5 max-sm:w-full max-sm:justify-between">
           <CheckoutButton className="px-5 py-2 text-sm">Join the waitlist</CheckoutButton>
           <button
             type="button"

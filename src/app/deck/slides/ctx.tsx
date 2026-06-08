@@ -62,7 +62,7 @@ export function ContextFrame({
   children: ReactNode;
 }) {
   return (
-    <div className="relative flex min-h-[80vh] w-full max-w-sm flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2">
+    <div className="relative flex min-h-[80vh] w-full max-w-sm flex-col gap-1.5 rounded-md border border-rule bg-bg-card p-2 max-md:min-h-[60vh]">
       <span className="absolute -top-2 left-3 z-10 bg-bg px-2 font-mono text-xs uppercase tracking-widest text-ink-dim">
         {label}
       </span>

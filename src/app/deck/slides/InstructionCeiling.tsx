@@ -45,7 +45,7 @@ export function InstructionCeiling() {
           </div>
         </div>
       </div>
-      <div className="absolute inset-x-[10vw] bottom-[6vh] text-center font-mono text-xs uppercase tracking-widest text-ink-dim">
+      <div className="text-center font-mono text-xs uppercase tracking-widest text-ink-dim max-md:mt-6 max-md:w-full md:absolute md:inset-x-[10vw] md:bottom-[6vh]">
         source · Dex Horthy / humanlayer.dev · arxiv:2507.11538
       </div>
     </Slide>

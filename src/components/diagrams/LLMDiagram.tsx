@@ -15,7 +15,7 @@ type LLMDiagramProps = {
 
 function Chip({ children }: { children: ReactNode }) {
   return (
-    <span className="rounded-sm border border-rule bg-bg-soft px-4 py-3 font-mono text-sm italic text-ink-soft">
+    <span className="whitespace-nowrap rounded-sm border border-rule bg-bg-soft px-2.5 py-2 font-mono text-xs italic text-ink-soft md:px-4 md:py-3 md:text-sm">
       {children}
     </span>
   );
@@ -23,7 +23,7 @@ function Chip({ children }: { children: ReactNode }) {
 
 function Arrow() {
   return (
-    <span aria-hidden="true" className="font-mono text-lg text-ink-dim">
+    <span aria-hidden="true" className="font-mono text-base text-ink-dim md:text-lg">
       →
     </span>
   );
@@ -31,19 +31,22 @@ function Arrow() {
 
 export function LLMDiagram({ variant = "basic", className }: LLMDiagramProps) {
   const prominent = variant === "prominent";
+  // `flex-nowrap` + compact mobile sizing keeps text-in → LLM → text-out on one
+  // continuous line on phones (it used to wrap "text out" to a second row); the
+  // md: scale restores the deck's full-size diagram on desktop.
   return (
     <div
-      className={`flex flex-wrap items-center justify-center gap-5${
+      className={`flex flex-nowrap items-center justify-center gap-2 md:gap-5${
         className ? ` ${className}` : ""
       }`}
     >
       <Chip>&ldquo;text in&rdquo;</Chip>
       <Arrow />
       <span
-        className={`rounded border-accent bg-bg-card font-mono font-medium tracking-wide text-ink ${
+        className={`whitespace-nowrap rounded border-accent bg-bg-card font-mono font-medium tracking-wide text-ink ${
           prominent
-            ? "border-2 px-6 py-4 text-lg tracking-wider"
-            : "border px-8 py-5 text-base"
+            ? "border-2 px-4 py-3 text-base md:px-6 md:py-4 md:text-lg md:tracking-wider"
+            : "border px-4 py-3 text-sm md:px-8 md:py-5 md:text-base"
         }`}
       >
         LLM

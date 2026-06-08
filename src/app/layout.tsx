@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Geist, Geist_Mono } from "next/font/google";
 import "../styles/globals.css";
 import { ConsentBanner } from "@/components/molecules";
@@ -31,6 +31,15 @@ const SITE_URL = "https://beontheloop.com";
 const SITE_NAME = "Beontheloop";
 const SITE_DESCRIPTION =
   "Stop babysitting your AI. Copy-paste the founder's real agent harness into your project — the files that make Claude remember your codebase and finish what it starts. Read the free Deck; join the waitlist to lock the founding price on the Harness Starter Kit.";
+
+// viewport-fit=cover lets the deck's bottom CTA bar pad itself with the phone's
+// home-indicator / address-bar safe area (env(safe-area-inset-bottom)) so the
+// deck looks right edge-to-edge on notched phones (mobile-view layout pass).
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  viewportFit: "cover",
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
