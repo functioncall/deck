@@ -126,20 +126,20 @@ export function HarnessWrapsTheirs() {
         frameMin={3}
         label="User harness · what you build"
         color="user"
-        className="mx-auto flex w-full max-w-3xl flex-col gap-5 px-7 pb-6 pt-9 max-md:gap-3 max-md:px-3 max-md:pt-7"
+        className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-4 pt-6 max-md:px-3"
       >
         <FrameLayer
           frameMin={2}
           label="Agent harness · Claude Code"
           color="harness"
-          className="flex w-full flex-col gap-5 px-6 pb-6 pt-8 max-md:gap-3 max-md:px-2 max-md:pt-7"
+          className="flex w-full flex-col gap-4 px-4 pb-4 pt-6 max-md:px-3"
         >
           <div className="flex w-full justify-center">
             <FrameLayer
               frameMin={1}
               label="Agent · ↻ while true"
               color="agent"
-              className="w-full px-6 pb-6 pt-8 max-md:px-2 max-md:pt-7"
+              className="w-full px-4 pb-4 pt-6 max-md:px-3"
             >
               <AgentFlow showTool={state >= 1} />
             </FrameLayer>

@@ -53,7 +53,7 @@ const HARNESS_COMPONENTS = [
 function AgentCore({ revealed }: { revealed: boolean }) {
   return (
     <div
-      className={`relative mx-auto w-full rounded-lg border px-6 pb-6 pt-8 transition-colors duration-500 max-md:px-3 ${
+      className={`relative mx-auto w-full rounded-lg border px-4 pb-4 pt-6 transition-colors duration-500 max-md:px-3 ${
         revealed ? "border-layer-agent bg-bg-soft" : "border-transparent"
       }`}
     >
@@ -76,7 +76,7 @@ function HarnessGrid() {
       {HARNESS_COMPONENTS.map((c) => (
         <div
           key={c}
-          className="flex min-h-14 items-center justify-center rounded border border-rule bg-bg-card px-2 py-2 text-center font-mono text-xs leading-tight text-ink-soft"
+          className="flex min-h-12 items-center justify-center rounded border border-rule bg-bg-card px-2 py-2 text-center font-mono text-xs leading-tight text-ink-soft"
         >
           {c}
         </div>
@@ -97,7 +97,7 @@ export function HarnessFrame({
 
   return (
     <div
-      className={`relative mx-auto flex w-full max-w-3xl flex-col gap-6 rounded-lg border p-8 transition-colors duration-500 ${
+      className={`relative mx-auto flex w-full max-w-3xl flex-col gap-4 rounded-lg border px-4 pb-4 pt-6 transition-colors duration-500 max-md:px-3 ${
         harnessRevealed ? "border-layer-harness bg-bg-soft" : "border-transparent"
       }${className ? ` ${className}` : ""}`}
     >

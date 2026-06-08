@@ -7,7 +7,7 @@ import screenshot from "./ralph-review.jpg";
 const POINTS = [
   {
     term: "Open the PR.",
-    desc: "Ralph pushed and opened it. I read the diff.",
+    desc: "Ralph pushed and opened it. Read the diff.",
   },
   {
     term: "Check the preview build.",
@@ -21,7 +21,7 @@ const POINTS = [
 
 /**
  * s-5-9 — "review" (index.html data-num 5.9): the close of §5 (workflow stage
- * `review`). Ralph closes the queue, I open the PR — a phone showing the final
+ * `review`). Ralph closes the queue, the agent opens the PR — a phone showing the final
  * run summary (59 min, 13 epics, all closed) beside the review steps. Single
  * state.
  */
@@ -31,7 +31,8 @@ export function Review() {
       <Pipeline active="review" />
       <StageHeading>Review.</StageHeading>
       <Text variant="lead" className="mb-10 text-base">
-        Ralph closes the queue. <em className="italic text-accent">I open the PR.</em>
+        Ralph closes the queue.{" "}
+        <em className="italic text-accent">The agent opens the PR.</em>
       </Text>
       <PhoneSplit
         src={screenshot}

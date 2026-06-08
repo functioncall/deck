@@ -27,7 +27,13 @@ export function SmartDumbZone() {
             &ldquo;The more context you use, the worse results you&rsquo;ll
             get.&rdquo;
           </Text>
-          <div className="mt-2 font-mono text-xs uppercase tracking-widest text-ink-dim">
+          {/* The attribution is redundant with the SlideFooter reference below,
+              so it is hidden — but its space is kept (invisible) so the context
+              window stays at the same position. */}
+          <div
+            aria-hidden="true"
+            className="invisible mt-2 font-mono text-xs uppercase tracking-widest text-ink-dim"
+          >
             Dex Horthy / humanlayer.dev · Geoffrey Huntley
           </div>
         </div>

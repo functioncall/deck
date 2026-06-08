@@ -19,33 +19,19 @@ import { useSlideState } from "@/components/deck-player";
  * within `[min, max]` (the port of `data-state-min` / `data-state-max`). Removed
  * from layout when out of range so swapped variants of differing height never
  * double-stack (the deck swaps, it does not overlay).
- *
- * `reserve` keeps the children's space when out of range (rendered `invisible`
- * instead of unmounted), so a callout that appears at a later state doesn't grow
- * the column and shove the title/diagram — the text simply fades into space that
- * was already there.
  */
 export function StateRange({
   min = 0,
   max,
-  reserve = false,
   children,
 }: {
   min?: number;
   max?: number;
-  reserve?: boolean;
   children: ReactNode;
 }) {
   const state = useSlideState();
   const shown = state >= min && (max === undefined || state <= max);
-  if (shown) return <>{children}</>;
-  if (reserve)
-    return (
-      <div aria-hidden="true" className="invisible">
-        {children}
-      </div>
-    );
-  return null;
+  return shown ? <>{children}</> : null;
 }
 
 /** The deck's smart-zone / dumb-zone overlay (`.ctx-zone-line`, ~60% down). */

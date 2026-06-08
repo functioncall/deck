@@ -21,15 +21,13 @@ export function AllocationProblem() {
             Static fills eat your usable space{" "}
             <em className="text-accent">before the conversation starts.</em>
           </Text>
-          <StateRange min={3} reserve>
-            <div className="mt-8 text-left font-mono text-sm text-ink-soft">
-              Static fills &rarr;{" "}
-              <em className="text-accent">smart zone shrinks.</em>
-              <div className="mt-1 text-xs uppercase tracking-widest text-ink-dim">
-                before the conversation even starts.
-              </div>
+          <div className="mt-8 text-left font-mono text-sm text-ink-soft">
+            Static fills &rarr;{" "}
+            <em className="text-accent">smart zone shrinks.</em>
+            <div className="mt-1 text-xs uppercase tracking-widest text-ink-dim">
+              before the conversation even starts.
             </div>
-          </StateRange>
+          </div>
         </div>
         <div className="flex justify-center">
           <ContextFrame>

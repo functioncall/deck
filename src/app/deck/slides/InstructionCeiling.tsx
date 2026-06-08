@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Heading, Text } from "@/components/atoms";
 import { Slide } from "@/components/deck-player";
+import { SlideFooter } from "./SlideFooter";
 import chart from "./instruction-ceiling.jpg";
 
 /**
@@ -45,9 +46,12 @@ export function InstructionCeiling() {
           </div>
         </div>
       </div>
-      <div className="text-center font-mono text-xs uppercase tracking-widest text-ink-dim max-md:mt-6 max-md:w-full md:absolute md:inset-x-[10vw] md:bottom-[6vh]">
-        source · Dex Horthy / humanlayer.dev · arxiv:2507.11538
-      </div>
+      <SlideFooter
+        person="Dex Horthy · humanlayer.dev"
+        href="https://arxiv.org/pdf/2507.11538"
+      >
+        arxiv:2507.11538
+      </SlideFooter>
     </Slide>
   );
 }

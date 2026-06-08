@@ -37,7 +37,7 @@ const SKILLS = [
 export function CustomSkills() {
   return (
     <Slide anchor="top">
-      <PanelHeading>custom skills</PanelHeading>
+      <PanelHeading>some skills</PanelHeading>
       <TwoColPanel tree={<Tree rows={TREE} />}>
         <div className="mb-6 flex flex-col gap-2.5">
           {SKILLS.map(([cmd, desc]) => (

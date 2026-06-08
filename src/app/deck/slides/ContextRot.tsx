@@ -21,18 +21,15 @@ export function ContextRot() {
           </Heading>
           <Text variant="lead" className="mt-5 text-left">
             Nothing fails. Every call succeeds.{" "}
-            <em className="text-accent">
-              It just fills up. Attention frays. Compaction is lossy.
-            </em>
+            <em className="text-accent">It just fills up.</em>
           </Text>
-          <StateRange min={4} reserve>
-            <div className="mt-8 text-left font-mono text-sm text-ink-soft">
-              Same window. Same model.
-              <div className="mt-1 italic text-accent">
-                It just filled up.
-              </div>
+          <div className="mt-8 text-left font-mono text-sm text-ink-soft">
+            Same window, same model &rarr;{" "}
+            <em className="text-accent">it rots.</em>
+            <div className="mt-1 text-xs uppercase tracking-widest text-ink-dim">
+              no errors. just volume.
             </div>
-          </StateRange>
+          </div>
         </div>
         <div className="flex justify-center">
           <ContextFrame>
