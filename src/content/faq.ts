@@ -21,6 +21,11 @@ export const faq: FaqEntry[] = [
       "It's the paid hero: the founder's real agentic-coding harness as reusable templates — the custom skills, the CLAUDE.md, the ralph-loop script, and the agent_docs templates you see described in the Deck. You copy-paste it into your project and the agent stops forgetting your codebase and starts finishing what it starts. It's not shipping yet — join the waitlist and you'll get the whole Kit the day it does, for a one-time founding price.",
   },
   {
+    question: 'Can’t I just ask an AI to generate these files?',
+    answer:
+      "Yes — and you'll get four files that look right and a loop that still dies at hour three. The files aren't the hard part; an AI will happily write you a CLAUDE.md. What it can't hand you is which failure each file is shaped against — why the loop resets context every pass, why the agent has to clear a verify-gate before it can call a job done, why state lives on disk instead of the thread. That shape is the residue of a few hundred loops that spun out, hallucinated, or torched a repo before they stopped. The Harness Starter Kit is those decisions already made — so you skip the crashes, not just the typing.",
+  },
+  {
     question: 'Is the Screencast included? When does it ship?',
     answer:
       "It's included free for everyone on the waitlist at the Founding price. The Screencast is the expedition — an over-the-shoulder build-along where the founder runs a real task end-to-end. It ships when it's ready, with lifetime access and no committed date. Because the Kit you'll get is the paid hero, the undated Screencast is a bonus on top, not the thing you're paying for.",

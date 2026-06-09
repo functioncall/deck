@@ -32,13 +32,16 @@ export function TheShift({ className }: SectionProps) {
       <Text variant="lead" className="mt-14">
         What turns that function into something that ships work is everything you
         wrap around it — the loop, the context you load, the tools and skills it
-        can reach. That wrapper is the harness.
+        can reach. That wrapper is the harness — and a good one is the difference
+        between a loop that <em className="text-accent">finishes</em> and one
+        that spins out.
       </Text>
       <div className="mt-10">
         <HarnessFrame />
       </div>
       <Callout className="mt-10">
-        This is the Deck&rsquo;s whole thesis — and the part the{" "}
+        This is the Deck&rsquo;s whole thesis: the harness is what makes a long
+        run <strong>finish</strong>, not just start — and it&rsquo;s the part the{" "}
         <strong>Harness Starter Kit</strong> hands you ready to run.
       </Callout>
     </section>

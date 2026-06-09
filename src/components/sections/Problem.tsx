@@ -12,29 +12,40 @@ type SectionProps = { className?: string };
 // The pain points, each lifting the felt cost (the `<strong>` reads as full ink).
 const PAINS: { id: string; body: ReactNode }[] = [
   {
-    id: "forgets",
+    id: "rot",
     body: (
       <>
-        You paste the context in again because the agent{" "}
-        <strong>forgot the thread</strong> three steps ago.
+        Context rots — failed attempts pile up until the spec scrolls out of
+        the window, and it <strong>starts hallucinating</strong> with total
+        confidence.
       </>
     ),
   },
   {
-    id: "drifts",
+    id: "retry",
     body: (
       <>
-        It drifts off-task, edits the wrong file, and{" "}
-        <strong>you catch it by hand</strong> before it compounds.
+        It gets stuck retrying the same broken fix, over and over,{" "}
+        <strong>burning tokens at 10&times;</strong> until you notice and kill
+        it.
       </>
     ),
   },
   {
-    id: "zero",
+    id: "false-done",
     body: (
       <>
-        Every run starts from zero — <strong>no memory</strong> of the plan, the
-        spec, or what already shipped.
+        It <strong>declares victory on nothing</strong> — &ldquo;looks done to
+        me&rdquo; — and you find out at review, three commits too late.
+      </>
+    ),
+  },
+  {
+    id: "blast",
+    body: (
+      <>
+        Left running unsupervised, it fires the destructive command — people
+        have <strong>wiped years of prod data</strong> this way.
       </>
     ),
   },

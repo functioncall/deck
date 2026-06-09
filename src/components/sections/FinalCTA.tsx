@@ -19,14 +19,14 @@ export function FinalCTA({ className }: SectionProps) {
       className={`scroll-mt-24 bg-bg-soft${className ? ` ${className}` : ""}`}
     >
       <div className="mx-auto max-w-3xl px-6 py-20 text-center md:py-28">
-        <Label accent>Stop babysitting</Label>
+        <Label accent>Finish the loop</Label>
         <Heading as="h2" size="display-sm" className="mt-4">
-          Start shipping with your agent today.
+          Hand your agent the night shift.
         </Heading>
         <Text variant="lead" className="mx-auto mt-6">
-          Read the {deck.name} to see how it works — then join the waitlist to
-          lock the founding price on the {harnessStarterKit.name} and get it
-          the day it ships.
+          Read the {deck.name} to see how the harness works — then join the
+          waitlist to lock the founding price on the {harnessStarterKit.name}{" "}
+          and get it the day it ships.
         </Text>
         <div className="mt-10 flex flex-col items-center gap-6">
           <div className="flex w-full justify-center">

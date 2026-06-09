@@ -10,7 +10,7 @@ import { ImageResponse } from "next/og";
  */
 
 export const alt =
-  "Beontheloop — stop babysitting your AI, start shipping with it";
+  "Beontheloop — your agents don't finish; it's the harness, not the model";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -49,14 +49,14 @@ export default function OpengraphImage() {
 
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div style={{ display: "flex", fontSize: 84, lineHeight: 1.05, color: INK }}>
-            Stop babysitting your AI.
+            Your agents don&rsquo;t finish.
           </div>
           <div style={{ display: "flex", fontSize: 84, lineHeight: 1.05, color: ACCENT }}>
-            Start shipping with it.
+            It&rsquo;s the harness.
           </div>
           <div style={{ display: "flex", fontSize: 34, marginTop: 28, color: INK_SOFT }}>
-            The free Deck is the map. The Harness Starter Kit is the founder&rsquo;s
-            real harness.
+            Not a smarter model — the system that makes a long agent run
+            actually finish.
           </div>
         </div>
 

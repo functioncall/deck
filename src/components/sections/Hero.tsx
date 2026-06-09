@@ -21,17 +21,18 @@ export function Hero() {
       eyebrow="For developers running long, unsupervised agent jobs"
       title={
         <>
-          Stop babysitting your AI.{" "}
-          <em className="text-accent">Start shipping with it.</em>
+          Your agents don&rsquo;t finish.{" "}
+          It&rsquo;s not the model — it&rsquo;s the{" "}
+          <em className="text-accent">harness</em>.
         </>
       }
       lead={
         <>
-          Copy-paste my agent setup into your project — the files that make
-          Claude remember your codebase and finish what it starts, instead of
-          drifting off and waiting for you. Join the waitlist to lock the
-          founding {foundingPrice} on the {harnessStarterKit.name} and get it
-          the day it ships.
+          The runnable system that makes Claude Code, Codex, or Cursor grind
+          through a real job and actually finish — verified, not vibes —
+          instead of rotting its context, spinning out, or torching your repo.
+          Join the waitlist to lock the founding {foundingPrice} on the{" "}
+          {harnessStarterKit.name} and get it the day it ships.
         </>
       }
       cta={

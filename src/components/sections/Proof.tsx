@@ -24,7 +24,8 @@ export function Proof({ className }: SectionProps) {
       </Heading>
       <Text variant="lead" className="mt-6">
         I built this harness on my own production code, and I run it every
-        day. The Kit is the harness I actually use — not a demo, not a
+        day — long jobs that finish on their own and pass the build before I
+        ever look. The Kit is the harness I actually use — not a demo, not a
         tutorial, not a thought experiment.
       </Text>
       <Text variant="soft" className="mt-4 max-w-2xl">

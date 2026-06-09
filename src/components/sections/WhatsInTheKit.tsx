@@ -18,20 +18,20 @@ type SectionProps = { className?: string };
 // The Kit's contents — glossary terms exact (CONTEXT.md: Harness Starter Kit).
 const KIT_CONTENTS = [
   {
-    name: "custom skills",
-    desc: "Stop re-typing the same five-step request. The slash-command workflows — /grill-me, /to-prd, and the rest — wrap a recurring task into one verb.",
+    name: "ralph-loop script",
+    desc: "The death it kills: context rot. The while-loop runner resets the context every pass, so failed attempts don't pile up and the spec never scrolls out of the window — it grinds through a long job instead of rotting into hallucination.",
   },
   {
     name: "CLAUDE.md",
-    desc: "Stop re-explaining your project every session. The instruction sheet that grounds every agent run in your conventions and architecture.",
-  },
-  {
-    name: "ralph-loop script",
-    desc: "Stop watching it run. The while-loop runner that feeds the agent its prompt and resets the context each pass, so it grinds through long jobs without you.",
+    desc: "The death it kills: drift. The instruction sheet is reloaded into every pass, so the agent stays grounded in your conventions and architecture instead of wandering off and editing the wrong file.",
   },
   {
     name: "agent_docs templates",
-    desc: "Stop losing the plan when the chat dies. The durable specs, ADRs, and context docs the agent reads — so state lives on disk, not in a fragile thread.",
+    desc: "The death it kills: lost state. Specs, ADRs, and context docs keep the plan on disk, not in a fragile chat thread — so the work survives when the context window dies.",
+  },
+  {
+    name: "custom skills",
+    desc: "The death it kills: the false finish. Slash-command workflows — /grill-me, /to-prd, and the rest — turn a spec into an issue-tracked backlog and a verify-gate the agent has to clear before it can call a job done.",
   },
 ];
 
@@ -48,9 +48,10 @@ export function WhatsInTheKit({ className }: SectionProps) {
         Inside the {harnessStarterKit.name}.
       </Heading>
       <Text variant="lead" className="mt-6">
-        The founder&rsquo;s actual agentic-coding harness — the same one behind
-        the Deck — as reusable templates. Join the waitlist and you&rsquo;ll get
-        it at the founding price the day it ships.
+        Not a folder of config files — a loop that finishes. The founder&rsquo;s
+        actual agentic-coding harness, the same one behind this Deck, with the
+        four things that derail a long run already solved. Join the waitlist and
+        you&rsquo;ll get it at the founding price the day it ships.
       </Text>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {KIT_CONTENTS.map((item) => (
@@ -70,8 +71,8 @@ export function WhatsInTheKit({ className }: SectionProps) {
       <Text variant="soft" className="mt-8">
         And it&rsquo;s growing: waitlist members lock in founding-member status,
         the private build-log, and a vote on the real task built in the
-        Screencast &mdash; plus the Screencast itself and the Viewer (a local way
-        to see what your agent actually did) free when they ship.
+        Screencast &mdash; plus the Screencast itself and the Viewer, a local way
+        to start a loop and see exactly what your agent did, free when they ship.
       </Text>
       <div className="mt-10">
         <CheckoutButton className="px-8 py-4 text-lg">Join the waitlist</CheckoutButton>

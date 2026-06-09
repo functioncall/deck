@@ -30,7 +30,7 @@ const geistMono = Geist_Mono({
 const SITE_URL = "https://beontheloop.com";
 const SITE_NAME = "Beontheloop";
 const SITE_DESCRIPTION =
-  "Stop babysitting your AI. Copy-paste the founder's real agent harness into your project — the files that make Claude remember your codebase and finish what it starts. Read the free Deck; join the waitlist to lock the founding price on the Harness Starter Kit.";
+  "Your agents don't finish — and it's not the model, it's the harness. Beontheloop is the runnable system that makes a long agent run (Claude Code, Codex, Cursor) actually finish, verified — not vibes. Read the free Deck; join the waitlist to lock the founding price on the Harness Starter Kit.";
 
 // viewport-fit=cover lets the deck's bottom CTA bar pad itself with the phone's
 // home-indicator / address-bar safe area (env(safe-area-inset-bottom)) so the
@@ -44,7 +44,7 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Beontheloop — Stop babysitting your AI",
+    default: "Beontheloop — Your agents don't finish. It's the harness.",
     template: "%s · Beontheloop",
   },
   description: SITE_DESCRIPTION,
@@ -52,13 +52,13 @@ export const metadata: Metadata = {
     type: "website",
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: "Beontheloop — Stop babysitting your AI",
+    title: "Beontheloop — Your agents don't finish. It's the harness.",
     description: SITE_DESCRIPTION,
     locale: "en_US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Beontheloop — Stop babysitting your AI",
+    title: "Beontheloop — Your agents don't finish. It's the harness.",
     description: SITE_DESCRIPTION,
   },
 };
