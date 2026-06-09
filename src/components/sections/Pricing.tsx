@@ -29,7 +29,7 @@ const KIT_FEATURES = [
   "The Screencast, free, with lifetime access when it ships",
   "The Viewer — a local way to see what your agent did — free when it ships",
   "Founding-member status and the private build-log",
-  "A vote on the real task the founder builds in the Screencast",
+  "A vote on the real task I build in the Screencast",
   "30-day, no-questions-asked refund once the Kit ships",
 ];
 
@@ -45,13 +45,12 @@ export function Pricing({ className }: SectionProps) {
     >
       <Label accent>The price</Label>
       <Heading as="h2" size="display-sm" className="mt-4">
-        Join the waitlist. Lock the Founding price.
+        Lock the founding price.
       </Heading>
       <Text variant="lead" className="mt-6">
-        Join the waitlist now and lock {foundingPrice} for the Kit — a one-time
-        fee you pay the day it ships, and the least it will ever cost. The price
-        rises to {launchPrice} after launch; that&rsquo;s the only clock. No
-        countdown, no fake deadline.
+        {foundingPrice} now, {launchPrice} after launch — a one-time fee you pay
+        the day the Kit ships, and the least it will ever cost. The rising price
+        is the only clock: no countdown, no fake deadline.
       </Text>
       <div className="mt-12">
         <PricingTier
@@ -67,11 +66,6 @@ export function Pricing({ className }: SectionProps) {
           }
         />
       </div>
-      <Text variant="soft" className="mt-8">
-        When the Kit ships, try it on your own work. If it doesn&rsquo;t earn
-        its place in your setup, email us within 30 days of shipping and
-        we&rsquo;ll refund you in full — no questions asked.
-      </Text>
     </section>
   );
 }

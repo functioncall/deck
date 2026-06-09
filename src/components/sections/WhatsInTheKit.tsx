@@ -4,10 +4,10 @@ import { harnessStarterKit } from "@/content";
 
 /**
  * WhatsInTheKit — the Harness Starter Kit contents (SPEC §3): the paid hero,
- * the founder's real agentic-coding harness as reusable templates. Lists the
- * Kit's pieces using the glossary terms exactly (custom skills, CLAUDE.md,
- * ralph-loop script, agent_docs templates) and carries the waitlist CTA. The
- * Kit name comes from typed content (`@/content`). Token-only styling (ADR-0005).
+ * the founder's real agentic-coding harness. Each piece is sold by the OUTCOME
+ * it buys, with the underlying file kept as a quiet tag — so the section leads
+ * with "a loop that finishes", not a folder of config files. The Kit name comes
+ * from typed content (`@/content`). Token-only styling (ADR-0005).
  *
  * Honest-waitlist reframe (Locked decision 3): waitlist members lock in the
  * founding price and receive the Kit the day it ships. The section `id` remains
@@ -15,23 +15,28 @@ import { harnessStarterKit } from "@/content";
  */
 type SectionProps = { className?: string };
 
-// The Kit's contents — glossary terms exact (CONTEXT.md: Harness Starter Kit).
+// The Kit's four pieces — each sold by the outcome it buys, with the underlying
+// file as a quiet tag (CONTEXT.md: Harness Starter Kit).
 const KIT_CONTENTS = [
   {
-    name: "ralph-loop script",
-    desc: "The death it kills: context rot. The while-loop runner resets the context every pass, so failed attempts don't pile up and the spec never scrolls out of the window — it grinds through a long job instead of rotting into hallucination.",
+    title: "It finishes long jobs",
+    desc: "The loop resets its own context every pass, so failed attempts don't pile up and the spec never scrolls out of view. It grinds to the end instead of rotting into hallucination.",
+    file: "ralph-loop script",
   },
   {
-    name: "CLAUDE.md",
-    desc: "The death it kills: drift. The instruction sheet is reloaded into every pass, so the agent stays grounded in your conventions and architecture instead of wandering off and editing the wrong file.",
+    title: "It stays on task",
+    desc: "Your conventions and architecture get reloaded into every pass, so it keeps building the thing you asked for instead of wandering off and editing the wrong file.",
+    file: "CLAUDE.md",
   },
   {
-    name: "agent_docs templates",
-    desc: "The death it kills: lost state. Specs, ADRs, and context docs keep the plan on disk, not in a fragile chat thread — so the work survives when the context window dies.",
+    title: "It never loses the plan",
+    desc: "The spec and the decisions live on disk, not in a chat thread — so the work survives when the context window dies.",
+    file: "agent_docs templates",
   },
   {
-    name: "custom skills",
-    desc: "The death it kills: the false finish. Slash-command workflows — /grill-me, /to-prd, and the rest — turn a spec into an issue-tracked backlog and a verify-gate the agent has to clear before it can call a job done.",
+    title: "It won't fake-finish",
+    desc: 'Every job has to clear a verify-gate before it can call itself done — no more "looks done to me" three commits too late.',
+    file: "custom skills",
   },
 ];
 
@@ -43,36 +48,38 @@ export function WhatsInTheKit({ className }: SectionProps) {
         className ? ` ${className}` : ""
       }`}
     >
-      <Label accent>The toolkit — paid</Label>
+      <Label accent>The Kit — paid</Label>
       <Heading as="h2" size="display-sm" className="mt-4">
         Inside the {harnessStarterKit.name}.
       </Heading>
       <Text variant="lead" className="mt-6">
-        Not a folder of config files — a loop that finishes. The founder&rsquo;s
-        actual agentic-coding harness, the same one behind this Deck, with the
-        four things that derail a long run already solved. Join the waitlist and
-        you&rsquo;ll get it at the founding price the day it ships.
+        Not a folder of config files — a loop that finishes. It&rsquo;s the
+        harness I actually run, with the four things that derail a long job
+        already solved.
       </Text>
       <div className="mt-10 grid gap-4 sm:grid-cols-2">
         {KIT_CONTENTS.map((item) => (
           <div
-            key={item.name}
+            key={item.file}
             className="rounded-lg border border-rule bg-bg-card p-6"
           >
-            <div className="font-mono text-sm tracking-wide text-ink">
-              {item.name}
-            </div>
+            <div className="text-base font-medium text-ink">{item.title}</div>
             <Text variant="soft" className="mt-2">
               {item.desc}
+            </Text>
+            <Text
+              variant="soft"
+              className="mt-4 block font-mono text-xs tracking-wide"
+            >
+              {item.file}
             </Text>
           </div>
         ))}
       </div>
       <Text variant="soft" className="mt-8">
-        And it&rsquo;s growing: waitlist members lock in founding-member status,
-        the private build-log, and a vote on the real task built in the
-        Screencast &mdash; plus the Screencast itself and the Viewer, a local way
-        to start a loop and see exactly what your agent did, free when they ship.
+        Yes, an AI will happily generate these four files. What it can&rsquo;t
+        hand you is which failure each one is shaped against &mdash; and
+        that&rsquo;s the part you&rsquo;re paying for.
       </Text>
       <div className="mt-10">
         <CheckoutButton className="px-8 py-4 text-lg">Join the waitlist</CheckoutButton>

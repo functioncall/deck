@@ -39,12 +39,10 @@ export function Proof({ className }: SectionProps) {
           No testimonials yet &mdash; and I won&rsquo;t invent any.
         </Heading>
         <Text variant="soft" className="mt-4 max-w-2xl">
-          You&rsquo;d be among the first to run this harness outside the
-          projects it was built for. So instead of a wall of quotes,
-          here&rsquo;s what&rsquo;s real: the free Deck, the Kit&rsquo;s actual
-          files, and the founder behind both. Join the waitlist and
-          you&rsquo;ll lock the founding price &mdash; and help shape what
-          ships.
+          You&rsquo;d be among the first to run this outside the projects it was
+          built for. So there&rsquo;s no wall of quotes &mdash; just the free
+          Deck and the Kit&rsquo;s actual files, open for you to judge before you
+          pay.
         </Text>
       </div>
     </section>

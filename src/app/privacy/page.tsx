@@ -15,7 +15,6 @@ import { CheckoutButton } from "@/components/molecules";
 
 const NAV_LINKS = [
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
   { href: "/deck", label: "Read the Deck" },
 ];
 

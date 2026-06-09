@@ -60,7 +60,7 @@ export function Problem({ className }: SectionProps) {
     >
       <Label accent>The problem</Label>
       <Heading as="h2" size="display-sm" className="mt-4">
-        You&rsquo;re still babysitting the agent.
+        The agent still can&rsquo;t finish without you.
       </Heading>
       <Text variant="lead" className="mt-6">
         The demos look like magic. Real work looks like you, hunched over the

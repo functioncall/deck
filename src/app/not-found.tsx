@@ -11,7 +11,6 @@ import { Heading, Label, Link, Text } from "@/components/atoms";
 
 const NAV_LINKS = [
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
   { href: "/deck", label: "Read the Deck" },
 ];
 

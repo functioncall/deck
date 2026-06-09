@@ -15,7 +15,6 @@ import { harnessStarterKit } from "@/content";
 
 const FOOTER_LINKS = [
   { href: "/#pricing", label: "Pricing" },
-  { href: "/#faq", label: "FAQ" },
   { href: "/deck", label: "Read the Deck" },
   { href: "/terms", label: "Terms" },
   { href: "/privacy", label: "Privacy" },

@@ -1,14 +1,13 @@
 import NextLink from "next/link";
 import { Heading, Label, Text } from "@/components/atoms";
 import { EmailCaptureForm } from "@/components/molecules";
-import { deck, harnessStarterKit } from "@/content";
 
 /**
  * FinalCTA — the close (SPEC §3) and the waitlist anchor (`id="join"` — the
  * target every "Join the waitlist" CTA scrolls to). The waitlist launch's
  * primary conversion is the L1 `EmailCaptureForm` (POSTs to /api/subscribe →
- * Loops "lead" tag); the free Deck is the secondary path. Offer names come
- * from typed content. Token-only styling (ADR-0005).
+ * Loops "lead" tag); the free Deck is the secondary path. Token-only styling
+ * (ADR-0005).
  */
 type SectionProps = { className?: string };
 
@@ -24,9 +23,8 @@ export function FinalCTA({ className }: SectionProps) {
           Hand your agent the night shift.
         </Heading>
         <Text variant="lead" className="mx-auto mt-6">
-          Read the {deck.name} to see how the harness works — then join the
-          waitlist to lock the founding price on the {harnessStarterKit.name}{" "}
-          and get it the day it ships.
+          Read the Deck to see how it works — then lock the founding price
+          before it rises.
         </Text>
         <div className="mt-10 flex flex-col items-center gap-6">
           <div className="flex w-full justify-center">
